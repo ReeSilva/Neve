@@ -6,7 +6,7 @@
   config = lib.mkIf config.rose-pine.enable {
     colorschemes = {
       rose-pine = {
-        enable = true;
+        enable = false;
         settings = {
           styles = {
             italic = true;
