@@ -5,7 +5,7 @@
   };
   config = lib.mkIf config.copilot.enable {
     plugins.copilot-lua = {
-      enable = true;
+      enable = false;
       panel = {
         enabled = false;
         autoRefresh = true;
