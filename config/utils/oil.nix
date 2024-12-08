@@ -5,7 +5,7 @@
   };
   config = lib.mkIf config.oil.enable {
     plugins.oil = {
-      enable = true;
+      enable = false;
       settings = {
         deleteToTrash = true;
         useDefaultKeymaps = true;
