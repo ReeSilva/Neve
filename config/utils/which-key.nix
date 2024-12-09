@@ -7,6 +7,7 @@
     plugins.which-key = {
       enable = true;
       settings = {
+        delay = 50;
         icons = {
           breadcrumb = "»";
           group = "+";
