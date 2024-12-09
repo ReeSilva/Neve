@@ -30,7 +30,7 @@
   keys.enable = true;
   languages.enable = true;
   lsp.enable = lib.mkDefault true;
-  none-ls.enable = lib.mkDefault false;
+  none-ls.enable = lib.mkDefault true;
   sets.enable = lib.mkDefault true;
   pluginmanagers.enable = lib.mkDefault true;
   snippets.enable = lib.mkDefault true;
