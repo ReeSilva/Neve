@@ -9,7 +9,7 @@
       enableModifiedMarkers = true;
       enableRefreshOnWrite = true;
       closeIfLastWindow = false;
-      source = [ "filesystem" "buffers" "git_status" ];
+      sources = [ "filesystem" "buffers" "git_status" ];
       popupBorderStyle =
         "rounded"; # Type: null or one of “NC”, “double”, “none”, “rounded”, “shadow”, “single”, “solid” or raw lua code
       buffers = {
