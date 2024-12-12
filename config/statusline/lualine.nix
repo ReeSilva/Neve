@@ -1,8 +1,5 @@
-{ lib, config, ... }:
-{
-  options = {
-    lualine.enable = lib.mkEnableOption "Enable lualine module";
-  };
+{ lib, config, ... }: {
+  options = { lualine.enable = lib.mkEnableOption "Enable lualine module"; };
   config = lib.mkIf config.lualine.enable {
     plugins.lualine = {
       enable = true;
@@ -10,7 +7,7 @@
         alwaysDivideMiddle = true;
         globalstatus = true;
         ignoreFocus = [ "neo-tree" ];
-        extensions = [ "fzf" ];
+        extensions = [ "fzf" "neo-tree" ];
         theme = "auto";
         componentSeparators = {
           left = "|";
@@ -22,12 +19,7 @@
         };
         sections = {
           lualine_a = [ "mode" ];
-          lualine_b = [
-            "branch"
-            ""
-            "diff"
-            "diagnostics"
-          ];
+          lualine_b = [ "branch" "" "diff" "diagnostics" ];
           lualine_c = [ "filename" ];
           lualine_x = [ "filetype" ];
           lualine_y = [ "progress" ];
