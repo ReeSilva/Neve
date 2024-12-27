@@ -26,7 +26,7 @@
             harpoon = true;
             gitsigns = true;
             which_key = true;
-            illuminate = true;
+            illuminate = { enabled = true; };
             treesitter = true;
             treesitter_context = true;
             telescope.enabled = true;
