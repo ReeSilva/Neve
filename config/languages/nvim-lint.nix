@@ -7,19 +7,10 @@
     plugins.lint = {
       enable = true;
       lintersByFt = {
-        c = [ "cpplint" ];
-        cpp = [ "cpplint" ];
-        go = [ "golangci-lint" ];
         nix = [ "statix" ];
         lua = [ "selene" ];
-        python = [ "flake8" ];
-        javascript = [ "eslint_d" ];
-        javascriptreact = [ "eslint_d" ];
-        typescript = [ "eslint_d" ];
-        typescriptreact = [ "eslint_d" ];
+        terraform = [ "tflint" ];
         json = [ "jsonlint" ];
-        java = [ "checkstyle" ];
-        haskell = [ "hlint" ];
         bash = [ "shellcheck" ];
       };
     };

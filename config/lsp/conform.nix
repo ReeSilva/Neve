@@ -22,22 +22,7 @@
           end
         '';
         formatters_by_ft = {
-          html = {
-            __unkeyed-1 = "prettierd";
-            __unkeyed-2 = "prettier";
-            stop_after_first = true;
-          };
-          css = {
-            __unkeyed-1 = "prettierd";
-            __unkeyed-2 = "prettier";
-            stop_after_first = true;
-          };
           javascript = {
-            __unkeyed-1 = "prettierd";
-            __unkeyed-2 = "prettier";
-            stop_after_first = true;
-          };
-          javascriptreact = {
             __unkeyed-1 = "prettierd";
             __unkeyed-2 = "prettier";
             stop_after_first = true;
@@ -47,21 +32,16 @@
             __unkeyed-2 = "prettier";
             stop_after_first = true;
           };
-          typescriptreact = {
-            __unkeyed-1 = "prettierd";
-            __unkeyed-2 = "prettier";
-            stop_after_first = true;
-          };
-          java = [ "google-java-format" ];
           python = [ "black" ];
           lua = [ "stylua" ];
           nix = [ "nixfmt" ];
+          terraform = [ "terraform_fmt" ];
+          hcl = [ "terragrunt_hclfmt" ];
           markdown = {
             __unkeyed-1 = "prettierd";
             __unkeyed-2 = "prettier";
             stop_after_first = true;
           };
-          rust = [ "rustfmt" ];
         };
       };
     };

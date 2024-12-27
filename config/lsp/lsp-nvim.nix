@@ -28,6 +28,7 @@
           nil_ls = { enable = false; };
           nixd = { enable = true; };
           terraformls = { enable = true; };
+          tflint = { enable = true; };
           ts_ls = {
             enable = true;
             autostart = true;
@@ -64,26 +65,23 @@
               };
             };
           };
-          eslint = { enable = true; };
-          pyright = { enable = true; };
-          ruff = { enable = true; };
-
-          rust_analyzer = {
-            enable = true;
-            installCargo = true;
-            installRustc = true;
-            settings = {
-              checkOnSave = true;
-              check = { command = "clippy"; };
-              # inlayHints = {
-              #   enable = true;
-              #   showParameterNames = true;
-              #   parameterHintsPrefix = "<- ";
-              #   otherHintsPrefix = "=> ";
-              # };
-              procMacro = { enable = true; };
-            };
-          };
+          eslint = { enable = false; };
+          # rust_analyzer = {
+          #   enable = true;
+          #   installCargo = true;
+          #   installRustc = true;
+          #   settings = {
+          #     checkOnSave = true;
+          #     check = { command = "clippy"; };
+          #     # inlayHints = {
+          #     #   enable = true;
+          #     #   showParameterNames = true;
+          #     #   parameterHintsPrefix = "<- ";
+          #     #   otherHintsPrefix = "=> ";
+          #     # };
+          #     procMacro = { enable = true; };
+          #   };
+          # };
         };
         keymaps = {
           silent = true;

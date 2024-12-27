@@ -45,9 +45,9 @@
     sidebar.enable = lib.mkDefault false;
     tmux-navigator.enable = lib.mkDefault true;
     todo-comments.enable = lib.mkDefault true;
-    ultimate-autopair.enable = lib.mkDefault true;
+    ultimate-autopair.enable = lib.mkDefault false;
     undotree.enable = lib.mkDefault true;
-    wakatime.enable = lib.mkDefault true;
+    wakatime.enable = lib.mkDefault false;
     which-key.enable = lib.mkDefault true;
     wilder.enable = lib.mkDefault false;
   };
