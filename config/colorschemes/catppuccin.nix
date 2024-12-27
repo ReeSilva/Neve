@@ -26,11 +26,7 @@
             harpoon = true;
             gitsigns = true;
             which_key = true;
-<<<<<<< HEAD
             illuminate = { enabled = true; };
-=======
-            illuminate = true;
->>>>>>> d356e7c (maybe a first version)
             treesitter = true;
             treesitter_context = true;
             telescope.enabled = true;
