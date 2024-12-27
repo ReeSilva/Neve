@@ -1,5 +1,4 @@
-{ lib, config, ... }:
-{
+{ lib, config, ... }: {
   options = {
     treesitter-nvim.enable = lib.mkEnableOption "Enable treesitter-nvim module";
   };
@@ -9,36 +8,32 @@
       settings = {
         highlight = {
           enable = true;
+          disable = ''
+            function(lang, buf)
+              local max_filesize = 100 * 1024 -- 100 KB
+              local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+              if ok and stats and stats.size > max_filesize then
+                  return true
+              end
+            end
+          '';
         };
-        indent = {
-          enable = true;
-        };
-        autopairs = {
-          enable = true;
-        };
-        folding = {
-          enable = true;
-        };
+        indent = { enable = true; };
+        autopairs = { enable = true; };
+        folding = { enable = true; };
         ensure_installed = [
           "bash"
-          "c"
-          "html"
-          "css"
-          "javascript"
-          "jsdoc"
           "json"
+          "hcl"
           "lua"
           "luadoc"
           "luap"
           "nix"
-          "rust"
-          "java"
           "markdown"
           "markdown_inline"
-          "python"
           "query"
           "regex"
-          "tsx"
+          "terraform"
           "typescript"
           "vim"
           "vimdoc"
@@ -99,22 +94,14 @@
       };
       swap = {
         enable = true;
-        swapNext = {
-          "<leader>a" = "@parameters.inner";
-        };
-        swapPrevious = {
-          "<leader>A" = "@parameter.outer";
-        };
+        swapNext = { "<leader>a" = "@parameters.inner"; };
+        swapPrevious = { "<leader>A" = "@parameter.outer"; };
       };
     };
 
-    plugins.ts-autotag = {
-      enable = true;
-    };
+    plugins.ts-autotag = { enable = false; };
 
-    plugins.treesitter-context = {
-      enable = true;
-    };
+    plugins.treesitter-context = { enable = true; };
 
     plugins.ts-context-commentstring = {
       enable = true;
