@@ -22,6 +22,9 @@
             view = "mini";
           };
         };
+        presets = {
+          lsp_doc_border = true;
+        };
         popupmenu = {
           enabled = true;
           backend = "nui";
