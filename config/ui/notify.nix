@@ -6,7 +6,7 @@
   config = lib.mkIf config.notify.enable {
     plugins.notify = {
       enable = true;
-      backgroundColour = "#000000";
+      backgroundColour = "#232634";
       fps = 60;
       render = "default";
       timeout = 500;
