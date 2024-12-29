@@ -13,7 +13,7 @@
       nixvim,
       flake-utils,
       ...
-    }@inputs:
+    }:
     let
       config = import ./config; # import the module directly
       # Enable unfree packages
