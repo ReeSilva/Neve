@@ -14,7 +14,9 @@
           };
         };
         cursorword = { opts = { delay = 100; }; };
-        indentscope = { };
+        indentscope = {
+          symbol = "│";
+        };
       };
     };
   };
