@@ -1,18 +1,22 @@
 { lib, config, ... }: {
   options = {
     catppuccin.enable = lib.mkEnableOption "Enable catppuccin module";
+    catppuccin.flavour = lib.mkOption {
+      type = lib.types.str;
+      default = "frappe";
+      description = "Flavour for Catppuccin Colorscheme";
+    };
   };
   config = lib.mkIf config.catppuccin.enable {
     colorschemes = {
       catppuccin = {
         enable = true;
         settings = {
+          inherit (config.catppuccin) flavour;
           background = {
             light = "macchiato";
             dark = "mocha";
           };
-          flavour =
-            "frappe"; # "latte", "mocha", "frappe", "macchiato" or raw lua code
           disable_bold = false;
           disable_italic = false;
           disable_underline = false;
