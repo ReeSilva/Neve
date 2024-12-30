@@ -119,6 +119,7 @@
       local opt = vim.opt
       local g = vim.g
       local o = vim.o
+      g.disable_autoformat = true
         -- Neovide
       if g.neovide then
         g.neovide_fullscreen = false

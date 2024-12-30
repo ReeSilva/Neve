@@ -1,5 +1,4 @@
-{ lib, config, ... }:
-{
+{ lib, config, ... }: {
   options = {
     nvim-lint.enable = lib.mkEnableOption "Enable nvim-lint module";
   };
@@ -12,6 +11,7 @@
         terraform = [ "tflint" ];
         json = [ "jsonlint" ];
         bash = [ "shellcheck" ];
+        yaml = [ "yamllint" ];
       };
     };
   };

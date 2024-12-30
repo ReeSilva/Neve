@@ -65,6 +65,7 @@
               };
             };
           };
+          yamlls = { enable = true; };
           eslint = { enable = false; };
           # rust_analyzer = {
           #   enable = true;
