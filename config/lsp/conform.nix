@@ -42,6 +42,7 @@
             __unkeyed-2 = "prettier";
             stop_after_first = true;
           };
+          yaml = [ "yamlfix" ];
         };
       };
     };
