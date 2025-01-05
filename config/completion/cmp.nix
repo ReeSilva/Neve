@@ -13,9 +13,6 @@
         settings = {
           experimental = { ghost_text = true; };
           mapping = {
-            "<C-j>" = "cmp.mapping.select_next_item()";
-            "<C-k>" = "cmp.mapping.select_prev_item()";
-
             "<Tab>" = ''
               cmp.mapping(function(fallback)
                 if cmp.visible() then

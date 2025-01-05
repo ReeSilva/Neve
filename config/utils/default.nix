@@ -23,6 +23,7 @@
     ./wakatime.nix
     ./which-key.nix
     ./wilder.nix
+    ./smart-splits.nix
   ];
 
   options = { utils.enable = lib.mkEnableOption "Enable utils module"; };
@@ -43,12 +44,14 @@
     plenary.enable = lib.mkDefault true;
     project-nvim.enable = lib.mkDefault true;
     sidebar.enable = lib.mkDefault false;
-    tmux-navigator.enable = lib.mkDefault true;
+    tmux-navigator.enable = lib.mkDefault false;
     todo-comments.enable = lib.mkDefault true;
     ultimate-autopair.enable = lib.mkDefault false;
     undotree.enable = lib.mkDefault true;
     wakatime.enable = lib.mkDefault false;
     which-key.enable = lib.mkDefault true;
     wilder.enable = lib.mkDefault false;
+    # Added by me, sooner this will be niquisvim
+    niquisvim.utils.smart-splits.enable = lib.mkDefault true;
   };
 }

@@ -1,17 +1,7 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
-}:
-{
-  options = {
-    nvterm.enable = lib.mkEnableOption "Enable nvterm module";
-  };
+{ lib, config, pkgs, ... }: {
+  options = { nvterm.enable = lib.mkEnableOption "Enable nvterm module"; };
   config = lib.mkIf config.nvterm.enable {
-    extraPlugins = [
-      pkgs.vimPlugins.nvterm
-    ];
+    extraPlugins = [ pkgs.vimPlugins.nvterm ];
     extraConfigLua = ''
       require("nvterm").setup({
       	terminals = {
@@ -43,13 +33,6 @@
 
       local toggle_modes = { "n", "t" }
       local mappings = {
-      	{
-      		toggle_modes,
-      		"<A-h>",
-      		function()
-      			terminal.toggle("horizontal")
-      		end,
-      	},
       	{
       		toggle_modes,
       		"<A-v>",

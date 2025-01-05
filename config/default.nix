@@ -10,8 +10,6 @@
     ./keys.nix
     ./languages
     ./lsp
-    ./none-ls
-    ./pluginmanagers
     ./sets
     ./snippets
     ./statusline
@@ -29,9 +27,7 @@
   keys.enable = true;
   languages.enable = true;
   lsp.enable = lib.mkDefault true;
-  none-ls.enable = lib.mkDefault false;
   sets.enable = lib.mkDefault true;
-  pluginmanagers.enable = lib.mkDefault true;
   snippets.enable = lib.mkDefault true;
   statusline.enable = lib.mkDefault true;
   telescope.enable = lib.mkDefault true;
