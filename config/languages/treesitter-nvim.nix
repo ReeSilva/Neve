@@ -39,6 +39,8 @@
           "vimdoc"
           "toml"
           "yaml"
+          "gotmpl"
+          "helm"
         ];
         auto_install = true;
         incremental_selection = {
