@@ -3,7 +3,7 @@
     ./avante.nix
     ./better-escape.nix
     ./cloak.nix
-    ./harpoon.nix
+    # ./harpoon.nix
     ./markdown-preview.nix
     ./mini.nix
     ./neocord.nix
@@ -32,7 +32,7 @@
   config = lib.mkIf config.utils.enable {
     better-escape.enable = lib.mkDefault true;
     cloak.enable = lib.mkDefault true;
-    harpoon.enable = lib.mkDefault true;
+    # harpoon.enable = lib.mkDefault true;
     markdown-preview.enable = lib.mkDefault true;
     mini.enable = lib.mkDefault true;
     neocord.enable = lib.mkDefault true;
