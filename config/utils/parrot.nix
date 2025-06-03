@@ -10,6 +10,7 @@
             name = "perplexity";
             endpoint = "https://api.perplexity.ai/chat/completions";
             api_key = lib.nixvim.utils.mkRaw "os.getenv('PERPLEXITY_API_KEY')";
+            topic = { model = "llama-3.1-70b-instruct"; };
             # models = {
             #   __unkeyed-1 = "llama-3.1-sonar-small-128k-chat";
             #   __unkeyed-2 = "llama-3.1-sonar-small-128k-online";
