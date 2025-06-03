@@ -38,7 +38,7 @@
           doneTtl = 3; # How long a message should persist after completion
           doneIcon = "✔"; # Icon shown when all LSP progress tasks are complete
           doneStyle = "Constant"; # Highlight group for completed LSP tasks
-          progressTtl =
+          progressTtl = lib.nixvim.utils.mkRaw
             "math.huge"; # How long a message should persist when in progress
           progressIcon = {
             pattern = "dots";
