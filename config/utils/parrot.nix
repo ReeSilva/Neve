@@ -10,20 +10,20 @@
             name = "pplx";
             endpoint = "https://api.perplexity.ai/chat/completions";
             api_key = lib.nixvim.utils.mkRaw "os.getenv 'PERPLEXITY_API_KEY'";
-            # params = {
-            #   chat = {
-            #     temperature = 1.1;
-            #     top_p = 1;
-            #   };
-            #   command = {
-            #     temperature = 1.1;
-            #     top_p = 1;
-            #   };
-            # };
-            # topic = {
-            #   model = "llama-3.1-70b-instruct";
-            #   params = { max_tokens = 64; };
-            # };
+            params = {
+              chat = {
+                temperature = 1.1;
+                top_p = 1;
+              };
+              command = {
+                temperature = 1.1;
+                top_p = 1;
+              };
+            };
+            topic = {
+              model = "llama-3.1-70b-instruct";
+              params = { max_tokens = 64; };
+            };
             models = [
               "llama-3.1-sonar-small-128k-chat"
               "llama-3.1-sonar-small-128k-online"
