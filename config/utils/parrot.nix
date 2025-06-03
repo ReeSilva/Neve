@@ -6,6 +6,10 @@
       enable = true;
       settings = {
         providers = {
+          github = {
+            name = "github";
+            api_key = lib.nixvim.utils.mkRaw "os.getenv 'GITHUB_TOKEN'";
+          };
           pplx = {
             name = "pplx";
             endpoint = "https://api.perplexity.ai/chat/completions";
