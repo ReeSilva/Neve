@@ -12,6 +12,7 @@
     ./nvim-surround.nix
     ./nvterm.nix
     ./oil.nix
+    ./parrot.nix
     ./persistence.nix
     ./plenary.nix
     ./project-nvim.nix
@@ -53,5 +54,6 @@
     wilder.enable = lib.mkDefault false;
     # Added by me, sooner this will be niquisvim
     niquisvim.utils.smart-splits.enable = lib.mkDefault true;
+    parrot.enable = lib.mkDefault true;
   };
 }
