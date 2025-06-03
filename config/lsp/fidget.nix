@@ -79,9 +79,8 @@
           end
         '';
         configs = {
-          default = ''
-            require('fidget.notification').default_config"
-          '';
+          default = lib.nixvim.utils.mkRaw
+            "require('fidget.notification').default_config";
         };
 
         window = {
