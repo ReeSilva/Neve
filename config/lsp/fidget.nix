@@ -17,7 +17,7 @@
           false; # Ignore new tasks that don't contain a message
         clearOnDetach =
           # Clear notification group when LSP server detaches
-          ''
+          lib.nixvim.utils.mkRaw ''
             function(client_id)
               local client = vim.lsp.get_client_by_id(client_id)
               return client and client.name or nil
@@ -25,7 +25,7 @@
           '';
         notificationGroup =
           # How to get a progress message's notification group key
-          ''
+          lib.nixvim.utils.mkRaw ''
             function(msg) return msg.lsp_client.name end
           '';
         ignore = [ ]; # List of LSP servers to ignore
@@ -52,13 +52,13 @@
           priority = 30; # Ordering priority for LSP notification group
           skipHistory =
             true; # Whether progress notifications should be omitted from history
-          formatMessage = ''
+          formatMessage = lib.nixvim.utils.mkRaw ''
             require ("fidget.progress.display").default_format_message
           ''; # How to format a progress message
-          formatAnnote = ''
+          formatAnnote = lib.nixvim.utils.mkRaw ''
             function (msg) return msg.title end
           ''; # How to format a progress annotation
-          formatGroupName = ''
+          formatGroupName = lib.nixvim.utils.mkRaw ''
             function (group) return tostring (group) end
           ''; # How to format a progress notification group's name
           overrides = {
@@ -71,7 +71,7 @@
         filter = "info"; # “off”, “error”, “warn”, “info”, “debug”, “trace”
         historySize = 128; # Number of removed messages to retain in history
         overrideVimNotify = true;
-        redirect = ''
+        redirect = lib.nixvim.utils.mkRaw ''
           function(msg, level, opts)
             if opts and opts.on_open then
               return require("fidget.integration.nvim-notify").delegate(msg, level, opts)
