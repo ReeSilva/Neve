@@ -13,7 +13,7 @@
             endpoint = "https://api.perplexity.ai";
             model = "sonar-reasoning-pro";
           };
-          copilot = { model = "claude-3.7-opus"; };
+          copilot = { model = "claude-3.7-sonnet"; };
         };
       };
     };
