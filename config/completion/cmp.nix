@@ -63,6 +63,10 @@
               name = "cmdline";
               keyword_length = 3;
             }
+            {
+              name = "copilot";
+              keyword_length = 3;
+            }
           ];
 
           # Enable pictogram icons for lsp/autocompletion
