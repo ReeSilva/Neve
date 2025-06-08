@@ -5,7 +5,7 @@
       enable = true;
       settings = {
         panel = {
-          enabled = false;
+          enabled = true;
           auto_refresh = true;
           keymap = {
             jump_prev = "[[";
@@ -20,8 +20,8 @@
           };
         };
         suggestion = {
-          enabled = false;
-          auto_trigger = true;
+          enabled = true;
+          auto_trigger = false;
           debounce = 75;
           keymap = {
             accept = "<M-l>";
@@ -43,8 +43,7 @@
           cvs = false;
           "." = false;
         };
-        copilot_node_command = "node"; # Node.js version must be > 18.x
-        server_opts_overrides = { };
+        copilot_model = "claude-3.7-sonnet";
       };
     };
   };
