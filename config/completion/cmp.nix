@@ -2,14 +2,9 @@
   options = { cmp.enable = lib.mkEnableOption "Enable cmp module"; };
   config = lib.mkIf config.cmp.enable {
     plugins = {
-      cmp-nvim-lsp = { enable = true; }; # lsp
-      cmp-buffer = { enable = true; };
-      cmp-path = { enable = true; }; # file system paths
-      cmp-cmdline = { enable = true; }; # autocomplete for cmdline
-      cmp_luasnip = { enable = true; }; # snippets
       cmp = {
         enable = true;
-        autoEnableSources = false;
+        autoEnableSources = true;
         settings = {
           experimental = { ghost_text = true; };
           mapping = {
@@ -47,18 +42,25 @@
               "cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })";
           };
           sources = [
-            { name = "nvim_lsp"; }
+            {
+              name = "nvim_lsp";
+              keyword_length = 3;
+            }
+            # { name = "parrot"; }
             {
               name = "luasnip";
               keyword_length = 3;
             }
             {
               name = "buffer";
-              keyword_length = 5;
+              keyword_length = 3;
             }
-            { name = "codeium"; }
             {
               name = "path";
+              keyword_length = 3;
+            }
+            {
+              name = "cmdline";
               keyword_length = 3;
             }
           ];
@@ -120,27 +122,42 @@
       -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
       cmp.setup.cmdline({'/', "?" }, {
         sources = {
-          { name = 'buffer' }
+          {
+            name = 'buffer',
+            keyword_length = 5
+          }
         }
       })
 
       -- Set configuration for specific filetype.
       cmp.setup.filetype('gitcommit', {
         sources = cmp.config.sources({
-          { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+          {
+            name = 'cmp_git',
+            keyword_length = 5
+          }, -- You can specify the `cmp_git` source if you were installed it.
         }, {
-        { name = 'buffer' },
+          {
+            name = 'buffer',
+            keyword_length = 5
+          },
         })
       })
 
       -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
       cmp.setup.cmdline(':', {
         sources = cmp.config.sources({
-          { name = 'path' }
+          {
+            name = 'path',
+            keyword_length = 5
+          }
         }, {
-        { name = 'cmdline' }
+          {
+            name = 'cmdline',
+            keyword_length = 5
+          }
         }),
-      })  
+      })
     '';
   };
 }

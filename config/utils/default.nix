@@ -1,5 +1,6 @@
 { lib, config, ... }: {
   imports = [
+    ./avante.nix
     ./better-escape.nix
     ./cloak.nix
     ./harpoon.nix
@@ -54,6 +55,7 @@
     wilder.enable = lib.mkDefault false;
     # Added by me, sooner this will be niquisvim
     niquisvim.utils.smart-splits.enable = lib.mkDefault true;
-    parrot.enable = lib.mkDefault true;
+    parrot.enable = lib.mkDefault false;
+    avante.enable = lib.mkDefault true;
   };
 }

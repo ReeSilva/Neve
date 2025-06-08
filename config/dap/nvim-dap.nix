@@ -1,9 +1,16 @@
-{ lib, config, ... }:
-{
+{ lib, config, ... }: {
   options = {
     nvim-dap.enable = lib.mkEnableOption "Enable Debug Adapter Protocol module";
   };
   config = lib.mkIf config.nvim-dap.enable {
+    plugins = {
+      dap-python = { enable = true; };
+      dap-ui = {
+        enable = true;
+        settings = { floating.mappings = { close = [ "<ESC>" "q" ]; }; };
+      };
+      dap-virtual-text = { enable = true; };
+    };
     plugins.dap = {
       enable = true;
       signs = {
@@ -20,33 +27,14 @@
           texthl = "DapLogPoint";
         };
       };
-      extensions = {
-        dap-python = {
-          enable = true;
-        };
-        dap-ui = {
-          enable = true;
-          floating.mappings = {
-            close = [
-              "<ESC>"
-              "q"
-            ];
-          };
-        };
-        dap-virtual-text = {
-          enable = true;
-        };
-      };
       configurations = {
-        java = [
-          {
-            type = "java";
-            request = "launch";
-            name = "Debug (Attach) - Remote";
-            hostName = "127.0.0.1";
-            port = 5005;
-          }
-        ];
+        java = [{
+          type = "java";
+          request = "launch";
+          name = "Debug (Attach) - Remote";
+          hostName = "127.0.0.1";
+          port = 5005;
+        }];
       };
     };
 
@@ -54,9 +42,8 @@
       {
         mode = "n";
         key = "<leader>dB";
-        action = "
-        <cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>
-      ";
+        action =
+          "\n        <cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>\n      ";
         options = {
           silent = true;
           desc = "Breakpoint Condition";
@@ -119,9 +106,7 @@
       {
         mode = "n";
         key = "<leader>dj";
-        action = "
-        <cmd>lua require('dap').down()<cr>
-      ";
+        action = "\n        <cmd>lua require('dap').down()<cr>\n      ";
         options = {
           silent = true;
           desc = "Down";
@@ -218,10 +203,7 @@
         };
       }
       {
-        mode = [
-          "n"
-          "v"
-        ];
+        mode = [ "n" "v" ];
         key = "<leader>de";
         action = "<cmd>lua require('dapui').eval()<cr>";
         options = {
