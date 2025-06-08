@@ -6,6 +6,7 @@
       enable = true;
       settings = {
         provider = "copilot";
+        auto_suggestions_provider = "perplexity";
         providers = {
           perplexity = {
             __inherited_from = "openai";
