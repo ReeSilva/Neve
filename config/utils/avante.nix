@@ -5,12 +5,7 @@
     plugins.avante = {
       enable = true;
       settings = {
-        provider = "perplexity";
-        # openai = {
-        #   api_key_name = "PERPLEXITY_API_KEY";
-        #   endpoint = "https://api.perplexity.ai";
-        #   model = "llama-3.1-sonar-large-128k-online";
-        # };
+        provider = "copilot";
         providers = {
           perplexity = {
             __inherited_from = "openai";
@@ -18,6 +13,7 @@
             endpoint = "https://api.perplexity.ai";
             model = "sonar-reasoning-pro";
           };
+          copilot = { model = "claude-4-sonnet"; };
         };
       };
     };
