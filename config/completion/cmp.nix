@@ -67,6 +67,18 @@
               name = "copilot";
               keyword_length = 3;
             }
+            {
+              name = "avante_commands";
+              keyword_length = 5;
+            }
+            {
+              name = "avante_mentions";
+              keyword_length = 5;
+            }
+            {
+              name = "avante_prompt_mentions";
+              keyword_length = 5;
+            }
           ];
 
           # Enable pictogram icons for lsp/autocompletion
