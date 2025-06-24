@@ -5,7 +5,7 @@
     plugins.avante = {
       enable = true;
       settings = {
-        provider = "copilot";
+        provider = "perplexity";
         auto_suggestions_provider = "perplexity";
         providers = {
           perplexity = {
