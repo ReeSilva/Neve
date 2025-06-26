@@ -1,14 +1,6 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
-}:
-{
+{ lib, config, pkgs, ... }: {
   # TODO: Refactor this as neotest is supported on nixvim now
-  options = {
-    neotest.enable = lib.mkEnableOption "Enable neotest module";
-  };
+  options = { neotest.enable = lib.mkEnableOption "Enable neotest module"; };
   config = lib.mkIf config.neotest.enable {
     extraPlugins = with pkgs.vimPlugins; [
       (pkgs.vimUtils.buildVimPlugin {
@@ -33,7 +25,7 @@
       })
       neotest
       FixCursorHold-nvim
-      neotest-plenary
+      # neotest-plenary
       vim-test
       neotest-python
       neotest-vitest
@@ -116,7 +108,8 @@
       {
         mode = "n";
         key = "<leader>to";
-        action = "<cmd>lua require('neotest').output.open{ enter = true, auto_close = true }<CR>";
+        action =
+          "<cmd>lua require('neotest').output.open{ enter = true, auto_close = true }<CR>";
         options = {
           desc = "Show Output";
           silent = true;

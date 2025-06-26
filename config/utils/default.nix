@@ -43,7 +43,7 @@
     nvterm.enable = lib.mkDefault true;
     oil.enable = lib.mkDefault true;
     persistence.enable = lib.mkDefault true;
-    plenary.enable = lib.mkDefault true;
+    plenary.enable = lib.mkDefault false;
     project-nvim.enable = lib.mkDefault true;
     sidebar.enable = lib.mkDefault false;
     tmux-navigator.enable = lib.mkDefault false;
