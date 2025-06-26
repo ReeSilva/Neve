@@ -5,10 +5,8 @@
     plugins.avante = {
       enable = true;
       settings = {
-        provider = if pkgs.stdenv.isDarwin then "copilot" else "perplexity";
-        cursor_applying_provider = "copilot";
+        provider = "copilot";
         behaviour = { enable_cursor_planning_mode = true; };
-        auto_suggestions_provider = "perplexity";
         providers = {
           perplexity = {
             __inherited_from = "openai";
