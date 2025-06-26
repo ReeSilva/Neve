@@ -19,7 +19,7 @@
         showCodeAction = true;
       };
       symbolInWinbar = {
-        enable = true; # Breadcrumbs
+        enable = false; # Breadcrumbs
       };
       codeAction = {
         extendGitSigns = false;
