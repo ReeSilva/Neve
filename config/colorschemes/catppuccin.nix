@@ -1,4 +1,4 @@
-{ lib, config, ... }: {
+{ lib, config, pkgs, ... }: {
   options = {
     catppuccin.enable = lib.mkEnableOption "Enable catppuccin module";
   };
@@ -11,8 +11,7 @@
             light = "macchiato";
             dark = "mocha";
           };
-          flavour =
-            "frappe"; # "latte", "mocha", "frappe", "macchiato" or raw lua code
+          flavour = if pkgs.stdenv.isDarwin then "latte" else "frappe";
           disable_bold = false;
           disable_italic = false;
           disable_underline = false;

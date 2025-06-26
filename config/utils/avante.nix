@@ -1,11 +1,11 @@
-{ lib, config, ... }: {
+{ lib, config, pkgs, ... }: {
   options = { avante.enable = lib.mkEnableOption "Enable avante.nvim"; };
   config = let cfg = config.avante;
   in lib.mkIf cfg.enable {
     plugins.avante = {
       enable = true;
       settings = {
-        provider = "perplexity";
+        provider = if pkgs.stdenv.isDarwin then "copilot" else "perplexity";
         auto_suggestions_provider = "perplexity";
         providers = {
           perplexity = {
@@ -14,7 +14,7 @@
             endpoint = "https://api.perplexity.ai";
             model = "sonar-reasoning-pro";
           };
-          copilot = { model = "claude-3.7-sonnet"; };
+          copilot = { model = "claude-sonnet-4"; };
         };
       };
     };
