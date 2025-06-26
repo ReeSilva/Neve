@@ -6,6 +6,9 @@
       enable = true;
       settings = {
         provider = if pkgs.stdenv.isDarwin then "copilot" else "perplexity";
+        cursor_applying_provider =
+          if pkgs.stdenv.isDarwin then "copilot" else "perplexity";
+        behaviour = { enable_cursor_planning_mode = true; };
         auto_suggestions_provider = "perplexity";
         providers = {
           perplexity = {
