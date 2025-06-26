@@ -18,7 +18,7 @@
           right = "█"; # 
         };
         sections = {
-          lualine_a = [ "mode" "parrot_status" ];
+          lualine_a = [ "mode" ];
           lualine_b = [ "branch" "" "diff" "diagnostics" ];
           lualine_c = [ "filename" ];
           lualine_x = [
@@ -104,17 +104,6 @@
        	local show_mode = function()
        		return package.loaded["noice"] and require("noice").api.status.mode.has() or ""
        	end
-         -- define function and formatting of the information for parrot.nvim
-        local function parrot_status()
-          local status_info = require("parrot.config").get_status_info()
-          local status = ""
-          if status_info.is_chat then
-            status = status_info.prov.chat.name
-          else
-            status = status_info.prov.command.name
-          end
-          return string.format("%s(%s)", status, status_info.model)
-        end
       end
     '';
   };
