@@ -2,11 +2,10 @@
   options = { lazygit.enable = lib.mkEnableOption "Enable lazygit module"; };
   config = lib.mkIf config.lazygit.enable {
 
-    plugins.lazygit.enable = true;
-
-    # extraConfigLua = ''
-    #   require("telescope").load_extension("lazygit")
-    # '';
+    plugins.lazygit = {
+      enable = true;
+      floating_window_use_plenary = 1;
+    };
 
     keymaps = [{
       mode = "n";
