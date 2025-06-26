@@ -21,6 +21,14 @@
             };
             copilot = { model = "claude-sonnet-4"; };
           };
+          windows = {
+            input.height = 15;
+            edit.border = "none";
+            ask = {
+              floating = true;
+              border = "none";
+            };
+          };
         };
       };
     };
