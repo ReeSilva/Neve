@@ -50,6 +50,10 @@
           action = "live_grep";
           options.desc = "Grep (root dir)";
         };
+        "<leader>f/" = {
+          action = "live_grep";
+          options.desc = "Grep (root dir)";
+        };
         "<leader>:" = {
           action = "command_history";
           options.desc = "Command History";
@@ -61,6 +65,10 @@
         "<leader>ff" = {
           action = "find_files";
           options.desc = "Find project files";
+        };
+        "<leader>fF" = {
+          action = "find_files hidden=true";
+          options.desc = "Find project files including hidden";
         };
         "<leader>fr" = {
           action = "oldfiles";
