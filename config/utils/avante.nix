@@ -1,11 +1,11 @@
-{ lib, config, ... }: {
+{ lib, config, pkgs, ... }: {
   options = { avante.enable = lib.mkEnableOption "Enable avante.nvim"; };
   config = let cfg = config.avante;
   in lib.mkIf cfg.enable {
     plugins.avante = {
       enable = true;
       settings = {
-        provider = "copilot";
+        provider = if pkgs.stdenv.isDarwin then "copilot" else "perplexity";
         auto_suggestions_provider = "perplexity";
         providers = {
           perplexity = {
