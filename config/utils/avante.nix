@@ -15,7 +15,7 @@
             __inherited_from = "openai";
             api_key_name = "PERPLEXITY_API_KEY";
             endpoint = "https://api.perplexity.ai";
-            model = "sonar-pro";
+            model = "sonar-reasoning-pro";
           };
           copilot = { model = "claude-sonnet-4"; };
         };
