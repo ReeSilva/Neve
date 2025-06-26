@@ -20,7 +20,7 @@
         };
         indent = { enable = true; };
         autopairs = { enable = true; };
-        folding = { enable = true; };
+        folding = { enable = false; };
         ensure_installed = [
           "bash"
           "json"
