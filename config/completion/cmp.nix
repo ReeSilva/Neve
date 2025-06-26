@@ -10,12 +10,15 @@
           mapping = {
             "<Tab>" = ''
               cmp.mapping(function(fallback)
+                local col = vim.fn.col('.') - 1
                 if cmp.visible() then
                   cmp.select_next_item()
                 elseif luasnip.expand_or_jumpable() then
                   luasnip.expand_or_jump()
-                else
+                elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
                   fallback()
+                else
+                  cmp.complete()
                 end
               end, { "i", "s" })
             '';
