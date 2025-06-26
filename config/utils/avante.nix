@@ -6,13 +6,8 @@
       enable = true;
       settings = {
         provider = if pkgs.stdenv.isDarwin then "copilot" else "perplexity";
-        # cursor_applying_provider =
-        #   lib.mkIf (config.plugins.avante.settings.provider == "copilot")
-        #   "copilot";
-        # behaviour =
-        #   lib.mkIf (config.plugins.avante.settings.provider == "copilot") {
-        #     enable_cursor_planning_mode = true;
-        #   };
+        cursor_applying_provider = "copilot";
+        behaviour = { enable_cursor_planning_mode = true; };
         auto_suggestions_provider = "perplexity";
         providers = {
           perplexity = {
