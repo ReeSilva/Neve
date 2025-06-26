@@ -4,7 +4,7 @@
 
     plugins.lazygit = {
       enable = true;
-      settings = { floating_window_winblend = 10; };
+      settings = { floating_window_winblend = 0; };
     };
 
     extraConfigLua = ''
