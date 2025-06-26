@@ -4,7 +4,7 @@
 
     plugins.lazygit = {
       enable = true;
-      floating_window_use_plenary = 1;
+      settings = { floating_window_use_plenary = 1; };
     };
 
     keymaps = [{
