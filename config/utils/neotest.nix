@@ -25,7 +25,7 @@
       })
       neotest
       FixCursorHold-nvim
-      # neotest-plenary
+      neotest-plenary
       vim-test
       neotest-python
       neotest-vitest
