@@ -9,8 +9,8 @@
         suggestion.enabled = false;
 
         filetypes = {
-          yaml = false;
-          markdown = false;
+          yaml = true;
+          markdown = true;
           help = false;
           gitcommit = false;
           gitrebase = false;
@@ -19,7 +19,7 @@
           cvs = false;
           "." = false;
         };
-        copilot_model = "claude-3.7-sonnet";
+        copilot_model = "claude-sonnet-4";
       };
     };
   };
