@@ -12,6 +12,13 @@
         settings = {
           provider = "copilot";
           behaviour = { enable_cursor_planning_mode = true; };
+          input = {
+            provider = "snacks";
+            provider_opts = {
+              title = "Avante Input";
+              icon = "󱚞";
+            };
+          };
           providers = {
             perplexity = {
               __inherited_from = "openai";
@@ -22,11 +29,11 @@
             copilot = { model = "claude-sonnet-4"; };
           };
           windows = {
-            input.height = 15;
-            edit.border = "none";
+            input = { height = 15; };
+            edit = { border = "rounded"; };
             ask = {
               floating = false;
-              border = "none";
+              border = "rounded";
             };
           };
         };
