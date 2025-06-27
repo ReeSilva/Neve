@@ -69,6 +69,12 @@
           }
 
           {
+            __unkeyed-1 = "<leader>l";
+            mode = [ "n" "v" ];
+            group = "+sidebar";
+          }
+
+          {
             __unkeyed-1 = "<leader>q";
             mode = "n";
             group = "+quit/session";
