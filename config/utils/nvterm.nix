@@ -47,6 +47,13 @@
       			terminal.toggle("float")
       		end,
       	},
+      	{
+      		toggle_modes,
+      		"<A-h>",
+      		function()
+      			terminal.toggle("horizontal")
+      		end,
+      	},
       }
       local opts = { noremap = true, silent = true }
       for _, mapping in ipairs(mappings) do
