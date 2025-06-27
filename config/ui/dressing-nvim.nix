@@ -1,18 +1,10 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
-}:
-{
+{ lib, config, pkgs, ... }: {
   options = {
     dressing-nvim.enable = lib.mkEnableOption "Enable dressing-nvim module";
   };
   config = lib.mkIf config.dressing-nvim.enable {
 
-    extraPlugins = with pkgs.vimPlugins; [
-      dressing-nvim
-    ];
+    extraPlugins = with pkgs.vimPlugins; [ dressing-nvim ];
     extraConfigLua = ''
       require("dressing").setup({
         input = {

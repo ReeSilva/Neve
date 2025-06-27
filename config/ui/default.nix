@@ -7,6 +7,7 @@
     ./noice.nix
     ./nui.nix
     ./notify.nix
+    ./snacks.nix
     ./ufo.nix
     ./web-devicons.nix
   ];
@@ -15,11 +16,12 @@
   config = lib.mkIf config.ui.enable {
     alpha.enable = lib.mkDefault true;
     barbecue.enable = lib.mkDefault true;
-    dressing-nvim.enable = lib.mkDefault true;
+    dressing-nvim.enable = lib.mkDefault false;
     indent-blankline.enable = lib.mkDefault true;
     noice.enable = lib.mkDefault true;
     notify.enable = lib.mkDefault true;
     nui.enable = lib.mkDefault true;
+    snacks.enable = lib.mkDefault true;
     ufo.enable = lib.mkDefault true;
     web-devicons.enable = lib.mkDefault true;
   };

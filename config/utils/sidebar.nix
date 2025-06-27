@@ -19,12 +19,12 @@
         sidebar.setup({
           disable_default_keybindings = 0,
           bindings = nil,
-          open = true,
+          open = false,
           side = "right",
           initial_width = 32,
-          hide_statusline = false,
+          hide_statusline = true,
           update_interval = 1000,
-          sections = { "git", "diagnostics", "containers", "symbols" },
+          sections = { "datetime", "git", "diagnostics", "containers", "symbols" },
           section_separator = {"", "-----", ""},
           section_title_separator = {""},
           containers = {

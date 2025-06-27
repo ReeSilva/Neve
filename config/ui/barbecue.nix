@@ -1,8 +1,5 @@
-{ lib, config, ... }:
-{
-  options = {
-    barbecue.enable = lib.mkEnableOption "Enable barbecue module";
-  };
+{ lib, config, ... }: {
+  options = { barbecue.enable = lib.mkEnableOption "Enable barbecue module"; };
   config = lib.mkIf config.barbecue.enable {
     plugins.barbecue = {
       enable = true;
@@ -13,7 +10,7 @@
     };
     extraConfigLua = ''
       vim.api.nvim_create_autocmd({
-        "WinScrolled", -- or WinResized on NVIM-v0.9 and higher
+        "WinResized", -- or WinResized on NVIM-v0.9 and higher
         "BufWinEnter",
         "CursorHold",
         "InsertLeave",
