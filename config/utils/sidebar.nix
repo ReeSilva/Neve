@@ -79,6 +79,5 @@
         };
       }
     ];
->>>>>>> 5f067dc (feat: add keybindings for sidebar)
   };
 }
