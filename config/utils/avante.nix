@@ -26,7 +26,7 @@
             edit.border = "none";
             ask = {
               floating = true;
-              border = "none";
+              border = "rounded";
             };
           };
         };
