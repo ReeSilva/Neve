@@ -56,7 +56,7 @@
         key = "<leader>lt";
         action = ":SidebarNvimToggle<CR>";
         options = {
-          desc = "Toggle Explorer";
+          desc = "Toggle Sidebar";
           silent = true;
         };
       }

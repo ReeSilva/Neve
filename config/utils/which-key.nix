@@ -72,6 +72,7 @@
             __unkeyed-1 = "<leader>l";
             mode = [ "n" "v" ];
             group = "+sidebar";
+            icon = "";
           }
 
           {
