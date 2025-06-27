@@ -15,8 +15,8 @@
         })
       ];
     extraConfigLua = ''
-          local sidebar = require("sidebar-nvim")
-          sidebar.setup({
+      local sidebar = require("sidebar-nvim")
+        sidebar.setup({
           disable_default_keybindings = 0,
           bindings = nil,
           open = true,
@@ -41,23 +41,44 @@
           symbols = {
             icon = "ƒ",
           },
-      })
-            cmd = {
-              "SidebarNvimToggle",
-              "SidebarNvimOpen",
-              "SidebarNvimFocus",
-              "SidebarNvimUpdate",
-            },
+        })
+        cmd = {
+          "SidebarNvimToggle",
+          "SidebarNvimOpen",
+          "SidebarNvimFocus",
+          "SidebarNvimUpdate",
+        },
     '';
 
-    keymaps = [{
-      mode = "n";
-      key = "<leader>e";
-      action = ":SidebarNvimToggle<CR>";
-      options = {
-        desc = "Toggle Explorer";
-        silent = true;
-      };
-    }];
+    keymaps = [
+      {
+        mode = "n";
+        key = "<leader>lt";
+        action = ":SidebarNvimToggle<CR>";
+        options = {
+          desc = "Toggle Explorer";
+          silent = true;
+        };
+      }
+      {
+        mode = "n";
+        key = "<leader>lr";
+        action = ":SidebarNvimUpdate<CR>";
+        options = {
+          desc = "Refresh sidebar";
+          silent = true;
+        };
+      }
+      {
+        mode = "n";
+        key = "<leader>lf";
+        action = ":SidebarNvimFocus<CR>";
+        options = {
+          desc = "Focus sidebar";
+          silent = true;
+        };
+      }
+    ];
+>>>>>>> 5f067dc (feat: add keybindings for sidebar)
   };
 }
