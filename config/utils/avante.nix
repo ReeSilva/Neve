@@ -28,14 +28,6 @@
             };
             copilot = { model = "claude-sonnet-4"; };
           };
-          windows = {
-            input = { height = 15; };
-            edit = { border = "rounded"; };
-            ask = {
-              floating = false;
-              border = "rounded";
-            };
-          };
         };
       };
     };
