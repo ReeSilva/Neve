@@ -25,8 +25,8 @@
             input.height = 15;
             edit.border = "none";
             ask = {
-              floating = true;
-              border = "rounded";
+              floating = false;
+              border = "none";
             };
           };
         };
