@@ -33,13 +33,21 @@
         settings = {
           options = {
             separator_style =
-              "padded_slope"; # “slant”, “padded_slant”, “slope”, “padded_slope”, “thick”, “thin“
-            offsets = [{
-              filetype = "neo-tree";
-              text = "Neo-tree";
-              highlight = "Directory";
-              text_align = "left";
-            }];
+              "thin"; # “slant”, “padded_slant”, “slope”, “padded_slope”, “thick”, “thin“
+            offsets = [
+              {
+                filetype = "neo-tree";
+                text = "Neo-tree";
+                highlight = "Directory";
+                text_align = "left";
+              }
+              {
+                filetype = "Avante";
+                text = "Copilot";
+                highlight = "AvanteSidebarWinHorizontalSeparator";
+                text_align = "center";
+              }
+            ];
           };
         };
       };

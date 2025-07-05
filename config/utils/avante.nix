@@ -29,6 +29,7 @@
             copilot = { model = "claude-sonnet-4"; };
           };
           web_search_engine = { provider = "brave"; };
+          windows.input.height = 10;
         };
       };
     };

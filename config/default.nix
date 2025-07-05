@@ -7,6 +7,7 @@
     ./dap
     ./filetrees
     ./git
+    ./highlights.nix
     ./keys.nix
     ./languages
     ./lsp
@@ -24,6 +25,7 @@
   dap.enable = lib.mkDefault true;
   filetrees.enable = lib.mkDefault true;
   git.enable = lib.mkDefault true;
+  highlights.enable = lib.mkDefault true;
   keys.enable = true;
   languages.enable = true;
   lsp.enable = lib.mkDefault true;

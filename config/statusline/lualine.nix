@@ -6,7 +6,8 @@
       settings = {
         alwaysDivideMiddle = true;
         globalstatus = true;
-        ignoreFocus = [ "neo-tree" ];
+        ignoreFocus = [ "neo-tree" "Avante" "AvanteSelectedFiles" ];
+        ignore_focus = [ "neo-tree" "Avante" "AvanteSelectedFiles" ];
         extensions = [ "fzf" "neo-tree" ];
         theme = "auto";
         componentSeparators = {

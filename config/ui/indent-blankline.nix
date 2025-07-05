@@ -10,7 +10,7 @@
         enable = true;
         settings = {
           indent = {
-            char = "▎"; # "│" or "│"
+            char = "│"; # "▎" or "│"
           };
           scope = {
             enabled = true;
@@ -31,6 +31,7 @@
               "toggleterm"
               "lazyterm"
               "nvterm"
+              "Avante"
             ];
           };
         };
