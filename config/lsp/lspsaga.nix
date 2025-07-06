@@ -32,11 +32,11 @@
         };
       };
       lightbulb = {
-        enable = false;
-        sign = false;
+        enable = true;
+        sign = true;
         virtualText = true;
       };
-      implement = { enable = false; };
+      implement = { enable = true; };
       rename = {
         autoSave = false;
         keys = {
