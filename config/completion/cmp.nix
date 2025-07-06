@@ -50,38 +50,14 @@
           };
           sources = [
             { name = "nvim_lsp"; }
-            {
-              name = "luasnip";
-              keyword_length = 3;
-            }
-            {
-              name = "buffer";
-              keyword_length = 5;
-            }
-            {
-              name = "path";
-              keyword_length = 3;
-            }
-            {
-              name = "cmdline";
-              keyword_length = 3;
-            }
-            {
-              name = "copilot";
-              keyword_length = 3;
-            }
-            {
-              name = "avante_commands";
-              keyword_length = 5;
-            }
-            {
-              name = "avante_mentions";
-              keyword_length = 5;
-            }
-            {
-              name = "avante_prompt_mentions";
-              keyword_length = 5;
-            }
+            { name = "copilot"; }
+            { name = "buffer"; }
+            { name = "path"; }
+            { name = "cmdline"; }
+            { name = "luasnip"; }
+            { name = "avante_commands"; }
+            { name = "avante_mentions"; }
+            { name = "avante_prompt_mentions"; }
           ];
 
           # Enable pictogram icons for lsp/autocompletion
@@ -144,7 +120,6 @@
         sources = {
           {
             name = 'buffer',
-            keyword_length = 5
           }
         }
       })
@@ -153,13 +128,11 @@
       cmp.setup.filetype('gitcommit', {
         sources = cmp.config.sources({
           {
-            name = 'cmp_git',
-            keyword_length = 5
+            name = 'git',
           }, -- You can specify the `cmp_git` source if you were installed it.
         }, {
           {
             name = 'buffer',
-            keyword_length = 5
           },
         })
       })
@@ -169,12 +142,10 @@
         sources = cmp.config.sources({
           {
             name = 'path',
-            keyword_length = 5
           }
         }, {
           {
             name = 'cmdline',
-            keyword_length = 5
           }
         }),
       })

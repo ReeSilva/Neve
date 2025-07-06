@@ -14,7 +14,7 @@
           suppress_on_insert =
             true; # Suppress new messages while in insert mode
           ignore_done_already =
-            false; # Ignore new tasks that are already complete
+            true; # Ignore new tasks that are already complete
           ignore_empty_message =
             false; # Ignore new tasks that don't contain a message
           clear_on_detach =
@@ -36,7 +36,7 @@
               0; # Configure the nvim's LSP progress ring buffer size
           };
           display = {
-            render_limit = 16; # How many LSP messages to show at once
+            render_limit = 8; # How many LSP messages to show at once
             done_ttl = 3; # How long a message should persist after completion
             done_icon =
               "✔"; # Icon shown when all LSP progress tasks are complete
