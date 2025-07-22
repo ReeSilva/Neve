@@ -11,7 +11,10 @@
         enable = true;
         settings = {
           provider = "copilot";
-          behaviour = { enable_cursor_planning_mode = true; };
+          behaviour = {
+            enable_cursor_planning_mode = true;
+            enable_fastapply = true;
+          };
           input = {
             provider = "snacks";
             provider_opts = {
@@ -20,13 +23,14 @@
             };
           };
           providers = {
+            copilot = { model = "claude-sonnet-4"; };
+            morph = { model = "morph-v3-large"; };
             perplexity = {
               __inherited_from = "openai";
               api_key_name = "PERPLEXITY_API_KEY";
               endpoint = "https://api.perplexity.ai";
               model = "sonar-reasoning-pro";
             };
-            copilot = { model = "claude-sonnet-4"; };
           };
           web_search_engine = { provider = "brave"; };
           windows.input.height = 10;
