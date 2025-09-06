@@ -10,6 +10,7 @@
       settings = {
         ignored_events = [ "BufEnter" "WinEnter" ];
         ignored_filetypes = [ "neo-tree" ];
+        zellij_move_focus_or_tab = true;
         resize_mode = {
           quit_key = "<ESC>";
           resize_keys = [ "h" "j" "k" "l" ];
