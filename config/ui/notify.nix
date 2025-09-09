@@ -4,10 +4,9 @@
     plugins.notify = {
       enable = true;
       settings = {
-        # background_colour = "#232634";
         fps = 120;
         render = "default";
-        timeout = 1500;
+        timeout = 2000;
         top_down = true;
       };
     };
