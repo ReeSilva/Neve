@@ -25,6 +25,7 @@
               };
             };
           };
+          gopls = { enable = true; };
           nil_ls = { enable = false; };
           nixd = { enable = true; };
           terraformls = { enable = true; };
