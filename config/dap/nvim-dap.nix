@@ -5,6 +5,7 @@
   config = lib.mkIf config.nvim-dap.enable {
     plugins = {
       dap-python = { enable = true; };
+      dap-go.enable = true;
       dap-ui = {
         enable = true;
         settings = { floating.mappings = { close = [ "<ESC>" "q" ]; }; };

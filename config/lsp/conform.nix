@@ -33,6 +33,7 @@
             stop_after_first = true;
           };
           python = [ "black" ];
+          go = [ "goimports" "golines" "golangci-lint" ];
           lua = [ "stylua" ];
           nix = [ "nixfmt" ];
           terraform = [ "terraform_fmt" ];

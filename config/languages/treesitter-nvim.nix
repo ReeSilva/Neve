@@ -41,6 +41,7 @@
           "yaml"
           "gotmpl"
           "helm"
+          "go"
         ];
         auto_install = true;
         incremental_selection = {
