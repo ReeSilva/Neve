@@ -10,10 +10,7 @@
             "rounded"; # One of none, single, double, rounded, solid, shadow
           codeAction = "💡"; # Can be any symbol you want 💡
         };
-        hover = {
-          openCmd = "!brave"; # Choose your browser
-          openLink = "gx";
-        };
+        hover = { openLink = "gx"; };
         diagnostic = {
           borderFollow = true;
           diagnosticOnlyCurrent = false;
