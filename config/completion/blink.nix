@@ -48,13 +48,25 @@
           sources = {
             default = [
               "lsp"
-              "buffer"
-              "snippets"
               "path"
+              "copilot"
+              "snippets"
+              "buffer"
+              "git"
+              "ripgrep"
               "avante_commands"
               "avante_files"
               "avante_mentions"
             ];
+            copilot = {
+              async = true;
+              module = "blink-cmp-copilot";
+              name = "copilot";
+              score_offset = 100;
+            };
+            git = {
+
+            };
             providers = {
               avante_commands = {
                 name = "avante_commands";
@@ -73,6 +85,34 @@
                 module = "blink.compat.source";
                 score_offset = 1000; # # show at a higher priority than lsp
                 opts = { };
+              };
+              git = {
+                module = "blink-cmp-git";
+                name = "git";
+                score_offset = 100;
+                opts = {
+                  commit = { };
+                  git_centers.git_hub = { };
+                };
+              };
+              ripgrep = {
+                async = true;
+                module = "blink-ripgrep";
+                name = "Ripgrep";
+                score_offset = 100;
+                opts = {
+                  prefix_min_len = 3;
+                  context_size = 5;
+                  max_filesize = "1M";
+                  project_root_marker = ".git";
+                  project_root_fallback = true;
+                  search_casing = "--ignore-case";
+                  additional_rg_options = { };
+                  fallback_to_regex_highlighting = true;
+                  ignore_paths = { };
+                  additional_paths = { };
+                  debug = false;
+                };
               };
             };
           };
