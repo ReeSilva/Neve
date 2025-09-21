@@ -7,6 +7,6 @@
     gitsigns.enable = lib.mkDefault true;
     lazygit.enable = lib.mkDefault false;
     neogit.enable = lib.mkDefault true;
-    plugins.cmp-git.enable = lib.mkDefault true;
+    plugins.cmp-git.enable = lib.mkDefault false;
   };
 }
