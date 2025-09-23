@@ -1,4 +1,4 @@
-{ lib, config, ... }: {
+{ lib, config, pkgs, ... }: {
   options = { avante.enable = lib.mkEnableOption "Enable avante.nvim"; };
   config = let cfg = config.avante;
   in lib.mkIf cfg.enable {
@@ -10,7 +10,7 @@
       avante = {
         enable = true;
         settings = {
-          provider = "copilot";
+          provider = if pkgs.stdenv.isDarwin then "gemini-cli" else "copilot";
           behaviour = {
             enable_cursor_planning_mode = true;
             enable_fastapply = true;
@@ -30,6 +30,15 @@
               api_key_name = "PERPLEXITY_API_KEY";
               endpoint = "https://api.perplexity.ai";
               model = "sonar-reasoning-pro";
+            };
+          };
+          acp_providers = lib.mkIf pkgs.stdenv.isDarwin {
+            command = "gemini";
+            args = [ "--experimental-acp" ];
+            env = {
+              NODE_NO_WARNINGS = "1";
+              GEMINI_API_KEY =
+                lib.nixvim.utils.mkRaw "os.getenv 'GEMINI_API_KEY'";
             };
           };
           web_search_engine = { provider = "brave"; };
