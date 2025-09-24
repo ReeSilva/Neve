@@ -25,7 +25,8 @@
               };
             };
           };
-          golangci_lint_ls = { enable = true; };
+          gopls.enable = true;
+          golangci_lint_ls.enable = true;
           nil_ls = { enable = false; };
           nixd = { enable = true; };
           terraformls = { enable = true; };

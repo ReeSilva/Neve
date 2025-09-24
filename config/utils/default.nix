@@ -50,7 +50,7 @@
     todo-comments.enable = lib.mkDefault true;
     ultimate-autopair.enable = lib.mkDefault false;
     undotree.enable = lib.mkDefault true;
-    wakatime.enable = lib.mkDefault false;
+    wakatime.enable = lib.mkDefault true;
     which-key.enable = lib.mkDefault true;
     wilder.enable = lib.mkDefault false;
     # Added by me, sooner this will be niquisvim
