@@ -1,194 +1,194 @@
-{ lib, config, ... }: {
+{ lib, config, pkgs, ... }: {
   options = { lsp-nvim.enable = lib.mkEnableOption "Enable lsp-nvim module"; };
   config = lib.mkIf config.lsp-nvim.enable {
-    plugins = {
-      lsp-format = {
-        enable =
-          false; # Enable it if you want lsp-format integration for none-ls
-      };
-      lsp = {
-        enable = true;
-        capabilities = "offsetEncoding = 'utf-16'";
-        servers = {
-          clangd = { enable = true; };
-          lua_ls = {
-            enable = true;
-            extraOptions = {
-              settings = {
-                Lua = {
-                  completion = { callSnippet = "Replace"; };
-                  diagnostics = { globals = [ "vim" ]; };
-
-                  telemetry = { enabled = false; };
-                  hint = { enable = true; };
-                };
-              };
-            };
-          };
-          gopls.enable = true;
-          golangci_lint_ls.enable = true;
-          nil_ls = { enable = false; };
-          nixd = { enable = true; };
-          terraformls = { enable = true; };
-          tflint = { enable = true; };
-          ts_ls = {
-            enable = true;
-            autostart = true;
-            filetypes =
-              [ "javascript" "javascriptreact" "typescript" "typescriptreact" ];
-            extraOptions = {
-              settings = {
-                javascript = {
-                  inlayHints = {
-                    includeInlayEnumMemberValueHints = true;
-                    includeInlayFunctionLikeReturnTypeHints = true;
-                    includeInlayFunctionParameterTypeHints = true;
-                    includeInlayParameterNameHints = "all";
-                    includeInlayParameterNameHintsWhenArgumentMatchesName =
-                      true;
-                    includeInlayPropertyDeclarationTypeHints = true;
-                    includeInlayVariableTypeHints = true;
-                    includeInlayVariableTypeHintsWhenTypeMatchesName = true;
-                  };
-                };
-                typescript = {
-                  inlayHints = {
-                    includeInlayEnumMemberValueHints = true;
-                    includeInlayFunctionLikeReturnTypeHints = true;
-                    includeInlayFunctionParameterTypeHints = true;
-                    includeInlayParameterNameHints = "all";
-                    includeInlayParameterNameHintsWhenArgumentMatchesName =
-                      true;
-                    includeInlayPropertyDeclarationTypeHints = true;
-                    includeInlayVariableTypeHints = true;
-                    includeInlayVariableTypeHintsWhenTypeMatchesName = true;
-                  };
-                };
-              };
-            };
-          };
-          yamlls = {
-            enable = true;
-            extraOptions = {
-              settings = {
-                yaml = {
-                  schemas = {
-                    kubernetes = "'*.yaml";
-                    "http://json.schemastore.org/github-workflow" =
-                      ".github/workflows/*";
-                    "http://json.schemastore.org/github-action" =
-                      ".github/action.{yml,yaml}";
-                    "http://json.schemastore.org/ansible-stable-2.9" =
-                      "roles/tasks/*.{yml,yaml}";
-                    "http://json.schemastore.org/kustomization" =
-                      "kustomization.{yml,yaml}";
-                    "http://json.schemastore.org/ansible-playbook" =
-                      "*play*.{yml,yaml}";
-                    "http://json.schemastore.org/chart" = "Chart.{yml,yaml}";
-                    "https://json.schemastore.org/dependabot-v2" =
-                      ".github/dependabot.{yml,yaml}";
-                    "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json" =
-                      "*docker-compose*.{yml,yaml}";
-                    "https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json" =
-                      "*flow*.{yml,yaml}";
-                  };
-                };
-              };
-            };
-          };
-          eslint = { enable = false; };
-          rust_analyzer = {
-            enable = true;
-            installCargo = true;
-            installRustc = true;
+    extraPlugins = with pkgs.vimPlugins; [ nvim-lsp-file-operations ];
+    lsp = {
+      enable = true;
+      # capabilities = "offsetEncoding = 'utf-16'";
+      servers = {
+        clangd = { enable = true; };
+        lua_ls = {
+          enable = true;
+          extraOptions = {
             settings = {
-              checkOnSave = true;
-              check = { command = "clippy"; };
-              inlayHints = {
-                enable = true;
-                showParameterNames = true;
-                parameterHintsPrefix = "<- ";
-                otherHintsPrefix = "=> ";
+              Lua = {
+                completion = { callSnippet = "Replace"; };
+                diagnostics = { globals = [ "vim" ]; };
+
+                telemetry = { enabled = false; };
+                hint = { enable = true; };
               };
-              procMacro = { enable = true; };
             };
           };
         };
-        # keymaps = {
-        #   silent = true;
-        #   lspBuf = {
-        #     gd = {
-        #       action = "definition";
-        #       desc = "Goto Definition";
-        #     };
-        #     gr = {
-        #       action = "references";
-        #       desc = "Goto References";
-        #     };
-        #     gD = {
-        #       action = "declaration";
-        #       desc = "Goto Declaration";
-        #     };
-        #     gI = {
-        #       action = "implementation";
-        #       desc = "Goto Implementation";
-        #     };
-        #     gT = {
-        #       action = "type_definition";
-        #       desc = "Type Definition";
-        #     };
-        #     K = {
-        #       action = "hover";
-        #       desc = "Hover";
-        #     };
-        #     "<leader>cw" = {
-        #       action = "workspace_symbol";
-        #       desc = "Workspace Symbol";
-        #     };
-        #     "<leader>cr" = {
-        #       action = "rename";
-        #       desc = "Rename";
-        #     };
-        #     "<leader>ca" = {
-        #       action = "code_action";
-        #       desc = "Code Action";
-        #     };
-        #     "<leader>ck" = {
-        #       action = "signature_help";
-        #       desc = "Signature Help";
-        #     };
-        #   };
-        #   diagnostic = {
-        #     "<leader>cd" = {
-        #       action = "open_float";
-        #       desc = "Line Diagnostics";
-        #     };
-        #     "[d" = {
-        #       action = "goto_next";
-        #       desc = "Next Diagnostic";
-        #     };
-        #     "]d" = {
-        #       action = "goto_prev";
-        #       desc = "Previous Diagnostic";
-        #     };
-        #   };
-        # };
-        onAttach = ''
-          vim.api.nvim_create_autocmd("LspAttach", {
-            group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-            callback = function(args)
-              local client = vim.lsp.get_client_by_id(args.data.client_id)
-              if client.server_capabilities.inlayHintProvider then
-                vim.lsp.inlay_hint.enable(false)
-              end
-              vim.bo[args.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
-            end,
-          })
-        '';
+        gopls.enable = true;
+        golangci_lint_ls.enable = true;
+        nil_ls = { enable = true; };
+        nixd = { enable = true; };
+        terraformls = { enable = true; };
+        tflint = { enable = true; };
+        ts_ls = {
+          enable = true;
+          autostart = true;
+          filetypes =
+            [ "javascript" "javascriptreact" "typescript" "typescriptreact" ];
+          extraOptions = {
+            settings = {
+              javascript = {
+                inlayHints = {
+                  includeInlayEnumMemberValueHints = true;
+                  includeInlayFunctionLikeReturnTypeHints = true;
+                  includeInlayFunctionParameterTypeHints = true;
+                  includeInlayParameterNameHints = "all";
+                  includeInlayParameterNameHintsWhenArgumentMatchesName = true;
+                  includeInlayPropertyDeclarationTypeHints = true;
+                  includeInlayVariableTypeHints = true;
+                  includeInlayVariableTypeHintsWhenTypeMatchesName = true;
+                };
+              };
+              typescript = {
+                inlayHints = {
+                  includeInlayEnumMemberValueHints = true;
+                  includeInlayFunctionLikeReturnTypeHints = true;
+                  includeInlayFunctionParameterTypeHints = true;
+                  includeInlayParameterNameHints = "all";
+                  includeInlayParameterNameHintsWhenArgumentMatchesName = true;
+                  includeInlayPropertyDeclarationTypeHints = true;
+                  includeInlayVariableTypeHints = true;
+                  includeInlayVariableTypeHintsWhenTypeMatchesName = true;
+                };
+              };
+            };
+          };
+        };
+        yamlls = {
+          enable = true;
+          extraOptions = {
+            settings = {
+              yaml = {
+                schemas = {
+                  kubernetes = "'*.yaml";
+                  "http://json.schemastore.org/github-workflow" =
+                    ".github/workflows/*";
+                  "http://json.schemastore.org/github-action" =
+                    ".github/action.{yml,yaml}";
+                  "http://json.schemastore.org/ansible-stable-2.9" =
+                    "roles/tasks/*.{yml,yaml}";
+                  "http://json.schemastore.org/kustomization" =
+                    "kustomization.{yml,yaml}";
+                  "http://json.schemastore.org/ansible-playbook" =
+                    "*play*.{yml,yaml}";
+                  "http://json.schemastore.org/chart" = "Chart.{yml,yaml}";
+                  "https://json.schemastore.org/dependabot-v2" =
+                    ".github/dependabot.{yml,yaml}";
+                  "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json" =
+                    "*docker-compose*.{yml,yaml}";
+                  "https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json" =
+                    "*flow*.{yml,yaml}";
+                };
+              };
+            };
+          };
+        };
+        eslint = { enable = false; };
+        rust_analyzer = {
+          enable = true;
+          installCargo = true;
+          installRustc = true;
+          settings = {
+            checkOnSave = true;
+            check = { command = "clippy"; };
+            inlayHints = {
+              enable = true;
+              showParameterNames = true;
+              parameterHintsPrefix = "<- ";
+              otherHintsPrefix = "=> ";
+            };
+            procMacro = { enable = true; };
+          };
+        };
       };
+      # keymaps = {
+      #   silent = true;
+      #   lspBuf = {
+      #     gd = {
+      #       action = "definition";
+      #       desc = "Goto Definition";
+      #     };
+      #     gr = {
+      #       action = "references";
+      #       desc = "Goto References";
+      #     };
+      #     gD = {
+      #       action = "declaration";
+      #       desc = "Goto Declaration";
+      #     };
+      #     gI = {
+      #       action = "implementation";
+      #       desc = "Goto Implementation";
+      #     };
+      #     gT = {
+      #       action = "type_definition";
+      #       desc = "Type Definition";
+      #     };
+      #     K = {
+      #       action = "hover";
+      #       desc = "Hover";
+      #     };
+      #     "<leader>cw" = {
+      #       action = "workspace_symbol";
+      #       desc = "Workspace Symbol";
+      #     };
+      #     "<leader>cr" = {
+      #       action = "rename";
+      #       desc = "Rename";
+      #     };
+      #     "<leader>ca" = {
+      #       action = "code_action";
+      #       desc = "Code Action";
+      #     };
+      #     "<leader>ck" = {
+      #       action = "signature_help";
+      #       desc = "Signature Help";
+      #     };
+      #   };
+      #   diagnostic = {
+      #     "<leader>cd" = {
+      #       action = "open_float";
+      #       desc = "Line Diagnostics";
+      #     };
+      #     "[d" = {
+      #       action = "goto_next";
+      #       desc = "Next Diagnostic";
+      #     };
+      #     "]d" = {
+      #       action = "goto_prev";
+      #       desc = "Previous Diagnostic";
+      #     };
+      #   };
+      # };
+      onAttach = ''
+        vim.api.nvim_create_autocmd("LspAttach", {
+          group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+          callback = function(args)
+            local client = vim.lsp.get_client_by_id(args.data.client_id)
+            if client.server_capabilities.inlayHintProvider then
+              vim.lsp.inlay_hint.enable(false)
+            end
+            vim.bo[args.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+          end,
+        })
+      '';
+    };
+    plugins = {
+      lspconfig.enable = true;
+      lsp-format.enable =
+        false; # Enable it if you want lsp-format integration for none-ls
     };
     extraConfigLua = ''
         local _border = "rounded"
+
+        require('lsp-file-operations').setup()
 
         require('lspconfig.ui.windows').default_options = {
           border = _border
