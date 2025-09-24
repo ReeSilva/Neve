@@ -3,21 +3,19 @@
   config = lib.mkIf config.lsp-nvim.enable {
     extraPlugins = with pkgs.vimPlugins; [ nvim-lsp-file-operations ];
     lsp = {
-      enable = true;
+      # enable = true;
       # capabilities = "offsetEncoding = 'utf-16'";
       servers = {
         clangd = { enable = true; };
         lua_ls = {
           enable = true;
-          extraOptions = {
-            settings = {
-              Lua = {
-                completion = { callSnippet = "Replace"; };
-                diagnostics = { globals = [ "vim" ]; };
+          settings = {
+            Lua = {
+              completion = { callSnippet = "Replace"; };
+              diagnostics = { globals = [ "vim" ]; };
 
-                telemetry = { enabled = false; };
-                hint = { enable = true; };
-              };
+              telemetry = { enabled = false; };
+              hint = { enable = true; };
             };
           };
         };
@@ -29,63 +27,59 @@
         tflint = { enable = true; };
         ts_ls = {
           enable = true;
-          autostart = true;
-          filetypes =
-            [ "javascript" "javascriptreact" "typescript" "typescriptreact" ];
-          extraOptions = {
-            settings = {
-              javascript = {
-                inlayHints = {
-                  includeInlayEnumMemberValueHints = true;
-                  includeInlayFunctionLikeReturnTypeHints = true;
-                  includeInlayFunctionParameterTypeHints = true;
-                  includeInlayParameterNameHints = "all";
-                  includeInlayParameterNameHintsWhenArgumentMatchesName = true;
-                  includeInlayPropertyDeclarationTypeHints = true;
-                  includeInlayVariableTypeHints = true;
-                  includeInlayVariableTypeHintsWhenTypeMatchesName = true;
-                };
+          # autostart = true;
+          settings = {
+            filetypes =
+              [ "javascript" "javascriptreact" "typescript" "typescriptreact" ];
+            javascript = {
+              inlayHints = {
+                includeInlayEnumMemberValueHints = true;
+                includeInlayFunctionLikeReturnTypeHints = true;
+                includeInlayFunctionParameterTypeHints = true;
+                includeInlayParameterNameHints = "all";
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true;
+                includeInlayPropertyDeclarationTypeHints = true;
+                includeInlayVariableTypeHints = true;
+                includeInlayVariableTypeHintsWhenTypeMatchesName = true;
               };
-              typescript = {
-                inlayHints = {
-                  includeInlayEnumMemberValueHints = true;
-                  includeInlayFunctionLikeReturnTypeHints = true;
-                  includeInlayFunctionParameterTypeHints = true;
-                  includeInlayParameterNameHints = "all";
-                  includeInlayParameterNameHintsWhenArgumentMatchesName = true;
-                  includeInlayPropertyDeclarationTypeHints = true;
-                  includeInlayVariableTypeHints = true;
-                  includeInlayVariableTypeHintsWhenTypeMatchesName = true;
-                };
+            };
+            typescript = {
+              inlayHints = {
+                includeInlayEnumMemberValueHints = true;
+                includeInlayFunctionLikeReturnTypeHints = true;
+                includeInlayFunctionParameterTypeHints = true;
+                includeInlayParameterNameHints = "all";
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true;
+                includeInlayPropertyDeclarationTypeHints = true;
+                includeInlayVariableTypeHints = true;
+                includeInlayVariableTypeHintsWhenTypeMatchesName = true;
               };
             };
           };
         };
         yamlls = {
           enable = true;
-          extraOptions = {
-            settings = {
-              yaml = {
-                schemas = {
-                  kubernetes = "'*.yaml";
-                  "http://json.schemastore.org/github-workflow" =
-                    ".github/workflows/*";
-                  "http://json.schemastore.org/github-action" =
-                    ".github/action.{yml,yaml}";
-                  "http://json.schemastore.org/ansible-stable-2.9" =
-                    "roles/tasks/*.{yml,yaml}";
-                  "http://json.schemastore.org/kustomization" =
-                    "kustomization.{yml,yaml}";
-                  "http://json.schemastore.org/ansible-playbook" =
-                    "*play*.{yml,yaml}";
-                  "http://json.schemastore.org/chart" = "Chart.{yml,yaml}";
-                  "https://json.schemastore.org/dependabot-v2" =
-                    ".github/dependabot.{yml,yaml}";
-                  "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json" =
-                    "*docker-compose*.{yml,yaml}";
-                  "https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json" =
-                    "*flow*.{yml,yaml}";
-                };
+          settings = {
+            yaml = {
+              schemas = {
+                kubernetes = "'*.yaml";
+                "http://json.schemastore.org/github-workflow" =
+                  ".github/workflows/*";
+                "http://json.schemastore.org/github-action" =
+                  ".github/action.{yml,yaml}";
+                "http://json.schemastore.org/ansible-stable-2.9" =
+                  "roles/tasks/*.{yml,yaml}";
+                "http://json.schemastore.org/kustomization" =
+                  "kustomization.{yml,yaml}";
+                "http://json.schemastore.org/ansible-playbook" =
+                  "*play*.{yml,yaml}";
+                "http://json.schemastore.org/chart" = "Chart.{yml,yaml}";
+                "https://json.schemastore.org/dependabot-v2" =
+                  ".github/dependabot.{yml,yaml}";
+                "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json" =
+                  "*docker-compose*.{yml,yaml}";
+                "https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json" =
+                  "*flow*.{yml,yaml}";
               };
             };
           };
@@ -93,8 +87,8 @@
         eslint = { enable = false; };
         rust_analyzer = {
           enable = true;
-          installCargo = true;
-          installRustc = true;
+          # installCargo = true;
+          # installRustc = true;
           settings = {
             checkOnSave = true;
             check = { command = "clippy"; };

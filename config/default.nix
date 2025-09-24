@@ -28,7 +28,7 @@
   highlights.enable = lib.mkDefault true;
   keys.enable = true;
   languages.enable = true;
-  lsp.enable = lib.mkDefault true;
+  lsp-setup.enable = lib.mkDefault true;
   sets.enable = lib.mkDefault true;
   snippets.enable = lib.mkDefault true;
   statusline.enable = lib.mkDefault true;
