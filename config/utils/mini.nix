@@ -5,6 +5,7 @@
       enable = true;
       modules = {
         animate = { };
+        basics = { };
         comment = {
           options = {
             customCommentString = ''
