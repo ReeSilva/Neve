@@ -5,7 +5,6 @@
       enable = true;
       modules = {
         animate = { };
-        basics = { };
         comment = {
           options = {
             customCommentString = ''
@@ -14,9 +13,6 @@
           };
         };
         cursorword = { opts = { delay = 100; }; };
-        # indentscope = {
-        #   symbol = "│";
-        # };
       };
     };
   };

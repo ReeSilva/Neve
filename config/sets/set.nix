@@ -33,6 +33,9 @@
       # Enable mouse mode
       mouse = "a"; # Mouse
 
+      # Enable mouse move events
+      mousemoveevent = true;
+
       # Enable ignorecase + smartcase for better searching
       ignorecase = true;
       smartcase = true; # Don't ignore case with capitals
@@ -75,7 +78,7 @@
       # Place a column line
       # colorcolumn = "80";
 
-      # Reduce which-key timeout 
+      # Reduce which-key timeout
       timeoutlen = 100;
 
       # Set encoding type
@@ -119,6 +122,7 @@
       local opt = vim.opt
       local g = vim.g
       local o = vim.o
+
       -- Neovide
       if g.neovide then
         g.neovide_fullscreen = false
