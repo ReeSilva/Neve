@@ -34,7 +34,7 @@
           sign = true;
           virtual_text = true;
         };
-        implement = { enable = true; };
+        implement = { enable = false; };
         rename = {
           auto_save = false;
           keys = {
