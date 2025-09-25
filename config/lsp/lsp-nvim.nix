@@ -8,15 +8,11 @@
       servers = {
         "*" = {
           enable = true;
-          settings = {
-            capabilities = {
-              __unkeyed-1 = lib.nixvim.utils.mkRaw
-                "vim.lsp.protocol.make_client_capabilities()";
-              __unkeyed-2 = lib.nixvim.utils.mkRaw
-                "require'lsp-file-operations'.default_capabilities()";
-              offsetEncoding = "utf-16";
-            };
-          };
+          # TODO: I need to find a way to implement the
+          # capabilities from the nvim-lsp-file-operations
+          #
+          # see: https://github.com/antosha417/nvim-lsp-file-operations?tab=readme-ov-file#setup
+          settings = { capabilities = { offsetEncoding = "utf-16"; }; };
         };
         clangd = { enable = true; };
         lua_ls = {
