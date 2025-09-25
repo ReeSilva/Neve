@@ -6,6 +6,18 @@
       # enable = true;
       # capabilities = "offsetEncoding = 'utf-16'";
       servers = {
+        "*" = {
+          enable = true;
+          settings = {
+            capabilities = {
+              __unkeyed-1 = lib.nixvim.utils.mkRaw
+                "vim.lsp.protocol.make_client_capabilities()";
+              __unkeyed-2 = lib.nixvim.utils.mkRaw
+                "require'lsp-file-operations'.default_capabilities()";
+              offsetEncoding = "utf-16";
+            };
+          };
+        };
         clangd = { enable = true; };
         lua_ls = {
           enable = true;
