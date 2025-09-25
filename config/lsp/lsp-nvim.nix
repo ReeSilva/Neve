@@ -14,7 +14,7 @@
                 "vim.lsp.protocol.make_client_capabilities()";
               __unkeyed-2 = lib.nixvim.utils.mkRaw
                 "require'lsp-file-operations'.default_capabilities()";
-              offsetEncoding = "utf-16";
+              offsetEncoding = [ "utf-16" ];
             };
           };
         };
