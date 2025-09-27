@@ -116,6 +116,8 @@
 
       inccommand =
         "split"; # (https://neovim.io/doc/user/options.html#'inccommand')
+
+      winborder = "rounded";
     };
 
     extraConfigLua = ''

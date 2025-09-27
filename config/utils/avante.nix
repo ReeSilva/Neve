@@ -11,6 +11,7 @@
         enable = true;
         settings = {
           provider = if pkgs.stdenv.isDarwin then "gemini-cli" else "copilot";
+          selector.provider = "telescope";
           behaviour = {
             enable_cursor_planning_mode = true;
             enable_fastapply = true;

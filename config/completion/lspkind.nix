@@ -5,7 +5,10 @@
       enable = true;
       cmp.enable = false;
       settings = {
-        symbolMap = { Copilot = ""; };
+        symbol_map = {
+          Copilot = "";
+          Avante = "";
+        };
         maxwidth = 50;
         ellipsis_char = "...";
       };
