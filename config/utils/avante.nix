@@ -10,7 +10,8 @@
       avante = {
         enable = true;
         settings = {
-          provider = if pkgs.stdenv.isDarwin then "gemini-cli" else "copilot";
+          provider =
+            if pkgs.stdenv.isDarwin then "gemini-cli" else "claude-code";
           selector.provider = "telescope";
           behaviour = {
             enable_cursor_planning_mode = true;
@@ -33,13 +34,25 @@
               model = "sonar-reasoning-pro";
             };
           };
-          acp_providers = lib.mkIf pkgs.stdenv.isDarwin {
-            command = "gemini";
-            args = [ "--experimental-acp" ];
-            env = {
-              NODE_NO_WARNINGS = "1";
-              GEMINI_API_KEY =
-                lib.nixvim.utils.mkRaw "os.getenv 'GEMINI_API_KEY'";
+          acp_providers = if pkgs.stdenv.isDarwin then {
+            gemini-cli = {
+              command = "gemini";
+              args = [ "--experimental-acp" ];
+              env = {
+                NODE_NO_WARNINGS = "1";
+                GEMINI_API_KEY =
+                  lib.nixvim.utils.mkRaw "os.getenv 'GEMINI_API_KEY'";
+              };
+            };
+          } else {
+            claude-code = {
+              command = "npx";
+              args = [ "@zed-industries/claude-code-acp" ];
+              env = {
+                NODE_NO_WARNINGS = "1";
+                ANTHROPIC_API_KEY =
+                  lib.nixvim.utils.mkRaw "os.getenv 'ANTHROPIC_API_KEY'";
+              };
             };
           };
           web_search_engine = { provider = "brave"; };

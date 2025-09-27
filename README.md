@@ -3,16 +3,16 @@
   <br>
   <br>
   <div>
-    <a href="https://github.com/redyf/Neve/issues">
-        <img src="https://img.shields.io/github/issues/redyf/Neve?color=fab387&labelColor=303446&style=for-the-badge">
+    <a href="https://github.com/reesilva/neve/issues">
+        <img src="https://img.shields.io/github/issues/reesilva/neve?color=fab387&labelColor=303446&style=for-the-badge">
     </a>
-    <a href="https://github.com/redyf/Neve/stargazers">
-        <img src="https://img.shields.io/github/stars/redyf/Neve?color=ca9ee6&labelColor=303446&style=for-the-badge">
+    <a href="https://github.com/reesilva/neve/stargazers">
+        <img src="https://img.shields.io/github/stars/reesilva/neve?color=ca9ee6&labelColor=303446&style=for-the-badge">
     </a>
-    <a href="https://github.com/redyf/Neve">
-        <img src="https://img.shields.io/github/repo-size/redyf/Neve?color=ea999c&labelColor=303446&style=for-the-badge">
+    <a href="https://github.com/reesilva/neve">
+        <img src="https://img.shields.io/github/repo-size/reesilva/neve?color=ea999c&labelColor=303446&style=for-the-badge">
     </a>
-    <a href="https://github.com/redyf/Neve/blob/main/LICENCE">
+    <a href="https://github.com/reesilva/neve/blob/main/LICENCE">
         <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&logoColor=ca9ee6&colorA=313244&colorB=cba6f7"/>
     </a>
     <br>
@@ -21,6 +21,7 @@
    </h1>
 
 <h1 align="center">❄️ Neve ❄️</h1>
+<p align="center"><em>Personal fork of <a href="https://github.com/redyf/Neve">redyf/Neve</a> with custom configurations</em></p>
 <h3 align="center">
 
 <details>
@@ -51,15 +52,15 @@ Neve (snow in portuguese) is a meticulously crafted custom configuration for Nix
 
 ## Installation
 
-Getting started with Neve is a breeze. Simply follow the installation guide below, and you'll be up and running in no time.
+Getting started with this personal fork of Neve is straightforward. Simply follow the installation guide below.
 
-However if you'd like to give it a try before installing, <b>nix run github:redyf/neve</b> is available!
+However if you'd like to give it a try before installing, <b>nix run github:reesilva/neve</b> is available!
 
 <details>
     <summary><b>INSTALLATION GUIDE</b></summary>
     I'm assuming you already use nix flakes but in case you don't, please check this tutorial to enable them:
 
-1. Go to flake.nix and add Neve.url = "github:redyf/Neve" to your inputs.
+1. Go to flake.nix and add Neve.url = "github:reesilva/neve" to your inputs.
 
 2. Run nix flake update, then Neve should be available for installation.
 
@@ -158,7 +159,7 @@ Neve is highly customizable. Here are some important files for configuring your 
 
 ## Contribution
 
-Contributions are welcome! Feel free to [open an issue](https://github.com/redyf/Neve/issues) to report problems, suggest improvements, or submit pull requests to add new features to Neve.
+Contributions are welcome! Feel free to [open an issue](https://github.com/reesilva/neve/issues) to report problems or suggest improvements. For the original project, visit [redyf/Neve](https://github.com/redyf/Neve).
 
 ## License
 
@@ -166,6 +167,6 @@ This project is licensed under the [MIT License](LICENCE). See the LICENSE file 
 
 ## Support
 
-Encountered an issue or have a question? Visit our [Issue Tracker](https://github.com/redyf/Neve/issues) or message me on Discord, my username is **redyf**.
+Encountered an issue or have a question? Visit our [Issue Tracker](https://github.com/reesilva/neve/issues). For the original project support, visit [redyf/Neve issues](https://github.com/redyf/Neve/issues) or message redyf on Discord.
 
 Happy coding!
