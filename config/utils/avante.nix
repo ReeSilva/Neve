@@ -1,64 +1,127 @@
-{ lib, config, pkgs, ... }: {
-  options = { avante.enable = lib.mkEnableOption "Enable avante.nvim"; };
-  config = let cfg = config.avante;
-  in lib.mkIf cfg.enable {
-    plugins = {
-      render-markdown = {
-        enable = true;
-        settings = { file_types = [ "markdown" "Avante" ]; };
-      };
-      avante = {
-        enable = true;
-        settings = {
-          provider =
-            if pkgs.stdenv.isDarwin then "gemini-cli" else "claude-code";
-          selector.provider = "telescope";
-          behaviour = {
-            enable_cursor_planning_mode = true;
-            enable_fastapply = true;
+{
+  lib,
+  config,
+  pkgs,
+  mcphub-nvim,
+  mcp-hub,
+  ...
+}:
+{
+  options = {
+    avante.enable = lib.mkEnableOption "Enable avante.nvim";
+  };
+  config =
+    let
+      cfg = config.avante;
+    in
+    lib.mkIf cfg.enable {
+      extraPlugins = [ mcphub-nvim.packages.${pkgs.system}.default ];
+      extraConfigLua = ''
+        require("mcphub").setup({
+          port = 3000,
+          config = vim.fn.expand("~/.config/mcphub/servers.json"),
+          cmd = "${mcp-hub.packages.${pkgs.system}.default}/bin/mcp-hub",
+          extensions = {
+            avante = {
+              make_slash_commands = true,
+            }
+          }
+        })
+      '';
+      plugins = {
+        render-markdown = {
+          enable = true;
+          settings = {
+            file_types = [
+              "markdown"
+              "Avante"
+            ];
           };
-          input = {
-            provider = "snacks";
-            provider_opts = {
-              title = "Avante Input";
-              icon = "󱚞";
+        };
+        avante = {
+          enable = true;
+          settings = {
+            provider = if pkgs.stdenv.isDarwin then "gemini-cli" else "claude-code";
+            selector.provider = "telescope";
+            behaviour = {
+              enable_cursor_planning_mode = true;
+              enable_fastapply = true;
             };
-          };
-          providers = {
-            copilot = { model = "claude-sonnet-4"; };
-            morph = { model = "morph-v3-large"; };
-            perplexity = {
-              __inherited_from = "openai";
-              api_key_name = "PERPLEXITY_API_KEY";
-              endpoint = "https://api.perplexity.ai";
-              model = "sonar-reasoning-pro";
-            };
-          };
-          acp_providers = if pkgs.stdenv.isDarwin then {
-            gemini-cli = {
-              command = "gemini";
-              args = [ "--experimental-acp" ];
-              env = {
-                NODE_NO_WARNINGS = "1";
-                GEMINI_API_KEY =
-                  lib.nixvim.utils.mkRaw "os.getenv 'GEMINI_API_KEY'";
+            input = {
+              provider = "snacks";
+              provider_opts = {
+                title = "Avante Input";
+                icon = "󱚞";
               };
             };
-          } else {
-            claude-code = {
-              command = "npx";
-              args = [ "@zed-industries/claude-code-acp" ];
-              env = {
-                NODE_NO_WARNINGS = "1";
-                ANTHROPIC_API_KEY =
-                  lib.nixvim.utils.mkRaw "os.getenv 'ANTHROPIC_API_KEY'";
+            providers = {
+              copilot = {
+                model = "claude-sonnet-4";
+              };
+              morph = {
+                model = "morph-v3-large";
+              };
+              perplexity = {
+                __inherited_from = "openai";
+                api_key_name = "PERPLEXITY_API_KEY";
+                endpoint = "https://api.perplexity.ai";
+                model = "sonar-reasoning-pro";
               };
             };
+            acp_providers =
+              if pkgs.stdenv.isDarwin then
+                {
+                  gemini-cli = {
+                    command = "gemini";
+                    args = [ "--experimental-acp" ];
+                    env = {
+                      NODE_NO_WARNINGS = "1";
+                      GEMINI_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'GEMINI_API_KEY'";
+                    };
+                  };
+                }
+              else
+                {
+                  claude-code = {
+                    command = "npx";
+                    args = [ "@zed-industries/claude-code-acp" ];
+                    env = {
+                      NODE_NO_WARNINGS = "1";
+                      ANTHROPIC_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'ANTHROPIC_API_KEY'";
+                    };
+                  };
+                };
+            web_search_engine = {
+              provider = "brave";
+            };
+            windows.input.height = 10;
+            system_prompt = lib.nixvim.utils.mkRaw ''
+              function()
+                local hub = require("mcphub").get_hub_instance()
+                return hub and hub:get_active_servers_prompt() or ""
+              end
+            '';
+            custom_tools = lib.nixvim.utils.mkRaw ''
+              function()
+                return {
+                  require("mcphub.extensions.avante").mcp_tool(),
+                }
+              end
+            '';
+            disabled_tools = [
+              "list_files" # Built-in file operations
+              "search_files"
+              "read_file"
+              "create_file"
+              "rename_file"
+              "delete_file"
+              "create_dir"
+              "rename_dir"
+              "delete_dir"
+              "bash" # Built-in terminal access
+            ];
           };
-          web_search_engine = { provider = "brave"; };
-          windows.input.height = 10;
         };
       };
     };
-  };
 }
