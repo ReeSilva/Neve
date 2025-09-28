@@ -142,10 +142,10 @@
           action = "colorscheme";
           options.desc = "Colorscheme preview";
         };
-        "<leader>fp" = {
-          action = "projects";
-          options.desc = "Projects";
-        };
+        # "<leader>fp" = {
+        #   action = "projects";
+        #   options.desc = "Projects";
+        # };
         "<leader>sd" = {
           action = "diagnostics bufnr=0";
           options.desc = "Document Diagnostics";
