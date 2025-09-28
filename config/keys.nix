@@ -420,6 +420,13 @@
         key = "<Esc>";
         action = "<cmd>nohlsearch<CR>";
       }
+
+      # Set keymap for MCPHub
+      {
+        mode = "n";
+        key = "<C-m>";
+        action = "<cmd>MCPHub<CR>";
+      }
     ];
   };
 }
