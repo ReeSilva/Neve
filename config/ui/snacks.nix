@@ -22,12 +22,12 @@
       };
     };
     keymaps = [
-      {
-        mode = "n";
-        key = "<leader>gg";
-        action = ":lua Snacks.lazygit.open()<cr>";
-        options = { desc = "LazyGit (Snacks)"; };
-      }
+      # {
+      #   mode = "n";
+      #   key = "<leader>gg";
+      #   action = ":lua Snacks.lazygit.open()<cr>";
+      #   options = { desc = "LazyGit (Snacks)"; };
+      # }
       {
         mode = "n";
         key = "<leader>gb";
