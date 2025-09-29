@@ -1,14 +1,28 @@
-{ lib, config, ... }: {
-  options = { lualine.enable = lib.mkEnableOption "Enable lualine module"; };
+{ lib, config, ... }:
+{
+  options = {
+    lualine.enable = lib.mkEnableOption "Enable lualine module";
+  };
   config = lib.mkIf config.lualine.enable {
     plugins.lualine = {
       enable = true;
       settings = {
         alwaysDivideMiddle = true;
-        globalstatus = true;
-        ignoreFocus = [ "neo-tree" "Avante" "AvanteSelectedFiles" ];
-        ignore_focus = [ "neo-tree" "Avante" "AvanteSelectedFiles" ];
-        extensions = [ "fzf" "neo-tree" ];
+        globalstatus = false;
+        ignoreFocus = [
+          "neo-tree"
+          "Avante"
+          "AvanteSelectedFiles"
+        ];
+        ignore_focus = [
+          "neo-tree"
+          "Avante"
+          "AvanteSelectedFiles"
+        ];
+        extensions = [
+          "fzf"
+          "neo-tree"
+        ];
         theme = "auto";
         componentSeparators = {
           left = "|";
@@ -20,12 +34,21 @@
         };
         sections = {
           lualine_a = [ "mode" ];
-          lualine_b = [ "branch" "" "diff" "diagnostics" ];
+          lualine_b = [
+            "branch"
+            ""
+            "diff"
+            "diagnostics"
+          ];
           lualine_c = [ "filename" ];
           lualine_x = [
             {
-              __unkeyed-1 = { __raw = "require('noice').api.status.mode.get"; };
-              cond = { __raw = "require('noice').api.status.mode.has"; };
+              __unkeyed-1 = {
+                __raw = "require('noice').api.status.mode.get";
+              };
+              cond = {
+                __raw = "require('noice').api.status.mode.has";
+              };
             }
             "filetype"
           ];
