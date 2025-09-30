@@ -1,5 +1,8 @@
-{ lib, config, ... }: {
-  options = { blink.enable = lib.mkEnableOption "Enable blink.nvim"; };
+{ lib, config, ... }:
+{
+  options = {
+    blink.enable = lib.mkEnableOption "Enable blink.nvim";
+  };
   config = lib.mkIf config.blink.enable {
     plugins = {
       colorful-menu.enable = true;
@@ -7,11 +10,15 @@
         enable = true;
         settings = {
           completion = {
-            ghost_text = { enabled = true; };
+            ghost_text = {
+              enabled = true;
+            };
             menu = {
               max_height = 7;
               draw = {
-                treesitter = { __unkeyed-1 = "lsp"; };
+                treesitter = {
+                  __unkeyed-1 = "lsp";
+                };
                 columns = [
                   { __unkeyed-1 = "kind_icon"; }
                   {
@@ -71,7 +78,10 @@
               };
             };
           };
-          signature.enabled = true;
+          signature = {
+            enabled = true;
+            window.show_documentation = false;
+          };
           snippets.preset = "luasnip";
           sources = {
             min_keyword_length = 3;
@@ -152,7 +162,12 @@
               };
             };
           };
-          keymap = { "<CR>" = [ "accept" "fallback" ]; };
+          keymap = {
+            "<CR>" = [
+              "accept"
+              "fallback"
+            ];
+          };
         };
       };
       blink-compat.enable = true;

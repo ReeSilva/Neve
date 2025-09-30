@@ -1,5 +1,8 @@
-{ lib, config, ... }: {
-  options = { copilot.enable = lib.mkEnableOption "Enable copilot module"; };
+{ lib, config, ... }:
+{
+  options = {
+    copilot.enable = lib.mkEnableOption "Enable copilot module";
+  };
   config = lib.mkIf config.copilot.enable {
     plugins.copilot-lua = {
       enable = true;
@@ -7,7 +10,6 @@
         # Disabled for copilot-cmp
         panel.enabled = false;
         suggestion.enabled = false;
-
         filetypes = {
           yaml = true;
           markdown = true;
@@ -19,7 +21,7 @@
           cvs = false;
           "." = false;
         };
-        copilot_model = "claude-sonnet-4";
+        copilot_model = "claude-sonnet-4.5";
       };
     };
   };
