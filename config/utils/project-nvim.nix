@@ -6,7 +6,7 @@
   config = lib.mkIf config.project-nvim.enable {
     plugins.project-nvim = {
       enable = true;
-      enableTelescope = false;
+      enableTelescope = true;
     };
   };
 }
