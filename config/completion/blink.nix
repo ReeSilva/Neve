@@ -10,11 +10,38 @@
         enable = true;
         settings = {
           completion = {
+            accept.auto_brackets.enabled = true;
+            documentation = {
+              auto_show = false;
+              auto_show_delay_ms = 200;
+            };
             ghost_text = {
               enabled = true;
             };
+            list.selection = {
+              preselect = true;
+              auto_insert = false;
+            };
             menu = {
-              max_height = 7;
+              auto_show = false;
+              direction_priority = lib.nixvim.utils.mkRaw ''
+                function()
+                  local ctx = require('blink.cmp').get_context()
+                  local item = require('blink.cmp').get_selected_item()
+                  if ctx == nil or item == nil then return { 's', 'n' } end
+
+                  local item_text = item.textEdit ~= nil and item.textEdit.newText or item.insertText or item.label
+                  local is_multi_line = item_text:find('\n') ~= nil
+
+                  -- after showing the menu upwards, we want to maintain that direction
+                  -- until we re-open the menu, so store the context id in a global variable
+                  if is_multi_line or vim.g.blink_cmp_upwards_ctx_id == ctx.id then
+                    vim.g.blink_cmp_upwards_ctx_id = ctx.id
+                    return { 'n', 's' }
+                  end
+                  return { 's', 'n' }
+                end
+              '';
               draw = {
                 treesitter = {
                   __unkeyed-1 = "lsp";
@@ -87,41 +114,41 @@
             min_keyword_length = 3;
             default = [
               "lsp"
-              "path"
               "copilot"
-              "snippets"
               "buffer"
-              "git"
-              "ripgrep"
+              "path"
+              "snippets"
               "avante_commands"
               "avante_files"
               "avante_mentions"
               "avante_shortcuts"
+              "ripgrep"
+              "git"
             ];
             git = { };
             providers = {
               avante_commands = {
                 name = "avante_commands";
                 module = "blink.compat.source";
-                score_offset = 100; # # show at a higher priority than lsp
+                score_offset = 10; # # show at a higher priority than lsp
                 opts = { };
               };
               avante_files = {
                 name = "avante_files";
                 module = "blink.compat.source";
-                score_offset = 100; # # show at a higher priority than lsp
+                score_offset = 10; # # show at a higher priority than lsp
                 opts = { };
               };
               avante_mentions = {
                 name = "avante_mentions";
                 module = "blink.compat.source";
-                score_offset = 100; # # show at a higher priority than lsp
+                score_offset = 10; # # show at a higher priority than lsp
                 opts = { };
               };
               avante_shortcuts = {
                 name = "avante_shortcuts";
                 module = "blink.compat.source";
-                score_offset = 100; # # show at a higher priority than lsp
+                score_offset = 10; # # show at a higher priority than lsp
                 opts = { };
               };
               copilot = {
@@ -130,10 +157,13 @@
                 name = "copilot";
                 score_offset = 100;
               };
+              lsp.score_offset = 110;
+              buffer.score_offset = 200;
+              path.score_offset = 200;
               git = {
                 module = "blink-cmp-git";
                 name = "git";
-                score_offset = 200;
+                score_offset = 500;
                 opts = {
                   commit = { };
                   git_centers.git_hub = { };
@@ -143,7 +173,7 @@
                 async = true;
                 module = "blink-ripgrep";
                 name = "Ripgrep";
-                score_offset = 500;
+                score_offset = 1000;
                 opts = {
                   prefix_min_len = 8;
                   backend.ripgrep = {
@@ -163,6 +193,7 @@
             };
           };
           keymap = {
+            preset = "super-tab";
             "<CR>" = [
               "accept"
               "fallback"

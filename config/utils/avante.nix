@@ -70,7 +70,7 @@
             providers = {
               claude = lib.mkIf pkgs.stdenv.isLinux {
                 endpoint = "https://api.anthropic.com";
-                model = "claude-sonnet-4-5-20250929";
+                model = "claude-sonnet-4-20250514";
                 timeout = 30000; # Timeout in milliseconds
                 context_window = 200000;
                 extra_request_body = {
@@ -131,14 +131,14 @@
             system_prompt = lib.nixvim.utils.mkRaw ''
               function()
                 local hub = require("mcphub").get_hub_instance()
+                print("Passei aqui")
                 return hub and hub:get_active_servers_prompt() or ""
               end
             '';
             custom_tools = lib.nixvim.utils.mkRaw ''
               function()
-                return {
-                  require("mcphub.extensions.avante").mcp_tool(),
-                }
+                local mcphub_avante = require("mcphub.extensions.avante")
+                return mcphub_avante.mcp_tool()
               end
             '';
             disabled_tools = [
