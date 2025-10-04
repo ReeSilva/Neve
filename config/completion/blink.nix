@@ -1,9 +1,15 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 {
   options = {
     blink.enable = lib.mkEnableOption "Enable blink.nvim";
   };
   config = lib.mkIf config.blink.enable {
+    extraPlugins = with pkgs; [ vimPlugins.blink-cmp-avante ];
     plugins = {
       colorful-menu.enable = true;
       blink-cmp = {
@@ -113,57 +119,31 @@
           sources = {
             min_keyword_length = 3;
             default = [
-              "lsp"
+              "avante"
               "copilot"
+              "lsp"
               "buffer"
               "path"
               "snippets"
-              "avante_commands"
-              "avante_files"
-              "avante_mentions"
-              "avante_shortcuts"
-              "ripgrep"
               "git"
+              "ripgrep"
             ];
             git = { };
             providers = {
-              avante_commands = {
-                name = "avante_commands";
-                module = "blink.compat.source";
-                score_offset = 10; # # show at a higher priority than lsp
-                opts = { };
-              };
-              avante_files = {
-                name = "avante_files";
-                module = "blink.compat.source";
-                score_offset = 10; # # show at a higher priority than lsp
-                opts = { };
-              };
-              avante_mentions = {
-                name = "avante_mentions";
-                module = "blink.compat.source";
-                score_offset = 10; # # show at a higher priority than lsp
-                opts = { };
-              };
-              avante_shortcuts = {
-                name = "avante_shortcuts";
-                module = "blink.compat.source";
-                score_offset = 10; # # show at a higher priority than lsp
-                opts = { };
+              avante = {
+                module = "blink-cmp-avante";
+                name = "Avante";
+                score_offset = 20;
               };
               copilot = {
                 async = true;
                 module = "blink-cmp-copilot";
                 name = "copilot";
-                score_offset = 100;
+                score_offset = 10;
               };
-              lsp.score_offset = 110;
-              buffer.score_offset = 200;
-              path.score_offset = 200;
               git = {
                 module = "blink-cmp-git";
                 name = "git";
-                score_offset = 500;
                 opts = {
                   commit = { };
                   git_centers.git_hub = { };
@@ -173,7 +153,6 @@
                 async = true;
                 module = "blink-ripgrep";
                 name = "Ripgrep";
-                score_offset = 1000;
                 opts = {
                   prefix_min_len = 8;
                   backend.ripgrep = {
@@ -194,14 +173,9 @@
           };
           keymap = {
             preset = "super-tab";
-            "<CR>" = [
-              "accept"
-              "fallback"
-            ];
           };
         };
       };
-      blink-compat.enable = true;
       blink-cmp-copilot.enable = true;
       blink-cmp-git.enable = true;
       blink-ripgrep.enable = true;

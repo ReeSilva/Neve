@@ -111,6 +111,8 @@
                     env = {
                       NODE_NO_WARNINGS = "1";
                       ANTHROPIC_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'ANTHROPIC_API_KEY'";
+                      ACP_PERMISSION_MODE = "bypassPermissions";
+                      ACP_PATH_TO_CLAUDE_CODE_EXECUTABLE = lib.nixvim.utils.mkRaw "vim.fn.exepath('claude')";
                     };
                   };
                 };
@@ -131,7 +133,6 @@
             system_prompt = lib.nixvim.utils.mkRaw ''
               function()
                 local hub = require("mcphub").get_hub_instance()
-                print("Passei aqui")
                 return hub and hub:get_active_servers_prompt() or ""
               end
             '';
