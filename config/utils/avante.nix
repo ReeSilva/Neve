@@ -70,7 +70,7 @@
             providers = {
               claude = lib.mkIf pkgs.stdenv.isLinux {
                 endpoint = "https://api.anthropic.com";
-                model = "claude-sonnet-4-20250514";
+                model = "claude-sonnet-4-5-20250929";
                 timeout = 30000; # Timeout in milliseconds
                 context_window = 200000;
                 extra_request_body = {
@@ -111,8 +111,7 @@
                     env = {
                       NODE_NO_WARNINGS = "1";
                       ANTHROPIC_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'ANTHROPIC_API_KEY'";
-                      ACP_PERMISSION_MODE = "bypassPermissions";
-                      ACP_PATH_TO_CLAUDE_CODE_EXECUTABLE = lib.nixvim.utils.mkRaw "vim.fn.exepath('claude')";
+                      ACP_PERMISSION_MODE = "acceptEdits";
                     };
                   };
                 };
