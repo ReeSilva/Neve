@@ -135,6 +135,7 @@
                 name = "Avante";
                 score_offset = 20;
               };
+              buffer.max_items = 8;
               copilot = {
                 async = true;
                 module = "blink-cmp-copilot";
