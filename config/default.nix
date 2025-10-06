@@ -1,4 +1,5 @@
-{ lib, ... }: {
+{ lib, ... }:
+{
   # Import all your configuration modules here
   imports = [
     ./bufferlines
@@ -25,7 +26,7 @@
   dap.enable = lib.mkDefault true;
   filetrees.enable = lib.mkDefault true;
   git.enable = lib.mkDefault true;
-  highlights.enable = lib.mkDefault false;
+  highlights.enable = lib.mkDefault true;
   keys.enable = true;
   languages.enable = true;
   lsp-setup.enable = lib.mkDefault true;
