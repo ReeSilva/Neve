@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  pkgs-master,
   mcphub-nvim,
   mcp-hub,
   ...
@@ -53,6 +54,7 @@
         };
         avante = {
           enable = true;
+          package = pkgs-master.vimPlugins.avante-nvim;
           settings = {
             provider = if pkgs.stdenv.isDarwin then "gemini-cli" else "claude-code";
             behaviour = {

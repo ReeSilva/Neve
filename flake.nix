@@ -2,6 +2,8 @@
   description = "Neve is a Neovim configuration built with Nixvim, which allows you to use Nix language to manage Neovim plugins/options";
 
   inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixvim.url = "github:nix-community/nixvim";
     flake-utils.url = "github:numtide/flake-utils";
     mcphub-nvim = {
@@ -17,13 +19,12 @@
   outputs =
     {
       self,
-      nixpkgs,
       nixvim,
       flake-utils,
       mcphub-nvim,
       mcp-hub,
       ...
-    }:
+    }@inputs:
     let
       config = import ./config; # import the module directly
       # Enable unfree packages
@@ -38,7 +39,11 @@
       system:
       let
         nixvimLib = nixvim.lib.${system};
-        pkgs = import nixpkgs {
+        pkgs = import inputs.nixpkgs {
+          inherit system;
+          config = nixpkgsConfig;
+        };
+        pkgs-master = import inputs.nixpkgs-master {
           inherit system;
           config = nixpkgsConfig;
         };
@@ -51,6 +56,7 @@
             inherit self;
             inherit mcphub-nvim;
             inherit mcp-hub;
+            inherit pkgs-master;
           };
         };
       in
