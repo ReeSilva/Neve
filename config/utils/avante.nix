@@ -84,7 +84,7 @@
                 model = "claude-sonnet-4.5";
               };
               morph = {
-                model = "morph-v3-large";
+                model = "auto";
               };
               perplexity = {
                 __inherited_from = "openai";
