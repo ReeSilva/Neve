@@ -13,6 +13,9 @@
       AvanteSidebarWinSeparator = {
         fg = if pkgs.stdenv.isDarwin then "#DD7878" else "#EEBEBE";
       };
+      AvanteSidebarWinHorizontalSeparator = {
+        bg = if pkgs.stdenv.isDarwin then "#7C7F93" else "#949CBB";
+      };
     };
   };
 }

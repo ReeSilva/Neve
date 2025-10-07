@@ -121,8 +121,15 @@
               provider = "brave";
             };
             windows = {
-              width = 35;
-              input.border = "rounded";
+              width = 37;
+              sidebar_header = {
+                align = "right";
+                rounded = false;
+              };
+              input = {
+                border = "rounded";
+                height = 12;
+              };
               edit = {
                 border = "rounded";
                 start_insert = true;
