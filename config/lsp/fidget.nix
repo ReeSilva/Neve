@@ -1,4 +1,21 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+let
+  # Build the fidget plugin from GitHub
+  fidget = pkgs.vimUtils.buildVimPlugin {
+    name = "fidget.nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "j-hui";
+      repo = "fidget.nvim";
+      rev = "3f5475949679953af6d78654db29b944fa826e6a";
+      hash = "sha256-ieY3zaQAydzadpPiW1/IYakVHhp+wyEOpCQntgDOObs=";
+    };
+  };
+in
 {
   options = {
     fidget.enable = lib.mkEnableOption "Enable fidget module";
@@ -6,6 +23,7 @@
   config = lib.mkIf config.fidget.enable {
     plugins.fidget = {
       enable = true;
+      package = fidget;
       settings = {
         logger = {
           level = "warn"; # “off”, “error”, “warn”, “info”, “debug”, “trace”
@@ -82,8 +100,8 @@
 
           window = {
             normal_hl = "Comment";
-            winblend = 20;
-            border = "rounded"; # none, single, double, rounded, solid, shadow
+            winblend = 0;
+            border = "none"; # none, single, double, rounded, solid, shadow
             zindex = 45;
             max_width = 0;
             max_height = 0;
@@ -91,6 +109,12 @@
             y_padding = 0;
             align = "bottom";
             relative = "editor";
+            avoid = [
+              "Avante"
+              "AvanteSelectedCode"
+              "AvanteSelectedFiles"
+              "AvanteInput"
+            ];
           };
           view = {
             stack_upwards = true; # Display notification items from bottom to top
