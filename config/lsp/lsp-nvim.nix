@@ -1,46 +1,74 @@
-{ lib, config, pkgs, ... }: {
-  options = { lsp-nvim.enable = lib.mkEnableOption "Enable lsp-nvim module"; };
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
+  options = {
+    lsp-nvim.enable = lib.mkEnableOption "Enable lsp-nvim module";
+  };
   config = lib.mkIf config.lsp-nvim.enable {
     extraPlugins = with pkgs.vimPlugins; [ nvim-lsp-file-operations ];
     lsp = {
       servers = {
         "*" = {
           enable = true;
-          settings = {
+          config = {
             capabilities = {
-              __unkeyed-1 = lib.nixvim.utils.mkRaw
-                "vim.lsp.protocol.make_client_capabilities()";
-              __unkeyed-2 = lib.nixvim.utils.mkRaw
-                "require'lsp-file-operations'.default_capabilities()";
+              __unkeyed-1 = lib.nixvim.utils.mkRaw "vim.lsp.protocol.make_client_capabilities()";
+              __unkeyed-2 = lib.nixvim.utils.mkRaw "require'lsp-file-operations'.default_capabilities()";
               offsetEncoding = [ "utf-16" ];
             };
           };
         };
-        clangd = { enable = true; };
+        clangd = {
+          enable = true;
+        };
         lua_ls = {
           enable = true;
-          settings = {
+          config = {
             Lua = {
-              completion = { callSnippet = "Replace"; };
-              diagnostics = { globals = [ "vim" ]; };
+              completion = {
+                callSnippet = "Replace";
+              };
+              diagnostics = {
+                globals = [ "vim" ];
+              };
 
-              telemetry = { enabled = false; };
-              hint = { enable = true; };
+              telemetry = {
+                enabled = false;
+              };
+              hint = {
+                enable = true;
+              };
             };
           };
         };
         gopls.enable = true;
         golangci_lint_ls.enable = true;
-        nil_ls = { enable = true; };
-        nixd = { enable = true; };
-        terraformls = { enable = true; };
-        tflint = { enable = true; };
+        nil_ls = {
+          enable = true;
+        };
+        nixd = {
+          enable = true;
+        };
+        terraformls = {
+          enable = true;
+        };
+        tflint = {
+          enable = true;
+        };
         ts_ls = {
           enable = true;
           # autostart = true;
-          settings = {
-            filetypes =
-              [ "javascript" "javascriptreact" "typescript" "typescriptreact" ];
+          config = {
+            filetypes = [
+              "javascript"
+              "javascriptreact"
+              "typescript"
+              "typescriptreact"
+            ];
             javascript = {
               inlayHints = {
                 includeInlayEnumMemberValueHints = true;
@@ -69,23 +97,17 @@
         };
         yamlls = {
           enable = true;
-          settings = {
+          config = {
             yaml = {
               schemas = {
                 kubernetes = "'*.yaml";
-                "http://json.schemastore.org/github-workflow" =
-                  ".github/workflows/*";
-                "http://json.schemastore.org/github-action" =
-                  ".github/action.{yml,yaml}";
-                "http://json.schemastore.org/ansible-stable-2.9" =
-                  "roles/tasks/*.{yml,yaml}";
-                "http://json.schemastore.org/kustomization" =
-                  "kustomization.{yml,yaml}";
-                "http://json.schemastore.org/ansible-playbook" =
-                  "*play*.{yml,yaml}";
+                "http://json.schemastore.org/github-workflow" = ".github/workflows/*";
+                "http://json.schemastore.org/github-action" = ".github/action.{yml,yaml}";
+                "http://json.schemastore.org/ansible-stable-2.9" = "roles/tasks/*.{yml,yaml}";
+                "http://json.schemastore.org/kustomization" = "kustomization.{yml,yaml}";
+                "http://json.schemastore.org/ansible-playbook" = "*play*.{yml,yaml}";
                 "http://json.schemastore.org/chart" = "Chart.{yml,yaml}";
-                "https://json.schemastore.org/dependabot-v2" =
-                  ".github/dependabot.{yml,yaml}";
+                "https://json.schemastore.org/dependabot-v2" = ".github/dependabot.{yml,yaml}";
                 "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json" =
                   "*docker-compose*.{yml,yaml}";
                 "https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json" =
@@ -94,21 +116,25 @@
             };
           };
         };
-        eslint = { enable = false; };
+        eslint = {
+          enable = false;
+        };
         rust_analyzer = {
           enable = true;
-          # installCargo = true;
-          # installRustc = true;
-          settings = {
+          config = {
             checkOnSave = true;
-            check = { command = "clippy"; };
+            check = {
+              command = "clippy";
+            };
             inlayHints = {
               enable = true;
               showParameterNames = true;
               parameterHintsPrefix = "<- ";
               otherHintsPrefix = "=> ";
             };
-            procMacro = { enable = true; };
+            procMacro = {
+              enable = true;
+            };
           };
         };
       };
@@ -181,8 +207,7 @@
     };
     plugins = {
       lspconfig.enable = true;
-      lsp-format.enable =
-        false; # Enable it if you want lsp-format integration for none-ls
+      lsp-format.enable = false; # Enable it if you want lsp-format integration for none-ls
     };
     extraConfigLua = ''
         local _border = "rounded"
