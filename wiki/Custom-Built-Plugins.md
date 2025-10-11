@@ -31,6 +31,27 @@ Custom-built plugins in Neve are:
 
 ## Available Plugins
 
+### Fidget (fidget.nvim)
+
+**Status**: ✅ Active | **Auto-Update**: ✅ Enabled
+
+A statusline component for Neovim that provides LSP progress notifications.
+
+- **Upstream**: [j-hui/fidget.nvim](https://github.com/j-hui/fidget.nvim)
+- **Module**: `config/lsp/fidget.nix`
+
+**Features**:
+- Displays LSP progress in the statusline
+- Highly customizable appearance
+- Minimal and clean UI
+
+**Usage**:
+```nix
+{
+  fidget.enable = true;
+}
+```
+
 ### Terragrunt Language Server (terragrunt-ls)
 
 **Status**: ✅ Active | **Auto-Update**: ✅ Enabled
