@@ -50,6 +50,8 @@ Neve (snow in portuguese) is a meticulously crafted custom configuration for Nix
 
 - **Extensive Plugin Support:** Benefit from a curated selection of plugins that cover a wide range of programming languages and development tasks. Neve comes with pre-configured plugins to boost your productivity, and you can effortlessly expand its capabilities to suit your specific needs.
 
+- **Custom Plugin Building:** Neve includes custom-built plugins that aren't available in nixpkgs, packaged directly from source using Nix. These plugins are reproducible, version-controlled, and integrate seamlessly with the Nixvim module system.
+
 ## Installation
 
 Getting started with this personal fork of Neve is straightforward. Simply follow the installation guide below.
@@ -140,6 +142,48 @@ To disable all UI plugins for example, you can easily do it by going to config/d
 5- Update your inputs and install the fork with `inputs.Neve.packages.${pkgs.system}.default`.
 
 6- Rebuild the system and you should be done!
+
+## Custom Built Plugins
+
+Neve builds some plugins directly from source that aren't available in nixpkgs. These plugins are packaged using `pkgs.vimUtils.buildVimPlugin` and integrated as native Nixvim modules.
+
+### Terragrunt Language Server (terragrunt-ls)
+
+A language server for [Terragrunt](https://terragrunt.gruntwork.io/) that provides IDE features for `.hcl` files.
+
+**Features:**
+- 🚀 Automatic LSP attachment to HCL files
+- 🔧 Configurable logging for debugging
+- 📦 Built from the official [gruntwork-io/terragrunt-ls](https://github.com/gruntwork-io/terragrunt-ls) repository
+- 🔄 Automatically kept up-to-date via GitHub Actions
+
+**Usage:**
+
+```nix
+{
+  terragrunt-ls = {
+    enable = true;
+    logPath = "/tmp/terragrunt-ls.log"; # Optional: enable logging
+    autoAttach = true; # Auto-attach to HCL files
+  };
+}
+```
+
+**Documentation:**
+- Module implementation: [`config/lsp/terragrunt-ls.nix`](config/lsp/terragrunt-ls.nix)
+- Detailed docs: [`config/lsp/README-terragrunt-ls.md`](config/lsp/README-terragrunt-ls.md)
+- Setup guide: [`TERRAGRUNT-LS-SETUP.md`](TERRAGRUNT-LS-SETUP.md)
+- Example config: [`examples/terragrunt-ls-config.nix`](examples/terragrunt-ls-config.nix)
+
+**Automatic Updates:**
+
+The terragrunt-ls plugin is automatically kept up-to-date via a [GitHub Action](.github/workflows/update-plugins.yml) that:
+- 🔄 Runs daily to check for upstream updates
+- 🤖 Automatically calculates new Nix hashes
+- ✅ Tests the build before creating a PR
+- 📬 Creates pull requests with detailed changelog information
+
+See the [Workflows README](.github/workflows/README.md) for more details on automated maintenance.
 
 ## Quick Start
 

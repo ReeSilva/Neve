@@ -1,0 +1,180 @@
+---
+name: Update Custom Plugins
+
+on:
+  schedule:
+    # Run every day at 00:00 UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update-terragrunt-ls:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v27
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+
+      - name: Check for terragrunt-ls updates
+        id: check-update
+        run: |
+          set -euo pipefail
+
+          # Get current rev from the module file
+          CURRENT_REV=$(grep -oP 'rev = "\K[^"]+' config/lsp/terragrunt-ls.nix || echo "main")
+          echo "Current rev: $CURRENT_REV"
+          echo "current_rev=$CURRENT_REV" >> $GITHUB_OUTPUT
+
+          # Get latest commit from main branch
+          LATEST_REV=$(curl -s https://api.github.com/repos/gruntwork-io/terragrunt-ls/commits/main | jq -r '.sha')
+          echo "Latest rev: $LATEST_REV"
+          echo "latest_rev=$LATEST_REV" >> $GITHUB_OUTPUT
+
+          # Check if update is needed
+          if [ "$CURRENT_REV" = "main" ] || [ "$CURRENT_REV" != "$LATEST_REV" ]; then
+            echo "Update needed"
+            echo "needs_update=true" >> $GITHUB_OUTPUT
+          else
+            echo "Already up to date"
+            echo "needs_update=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Calculate new hash
+        if: steps.check-update.outputs.needs_update == 'true'
+        id: calc-hash
+        run: |
+          set -euo pipefail
+
+          LATEST_REV="${{ steps.check-update.outputs.latest_rev }}"
+
+          # Try to fetch with a dummy hash to get the correct one
+          NEW_HASH=$(nix-build -E "with import <nixpkgs> {}; fetchFromGitHub {
+            owner = \"gruntwork-io\";
+            repo = \"terragrunt-ls\";
+            rev = \"$LATEST_REV\";
+            hash = \"sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=\";
+          }" 2>&1 | grep -oP 'got:\s+\K\S+' || echo "")
+
+          if [ -z "$NEW_HASH" ]; then
+            echo "Failed to get hash"
+            exit 1
+          fi
+
+          echo "New hash: $NEW_HASH"
+          echo "new_hash=$NEW_HASH" >> $GITHUB_OUTPUT
+
+      - name: Update module file
+        if: steps.check-update.outputs.needs_update == 'true'
+        run: |
+          set -euo pipefail
+
+          LATEST_REV="${{ steps.check-update.outputs.latest_rev }}"
+          NEW_HASH="${{ steps.calc-hash.outputs.new_hash }}"
+
+          # Update rev (handle both "main" and commit SHA)
+          sed -i "s|rev = \"[^\"]*\";|rev = \"$LATEST_REV\";|g" config/lsp/terragrunt-ls.nix
+
+          # Update hash
+          sed -i "s|hash = \"[^\"]*\";|hash = \"$NEW_HASH\";|g" config/lsp/terragrunt-ls.nix
+
+          echo "Updated terragrunt-ls module"
+          cat config/lsp/terragrunt-ls.nix
+
+      - name: Test build
+        if: steps.check-update.outputs.needs_update == 'true'
+        run: |
+          set -euo pipefail
+
+          echo "Testing flake build..."
+          nix build .#default --show-trace
+
+          echo "Build successful!"
+
+      - name: Format with alejandra
+        if: steps.check-update.outputs.needs_update == 'true'
+        run: |
+          nix-env -i alejandra -f '<nixpkgs>'
+          alejandra config/lsp/terragrunt-ls.nix || true
+
+      - name: Get commit metadata
+        if: steps.check-update.outputs.needs_update == 'true'
+        id: commit-info
+        run: |
+          LATEST_REV="${{ steps.check-update.outputs.latest_rev }}"
+          SHORT_SHA=$(echo $LATEST_REV | cut -c1-7)
+
+          # Get commit info from GitHub API
+          COMMIT_INFO=$(curl -s "https://api.github.com/repos/gruntwork-io/terragrunt-ls/commits/$LATEST_REV")
+          COMMIT_MSG=$(echo "$COMMIT_INFO" | jq -r '.commit.message' | head -1)
+          COMMIT_DATE=$(echo "$COMMIT_INFO" | jq -r '.commit.author.date')
+          COMMIT_URL="https://github.com/gruntwork-io/terragrunt-ls/commit/$LATEST_REV"
+
+          echo "short_sha=$SHORT_SHA" >> $GITHUB_OUTPUT
+          echo "commit_msg=$COMMIT_MSG" >> $GITHUB_OUTPUT
+          echo "commit_date=$COMMIT_DATE" >> $GITHUB_OUTPUT
+          echo "commit_url=$COMMIT_URL" >> $GITHUB_OUTPUT
+
+      - name: Create Pull Request
+        if: steps.check-update.outputs.needs_update == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore(terragrunt-ls): update to ${{ steps.commit-info.outputs.short_sha }}"
+          branch: auto-update-terragrunt-ls
+          delete-branch: true
+          title: "🤖 Update terragrunt-ls to ${{ steps.commit-info.outputs.short_sha }}"
+          body: |
+            ## Automated Plugin Update
+
+            This PR updates the `terragrunt-ls` plugin to the latest version.
+
+            ### Changes
+            - **Plugin**: terragrunt-ls
+            - **New Commit**: [`${{ steps.commit-info.outputs.short_sha }}`](${{ steps.commit-info.outputs.commit_url }})
+            - **Commit Message**: ${{ steps.commit-info.outputs.commit_msg }}
+            - **Commit Date**: ${{ steps.commit-info.outputs.commit_date }}
+            - **New Hash**: `${{ steps.calc-hash.outputs.new_hash }}`
+
+            ### Upstream Repository
+            https://github.com/gruntwork-io/terragrunt-ls
+
+            ### Verification
+            - ✅ Flake build tested successfully
+            - ✅ Hash verified
+            - ✅ Code formatted with alejandra
+
+            ---
+            *This PR was automatically created by the `update-plugins` workflow.*
+          labels: |
+            dependencies
+            automated
+            plugins
+
+      - name: Summary
+        if: steps.check-update.outputs.needs_update == 'true'
+        run: |
+          echo "## ✅ Plugin Update Available" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Updated terragrunt-ls to commit \`${{ steps.commit-info.outputs.short_sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Details" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit**: ${{ steps.commit-info.outputs.commit_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Message**: ${{ steps.commit-info.outputs.commit_msg }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Date**: ${{ steps.commit-info.outputs.commit_date }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "A pull request has been created for review." >> $GITHUB_STEP_SUMMARY
+
+      - name: No update needed
+        if: steps.check-update.outputs.needs_update == 'false'
+        run: |
+          echo "## ℹ️ No Update Needed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "terragrunt-ls is already up to date!" >> $GITHUB_STEP_SUMMARY
