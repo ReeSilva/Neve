@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -45,44 +46,29 @@ in
 
   config = lib.mkIf config.terragrunt-ls.enable {
     # Add the plugin to extraPlugins
+    filetype.extension.hcl = "hcl";
     extraPlugins = [ terragrunt-ls-plugin ];
 
-    # Configure file type detection for HCL files
-    filetype.extension = {
-      hcl = "hcl";
-    };
-
     # Setup the terragrunt-ls integration
-    extraConfigLua =
-      let
-        cmdConfig = builtins.toJSON config.terragrunt-ls.cmd;
-        logConfig =
-          if config.terragrunt-ls.logPath != null then
-            "TG_LS_LOG = '${config.terragrunt-ls.logPath}',"
-          else
-            "";
-      in
-      ''
-        -- Setup terragrunt-ls
-        -- $cmdConfig}
-        -- $logConfig}
-        local terragrunt_ls = require('terragrunt-ls')
+    extraConfigLua = ''
+      -- Setup terragrunt-ls
+      local terragrunt_ls = require('terragrunt-ls')
 
-        terragrunt_ls.setup({
-          cmd = { "terragrunt-ls" },
-        })
+      terragrunt_ls.setup({
+        cmd = { "${lib.getExe inputs.pangaea.packages.${pkgs.system}.terragrunt-ls}" },
+      })
 
-        ${lib.optionalString config.terragrunt-ls.autoAttach ''
-          -- Auto-attach terragrunt-ls to HCL files
-          if terragrunt_ls.client then
-            vim.api.nvim_create_autocmd('FileType', {
-              pattern = 'hcl',
-              callback = function()
-                vim.lsp.buf_attach_client(0, terragrunt_ls.client)
-              end,
-            })
-          end
-        ''}
-      '';
+      ${lib.optionalString config.terragrunt-ls.autoAttach ''
+        -- Auto-attach terragrunt-ls to HCL files
+        if terragrunt_ls.client then
+          vim.api.nvim_create_autocmd('FileType', {
+            pattern = 'hcl',
+            callback = function()
+              vim.lsp.buf_attach_client(0, terragrunt_ls.client)
+            end,
+          })
+        end
+      ''}
+    '';
   };
 }

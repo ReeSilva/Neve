@@ -2,9 +2,6 @@
   description = "Neve is a Neovim configuration built with Nixvim, which allows you to use Nix language to manage Neovim plugins/options";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-master.url = "github:nixos/nixpkgs/master";
-    nixvim.url = "github:nix-community/nixvim";
     flake-utils.url = "github:numtide/flake-utils";
     mcphub-nvim = {
       url = "github:ravitemer/mcphub.nvim";
@@ -14,6 +11,10 @@
       url = "github:ravitemer/mcp-hub";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    nixvim.url = "github:nix-community/nixvim";
+    pangaea.url = "git+https://codeberg.org/reesilva/pangaea?ref=feat/v2";
   };
 
   outputs =
@@ -57,6 +58,7 @@
             inherit mcphub-nvim;
             inherit mcp-hub;
             inherit pkgs-master;
+            inherit inputs;
           };
         };
       in
@@ -78,3 +80,4 @@
       }
     );
 }
+

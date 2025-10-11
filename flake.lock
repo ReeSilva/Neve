@@ -63,6 +63,24 @@
         "type": "github"
       }
     },
+    "flake-parts_4": {
+      "inputs": {
+        "nixpkgs-lib": "nixpkgs-lib"
+      },
+      "locked": {
+        "lastModified": 1759362264,
+        "narHash": "sha256-wfG0S7pltlYyZTM+qqlhJ7GMw2fTF4mLKCIVhLii/4M=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "758cf7296bee11f1706a574c77d072b8a7baa881",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -185,6 +203,21 @@
         "type": "github"
       }
     },
+    "nixpkgs-lib": {
+      "locked": {
+        "lastModified": 1754788789,
+        "narHash": "sha256-x2rJ+Ovzq0sCMpgfgGaaqgBSwY+LST+WbZ6TytnT9Rk=",
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "rev": "a73b9c743612e4244d865a2fdee11865283c04e6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
     "nixpkgs-master": {
       "locked": {
         "lastModified": 1760215759,
@@ -213,6 +246,22 @@
       "original": {
         "owner": "NixOS",
         "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1760038930,
+        "narHash": "sha256-Oncbh0UmHjSlxO7ErQDM3KM0A5/Znfofj2BSzlHLeVw=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "0b4defa2584313f3b781240b29d61f6f9f7e0df3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -261,6 +310,27 @@
         "type": "github"
       }
     },
+    "pangaea": {
+      "inputs": {
+        "flake-parts": "flake-parts_4",
+        "nixpkgs": "nixpkgs_3",
+        "wallpaper": "wallpaper"
+      },
+      "locked": {
+        "lastModified": 1760205465,
+        "narHash": "sha256-RLYe5bIPWm5+Txe9xO+rr3mBejTZVf4FRh90NY7bX5I=",
+        "ref": "feat/v2",
+        "rev": "731f66137bbbb6663bac666deeb545b5b7a96ae8",
+        "revCount": 294,
+        "type": "git",
+        "url": "https://codeberg.org/reesilva/pangaea"
+      },
+      "original": {
+        "ref": "feat/v2",
+        "type": "git",
+        "url": "https://codeberg.org/reesilva/pangaea"
+      }
+    },
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -268,7 +338,8 @@
         "mcphub-nvim": "mcphub-nvim",
         "nixpkgs": "nixpkgs",
         "nixpkgs-master": "nixpkgs-master",
-        "nixvim": "nixvim"
+        "nixvim": "nixvim",
+        "pangaea": "pangaea"
       }
     },
     "systems": {
@@ -313,6 +384,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "wallpaper": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1661293434,
+        "narHash": "sha256-h+cFlTXvUVJPRMpk32jYVDDhHu1daWSezFcvhJqDpmU=",
+        "owner": "zhichaoh",
+        "repo": "catppuccin-wallpapers",
+        "rev": "1023077979591cdeca76aae94e0359da1707a60e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zhichaoh",
+        "repo": "catppuccin-wallpapers",
         "type": "github"
       }
     }
