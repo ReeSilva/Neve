@@ -6,8 +6,8 @@ let
         src = final.fetchFromGitHub {
           owner = "yetone";
           repo = "avante.nvim";
-          rev = "d0f0580d64c391de7b87160a9e66191677e02f54";
-          sha256 = "sha256-Jv/0fybim/MyM/cYE+EqV6Om+3J7UCFCkPY1FOwSCqs=";
+          rev = "f092bb3ec0acf87b838e082209b6a7eddcbf5940";
+          sha256 = "sha256-zKDp9It/VgUD8BN5ktTmfbQX0s3SBo20T8no8nwsyfY=";
         };
       });
     };
