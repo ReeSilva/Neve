@@ -30,7 +30,6 @@ Neve is a Nix flake that builds a custom Neovim configuration using [Nixvim](htt
 ```nix
 inputs = {
   nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-  nixpkgs-master.url = "github:nixos/nixpkgs/master";
   nixvim.url = "github:nix-community/nixvim";
   flake-utils.url = "github:numtide/flake-utils";
   mcphub-nvim = {
@@ -41,17 +40,18 @@ inputs = {
     url = "github:ravitemer/mcp-hub";
     inputs.nixpkgs.follows = "nixpkgs";
   };
+  pangaea.url = "git+https://codeberg.org/reesilva/pangaea?ref=feat/v2";
 };
 ```
 
 **Input Descriptions:**
 
 - **nixpkgs** - Unstable channel for latest packages
-- **nixpkgs-master** - Master branch for cutting-edge packages
 - **nixvim** - Nix modules for Neovim configuration
 - **flake-utils** - Helper functions for multi-system builds
 - **mcphub-nvim** - MCP (Model Context Protocol) integration for Neovim
 - **mcp-hub** - MCP hub implementation
+- **pangaea** - A flake providing custom packages, such as `terragrunt-ls`
 
 **Input Follows:**
 The `inputs.nixpkgs.follows = "nixpkgs"` pattern ensures all dependencies use the same nixpkgs version, preventing version conflicts.
@@ -118,7 +118,7 @@ nvim = nixvim'.makeNixvimWithModule {
   inherit pkgs;
   module = config;
   extraSpecialArgs = {
-    inherit self mcphub-nvim mcp-hub pkgs-master;
+    inherit self mcphub-nvim mcp-hub inputs;
   };
 };
 ```
@@ -131,7 +131,7 @@ nvim = nixvim'.makeNixvimWithModule {
   - `self`: Reference to this flake (for accessing outputs)
   - `mcphub-nvim`: MCP Neovim plugin integration
   - `mcp-hub`: MCP hub functionality
-  - `pkgs-master`: Access to master branch packages
+  - `inputs`: All flake inputs, allowing access to packages from other flakes (e.g., `pangaea`)
 
 **Build Steps:**
 
@@ -285,6 +285,36 @@ nix-build -E 'with import <nixpkgs> {}; fetchFromGitHub {
 ```
 
 Copy the hash from the error message.
+
+### Nixpkgs Overlays
+
+Neve uses Nixpkgs overlays to customize packages. An overlay is a function that modifies the Nixpkgs package set.
+
+#### Example: `avante.nvim`
+
+The `avante.nvim` plugin is pinned to a specific commit to ensure stability. This is done via an overlay in `config/default.nix`:
+
+```nix
+let
+  avante-overlay = final: prev: {
+    vimPlugins = prev.vimPlugins // {
+      avante-nvim = prev.vimPlugins.avante-nvim.overrideAttrs (old: {
+        src = final.fetchFromGitHub {
+          owner = "yetone";
+          repo = "avante.nvim";
+          rev = "a9458f1835f13d055a4891136164388f01f8d3a8";
+          sha256 = "sha256-76g91HAsjwZyJ6vRDnIAv0eHkK/OY3SDMlJCUelViKM=";
+        };
+      });
+    };
+  };
+in
+{
+  nixpkgs.overlays = [ avante-overlay ];
+}
+```
+
+This ensures that `avante.nvim` is always built from the specified revision, overriding the version that might be in nixpkgs.
 
 ## Development Workflow
 

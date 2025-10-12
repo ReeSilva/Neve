@@ -12,7 +12,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixvim.url = "github:nix-community/nixvim";
     pangaea.url = "git+https://codeberg.org/reesilva/pangaea?ref=feat/v2";
   };
@@ -26,38 +25,28 @@
       mcp-hub,
       ...
     }@inputs:
-    let
-      config = import ./config; # import the module directly
-      # Enable unfree packages
-      nixpkgsConfig = {
-        allowUnfree = true;
-      };
-    in
-    {
-      nixvimModule = config;
-    }
-    // flake-utils.lib.eachDefaultSystem (
+    flake-utils.lib.eachDefaultSystem (
       system:
       let
-        nixvimLib = nixvim.lib.${system};
+        config = import ./config;
+        nixpkgsConfig = {
+          allowUnfree = true;
+        };
+
         pkgs = import inputs.nixpkgs {
           inherit system;
           config = nixpkgsConfig;
         };
-        pkgs-master = import inputs.nixpkgs-master {
-          inherit system;
-          config = nixpkgsConfig;
-        };
+
+        nixvimLib = nixvim.lib.${system};
         nixvim' = nixvim.legacyPackages.${system};
         nvim = nixvim'.makeNixvimWithModule {
           inherit pkgs;
           module = config;
-          # You can use `extraSpecialArgs` to pass additional arguments to your module files
           extraSpecialArgs = {
             inherit self;
             inherit mcphub-nvim;
             inherit mcp-hub;
-            inherit pkgs-master;
             inherit inputs;
           };
         };
@@ -80,4 +69,3 @@
       }
     );
 }
-

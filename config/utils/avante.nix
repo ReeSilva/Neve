@@ -2,7 +2,6 @@
   lib,
   config,
   pkgs,
-  pkgs-master,
   mcphub-nvim,
   mcp-hub,
   ...
@@ -54,7 +53,6 @@
         };
         avante = {
           enable = true;
-          package = pkgs-master.vimPlugins.avante-nvim;
           settings = {
             provider = if pkgs.stdenv.isDarwin then "gemini-cli" else "claude-code";
             behaviour = {
@@ -150,18 +148,19 @@
                 return mcphub_avante.mcp_tool()
               end
             '';
-            disabled_tools = [
-              "list_files" # Built-in file operations
-              "search_files"
-              "read_file"
-              "create_file"
-              "rename_file"
-              "delete_file"
-              "create_dir"
-              "rename_dir"
-              "delete_dir"
-              "bash" # Built-in terminal access
-            ];
+            # for now, let's try use avante tools instead of mcphub
+            # disabled_tools = [
+            #   "list_files" # Built-in file operations
+            #   "search_files"
+            #   "read_file"
+            #   "create_file"
+            #   "rename_file"
+            #   "delete_file"
+            #   "create_dir"
+            #   "rename_dir"
+            #   "delete_dir"
+            #   "bash" # Built-in terminal access
+            # ];
           };
         };
       };

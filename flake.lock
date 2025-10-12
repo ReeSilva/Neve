@@ -218,22 +218,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-master": {
-      "locked": {
-        "lastModified": 1760215759,
-        "narHash": "sha256-bpHRZAt/yO4w+Uy3SqSwsAAMIVQGI6iifQgjHrm5nsw=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "12fdeffdbe93579a0ce6951560c974d7da2201a0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1759632233,
@@ -337,7 +321,6 @@
         "mcp-hub": "mcp-hub",
         "mcphub-nvim": "mcphub-nvim",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-master": "nixpkgs-master",
         "nixvim": "nixvim",
         "pangaea": "pangaea"
       }

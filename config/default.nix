@@ -1,4 +1,18 @@
 { lib, ... }:
+let
+  avante-overlay = final: prev: {
+    vimPlugins = prev.vimPlugins // {
+      avante-nvim = prev.vimPlugins.avante-nvim.overrideAttrs (old: {
+        src = final.fetchFromGitHub {
+          owner = "yetone";
+          repo = "avante.nvim";
+          rev = "a9458f1835f13d055a4891136164388f01f8d3a8";
+          sha256 = "sha256-76g91HAsjwZyJ6vRDnIAv0eHkK/OY3SDMlJCUelViKM=";
+        };
+      });
+    };
+  };
+in
 {
   # Import all your configuration modules here
   imports = [
@@ -36,4 +50,6 @@
   telescope.enable = lib.mkDefault true;
   ui.enable = lib.mkDefault true;
   utils.enable = lib.mkDefault true;
+
+  nixpkgs.overlays = [ avante-overlay ];
 }
