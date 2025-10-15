@@ -3,11 +3,12 @@ let
   avante-overlay = final: prev: {
     vimPlugins = prev.vimPlugins // {
       avante-nvim = prev.vimPlugins.avante-nvim.overrideAttrs (old: {
+        version = "0.0.27-unstable-2025-10-16";
         src = final.fetchFromGitHub {
           owner = "yetone";
           repo = "avante.nvim";
-          rev = "f092bb3ec0acf87b838e082209b6a7eddcbf5940";
-          sha256 = "sha256-zKDp9It/VgUD8BN5ktTmfbQX0s3SBo20T8no8nwsyfY=";
+          rev = "216ba4a8b2b751e2e86da6f7d8fe59b1a67c1197";
+          sha256 = "sha256-soldEWpHBVgHhfXR20aI2P0t5EOLJuqr0eL8Szk+qcg=";
         };
       });
     };
