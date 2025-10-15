@@ -58,6 +58,9 @@
             behaviour = {
               enable_cursor_planning_mode = true;
               enable_fastapply = true;
+              auto_approve_tool_permissions = false;
+              confirmation_ui_style = "popup";
+              enable_token_counting = false;
             };
             input = {
               provider = "snacks";
