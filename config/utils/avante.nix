@@ -105,6 +105,12 @@
                       GEMINI_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'GEMINI_API_KEY'";
                     };
                   };
+                  codex = {
+                    command = lib.getExe pkgs.codex;
+                    env = {
+                      OPENAI_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'OPENAI_API_KEY'";
+                    };
+                  };
                 }
               else
                 {
