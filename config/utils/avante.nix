@@ -98,7 +98,7 @@
               if pkgs.stdenv.isDarwin then
                 {
                   gemini-cli = {
-                    command = "gemini";
+                    command = lib.getExe pkgs.gemini-cli;
                     args = [ "--experimental-acp" ];
                     env = {
                       NODE_NO_WARNINGS = "1";
