@@ -19,6 +19,7 @@ final: prev: {
       description = "Agent Client Protocol adapter for Codex";
       homepage = "https://github.com/zed-industries/codex-acp";
       license = licenses.asl20;
+      mainProgram = "codex-acp";
     };
   };
 }
