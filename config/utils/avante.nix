@@ -111,6 +111,13 @@
                       OPENAI_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'OPENAI_API_KEY'";
                     };
                   };
+                  opencode = {
+                    command = lib.getExe pkgs.opencode;
+                    args = [ "acp" ];
+                    env = {
+                      ANTHROPIC_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'ANTHROPIC_API_KEY'";
+                    };
+                  };
                 }
               else
                 {
@@ -121,6 +128,13 @@
                       NODE_NO_WARNINGS = "1";
                       ANTHROPIC_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'ANTHROPIC_API_KEY'";
                       ACP_PERMISSION_MODE = "acceptEdits";
+                    };
+                  };
+                  opencode = {
+                    command = lib.getExe pkgs.opencode;
+                    args = [ "acp" ];
+                    env = {
+                      ANTHROPIC_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'ANTHROPIC_API_KEY'";
                     };
                   };
                 };

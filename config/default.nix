@@ -13,6 +13,25 @@ let
       });
     };
   };
+  opencode-overlay = final: prev: {
+    opencode = prev.opencode.overrideAttrs {
+      version = "0.15.7-acp";
+      src = prev.fetchFromGitHub {
+        owner = "reesilva";
+        repo = "opencode";
+        rev = "dev";
+        sha256 = "sha256-gbXafpZ3zWNZZ0osoXo/lUiaNaBwKNpEMwDnd1JA8Po=";
+      };
+      node_modules = prev.opencode.node_modules.overrideAttrs {
+        inherit (final.opencode) version src;
+        outputHash =
+          {
+            x86_64-linux = "sha256-iJbflfKwDwKrJQgy5jxrEhkyCie2hsEMmiLf2btE60E=";
+          }
+          .${prev.system};
+      };
+    };
+  };
 in
 {
   # Import all your configuration modules here
@@ -52,5 +71,8 @@ in
   ui.enable = lib.mkDefault true;
   utils.enable = lib.mkDefault true;
 
-  nixpkgs.overlays = [ avante-overlay ];
+  nixpkgs.overlays = [
+    avante-overlay
+    opencode-overlay
+  ];
 }
