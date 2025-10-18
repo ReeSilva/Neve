@@ -97,6 +97,12 @@
             acp_providers =
               if pkgs.stdenv.isDarwin then
                 {
+                  codex = {
+                    command = lib.getExe pkgs.codex-acp;
+                    env = {
+                      OPENAI_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'OPENAI_API_KEY'";
+                    };
+                  };
                   gemini-cli = {
                     command = lib.getExe pkgs.gemini-cli;
                     args = [ "--experimental-acp" ];
@@ -123,6 +129,12 @@
                       NODE_NO_WARNINGS = "1";
                       ANTHROPIC_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'ANTHROPIC_API_KEY'";
                       ACP_PERMISSION_MODE = "acceptEdits";
+                    };
+                  };
+                  codex = {
+                    command = lib.getExe pkgs.codex-acp;
+                    env = {
+                      OPENAI_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'OPENAI_API_KEY'";
                     };
                   };
                   opencode = {

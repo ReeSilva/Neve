@@ -29,13 +29,12 @@
       system:
       let
         config = import ./config;
-        nixpkgsConfig = {
-          allowUnfree = true;
-        };
+        overlays = import ./config/overlays;
 
         pkgs = import inputs.nixpkgs {
           inherit system;
-          config = nixpkgsConfig;
+          overlays = overlays;
+          config.allowUnfree = true;
         };
 
         nixvimLib = nixvim.lib.${system};
@@ -48,6 +47,7 @@
             inherit mcphub-nvim;
             inherit mcp-hub;
             inherit inputs;
+            inherit overlays;
           };
         };
       in
@@ -63,6 +63,7 @@
         packages = {
           # Lets you run `nix run .` to start nixvim
           default = nvim;
+          inherit (pkgs) codex-acp;
         };
 
         formatter = pkgs.nixfmt-rfc-style;

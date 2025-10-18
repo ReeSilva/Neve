@@ -1,39 +1,4 @@
-{ lib, ... }:
-let
-  avante-overlay = final: prev: {
-    vimPlugins = prev.vimPlugins // {
-      avante-nvim = prev.vimPlugins.avante-nvim.overrideAttrs (old: {
-        version = "0.0.27-unstable-2025-10-16";
-        src = final.fetchFromGitHub {
-          owner = "yetone";
-          repo = "avante.nvim";
-          rev = "f0ad738e5aa15605a73d34b3b0a803b48e47d519";
-          sha256 = "sha256-+tsKEMnVd8jd6WabMfOXrWLb+xWiH56LSNgFdz3H7DM=";
-        };
-      });
-    };
-  };
-  opencode-overlay = final: prev: {
-    opencode = prev.opencode.overrideAttrs {
-      version = "0.15.7-acp";
-      src = prev.fetchFromGitHub {
-        owner = "reesilva";
-        repo = "opencode";
-        rev = "acp-v2";
-        sha256 = "sha256-gbXafpZ3zWNZZ0osoXo/lUiaNaBwKNpEMwDnd1JA8Po=";
-      };
-      node_modules = prev.opencode.node_modules.overrideAttrs {
-        inherit (final.opencode) version src;
-        outputHash =
-          {
-            x86_64-linux = "sha256-iJbflfKwDwKrJQgy5jxrEhkyCie2hsEMmiLf2btE60E=";
-            aarch64-darwin = "sha256-oICPefgikykFWNDlxCXH4tILdjv4NytgQdejdQBeQ+A=";
-          }
-          .${prev.system};
-      };
-    };
-  };
-in
+{ lib, overlays, ... }:
 {
   # Import all your configuration modules here
   imports = [
@@ -72,8 +37,5 @@ in
   ui.enable = lib.mkDefault true;
   utils.enable = lib.mkDefault true;
 
-  nixpkgs.overlays = [
-    avante-overlay
-    opencode-overlay
-  ];
+  nixpkgs.overlays = overlays;
 }
