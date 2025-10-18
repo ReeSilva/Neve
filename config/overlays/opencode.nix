@@ -1,11 +1,11 @@
 final: prev: {
   opencode = prev.opencode.overrideAttrs {
-    version = "0.15.7-acp";
+    version = "0.15.8";
     src = prev.fetchFromGitHub {
       owner = "reesilva";
       repo = "opencode";
       rev = "dev";
-      sha256 = "sha256-gbXafpZ3zWNZZ0osoXo/lUiaNaBwKNpEMwDnd1JA8Po=";
+      sha256 = "sha256-Zb3xtwXbvafbFXlIoFatU6HoxmyfaPosTHI/uEMCz8c=";
     };
     node_modules = prev.opencode.node_modules.overrideAttrs {
       inherit (final.opencode) version src;

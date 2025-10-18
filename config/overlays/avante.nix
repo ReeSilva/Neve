@@ -5,7 +5,7 @@ final: prev: {
       src = final.fetchFromGitHub {
         owner = "yetone";
         repo = "avante.nvim";
-        rev = "f0ad738e5aa15605a73d34b3b0a803b48e47d519";
+        rev = "cc7a41262e4dc38003b7578c3553a75c0ec4b8d2";
         sha256 = "sha256-+tsKEMnVd8jd6WabMfOXrWLb+xWiH56LSNgFdz3H7DM=";
       };
     });
