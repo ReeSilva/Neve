@@ -19,7 +19,7 @@ let
       src = prev.fetchFromGitHub {
         owner = "reesilva";
         repo = "opencode";
-        rev = "dev";
+        rev = "acp-v2";
         sha256 = "sha256-gbXafpZ3zWNZZ0osoXo/lUiaNaBwKNpEMwDnd1JA8Po=";
       };
       node_modules = prev.opencode.node_modules.overrideAttrs {
@@ -27,6 +27,7 @@ let
         outputHash =
           {
             x86_64-linux = "sha256-iJbflfKwDwKrJQgy5jxrEhkyCie2hsEMmiLf2btE60E=";
+            aarch64-darwin = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
           }
           .${prev.system};
       };
