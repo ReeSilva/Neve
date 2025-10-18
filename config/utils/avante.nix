@@ -54,7 +54,7 @@
         avante = {
           enable = true;
           settings = {
-            provider = if pkgs.stdenv.isDarwin then "gemini-cli" else "claude-code";
+            provider = if pkgs.stdenv.isDarwin then "codex" else "opencode";
             behaviour = {
               enable_cursor_planning_mode = true;
               enable_fastapply = true;
