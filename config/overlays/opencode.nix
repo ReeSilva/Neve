@@ -4,7 +4,7 @@ final: prev: {
     src = prev.fetchFromGitHub {
       owner = "reesilva";
       repo = "opencode";
-      rev = "dev";
+      rev = "92bae9215788c5daa13dfeaa646140ebf337a4ec";
       sha256 = "sha256-Zb3xtwXbvafbFXlIoFatU6HoxmyfaPosTHI/uEMCz8c=";
     };
     node_modules = prev.opencode.node_modules.overrideAttrs {
