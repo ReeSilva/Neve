@@ -5,7 +5,7 @@ final: prev: {
       owner = "reesilva";
       repo = "opencode";
       rev = "f9036734eb624d5070d882892a81383300880cc0";
-      sha256 = "sha256-Zb3xtwXbvafbFXlIoFatU6HoxmyfaPosTHI/uEMCz8c=";
+      sha256 = "sha256-SIfNi3nRgMaWuqOtlPdbmDTRPqoSO4qwGCSMXoye9Ro=";
     };
     node_modules = prev.opencode.node_modules.overrideAttrs {
       inherit (final.opencode) version src;
