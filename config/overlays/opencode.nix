@@ -1,10 +1,10 @@
 final: prev: {
   opencode = prev.opencode.overrideAttrs {
-    version = "0.15.8";
+    version = "0.15.10";
     src = prev.fetchFromGitHub {
       owner = "reesilva";
       repo = "opencode";
-      rev = "92bae9215788c5daa13dfeaa646140ebf337a4ec";
+      rev = "f9036734eb624d5070d882892a81383300880cc0";
       sha256 = "sha256-Zb3xtwXbvafbFXlIoFatU6HoxmyfaPosTHI/uEMCz8c=";
     };
     node_modules = prev.opencode.node_modules.overrideAttrs {
