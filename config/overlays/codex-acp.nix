@@ -1,11 +1,11 @@
 final: prev: {
   codex-acp = final.rustPlatform.buildRustPackage {
     pname = "codex-acp";
-    version = "0.3.2";
+    version = "0.3.3";
     src = final.fetchFromGitHub {
       owner = "zed-industries";
       repo = "codex-acp";
-      rev = "v0.3.2";
+      rev = "v0.3.3";
       hash = "sha256-t/QqRCEMuM1MGbi5P5lPuZw3SjyayLffG04mN//Mupk=";
     };
     cargoHash = "sha256-TD4iADzLIyv65JcaPm1LnvXipSaCRJMF67D/sDa/lBU=";
