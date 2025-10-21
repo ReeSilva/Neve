@@ -1,7 +1,7 @@
 final: prev: {
   codex-acp = final.rustPlatform.buildRustPackage {
     pname = "codex-acp";
-    version = "0.3.0";
+    version = "0.3.2";
     src = final.fetchFromGitHub {
       owner = "zed-industries";
       repo = "codex-acp";
