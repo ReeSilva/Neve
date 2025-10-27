@@ -13,6 +13,29 @@
   config =
     let
       cfg = config.avante;
+      codex-acp = pkgs.rustPlatform.buildRustPackage {
+        pname = "codex-acp";
+        version = "0.3.10";
+        src = pkgs.fetchFromGitHub {
+          owner = "zed-industries";
+          repo = "codex-acp";
+          rev = "v0.3.10";
+          hash = "sha256-2uodmFn5xYNZXzaj7M5xCGrJIC1V+xhbUsKautL9YgY=";
+        };
+        cargoHash = "sha256-ARtSdmec8Ys//nPZh023Bgh2fL5Ye5GxllR4OcpHgDs=";
+        nativeBuildInputs = [ pkgs.pkg-config ];
+        buildInputs = [
+          pkgs.openssl
+          pkgs.dbus
+        ];
+        OPENSSL_NO_VENDOR = "1";
+        meta = with pkgs.lib; {
+          description = "Agent Client Protocol adapter for Codex";
+          homepage = "https://github.com/zed-industries/codex-acp";
+          license = licenses.asl20;
+          mainProgram = "codex-acp";
+        };
+      };
     in
     lib.mkIf cfg.enable {
       extraPlugins = [ mcphub-nvim.packages.${pkgs.system}.default ];
@@ -98,7 +121,7 @@
               if pkgs.stdenv.isDarwin then
                 {
                   codex = {
-                    command = lib.getExe pkgs.codex-acp;
+                    command = lib.getExe codex-acp;
                     env = {
                       OPENAI_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'OPENAI_API_KEY'";
                     };
@@ -132,7 +155,7 @@
                     };
                   };
                   codex = {
-                    command = lib.getExe pkgs.codex-acp;
+                    command = lib.getExe codex-acp;
                     env = {
                       OPENAI_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'OPENAI_API_KEY'";
                     };

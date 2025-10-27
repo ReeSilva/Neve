@@ -1,17 +1,17 @@
 final: prev: {
   opencode = prev.opencode.overrideAttrs {
-    version = "0.15.13";
+    version = "dev-2026-10-26";
     src = prev.fetchFromGitHub {
       owner = "sst";
       repo = "opencode";
-      rev = "v0.15.13";
-      sha256 = "sha256-SIfNi3nRgMaWuqOtlPdbmDTRPqoSO4qwGCSMXoye9Ro=";
+      rev = "dev";
+      sha256 = "sha256-CaqQ32Wryhq8uNCwNeTcPR30Inp+QPATk8C/j4pQO7k=";
     };
     node_modules = prev.opencode.node_modules.overrideAttrs {
       inherit (final.opencode) version src;
       outputHash =
         {
-          x86_64-linux = "sha256-iJbflfKwDwKrJQgy5jxrEhkyCie2hsEMmiLf2btE60E=";
+          x86_64-linux = "sha256-zQfbh4X/FtoVh2A7YEEZKmCHnot6lsCzxwTJwkEdu10=";
           aarch64-darwin = "sha256-oICPefgikykFWNDlxCXH4tILdjv4NytgQdejdQBeQ+A=";
         }
         .${prev.system};

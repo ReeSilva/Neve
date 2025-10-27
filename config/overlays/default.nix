@@ -1,5 +1,5 @@
 [
   (import ./avante.nix)
   (import ./opencode.nix)
-  (import ./codex-acp.nix)
+  # (import ./codex-acp.nix)
 ]
