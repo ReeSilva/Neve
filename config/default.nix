@@ -1,4 +1,4 @@
-{ lib, overlays, ... }:
+{ lib, ... }:
 {
   # Import all your configuration modules here
   imports = [
@@ -12,6 +12,7 @@
     ./keys.nix
     ./languages
     ./lsp
+    ./overlays
     ./sets
     ./snippets
     ./statusline
@@ -30,12 +31,11 @@
   keys.enable = true;
   languages.enable = true;
   lsp-setup.enable = lib.mkDefault true;
+  overlays.enable = lib.mkDefault true;
   sets.enable = lib.mkDefault true;
   snippets.enable = lib.mkDefault true;
   statusline.enable = lib.mkDefault true;
   telescope.enable = lib.mkDefault true;
   ui.enable = lib.mkDefault true;
   utils.enable = lib.mkDefault true;
-
-  nixpkgs.overlays = overlays;
 }

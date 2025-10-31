@@ -29,11 +29,8 @@
       system:
       let
         config = import ./config;
-        overlays = import ./config/overlays;
-
         pkgs = import inputs.nixpkgs {
           inherit system;
-          overlays = overlays;
           config.allowUnfree = true;
         };
 
@@ -47,7 +44,6 @@
             inherit mcphub-nvim;
             inherit mcp-hub;
             inherit inputs;
-            inherit overlays;
           };
         };
       in
