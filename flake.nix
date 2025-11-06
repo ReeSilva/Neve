@@ -13,6 +13,7 @@
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixvim.url = "github:nix-community/nixvim";
+    nix-ai-tools.url = "github:numtide/nix-ai-tools?ref=main";
     pangaea.url = "git+https://codeberg.org/reesilva/pangaea?ref=feat/v2";
   };
 
