@@ -55,7 +55,9 @@ in
       local terragrunt_ls = require('terragrunt-ls')
 
       terragrunt_ls.setup({
-        cmd = { "${lib.getExe inputs.pangaea.packages.${pkgs.system}.terragrunt-ls}" },
+        cmd = { "${
+          lib.getExe inputs.pangaea.packages.${pkgs.stdenv.hostPlatform.system}.terragrunt-ls
+        }" },
       })
 
       ${lib.optionalString config.terragrunt-ls.autoAttach ''

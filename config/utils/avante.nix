@@ -16,12 +16,12 @@
       cfg = config.avante;
     in
     lib.mkIf cfg.enable {
-      extraPlugins = [ mcphub-nvim.packages.${pkgs.system}.default ];
+      extraPlugins = [ mcphub-nvim.packages.${pkgs.stdenv.hostPlatform.system}.default ];
       extraConfigLua = ''
         require("mcphub").setup({
           port = 3000,
           config = vim.fn.expand("~/.config/mcphub/servers.json"),
-          cmd = "${mcp-hub.packages.${pkgs.system}.default}/bin/mcp-hub",
+          cmd = "${mcp-hub.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/mcp-hub",
           extensions = {
             avante = {
               make_slash_commands = true,
@@ -99,13 +99,13 @@
               if pkgs.stdenv.isDarwin then
                 {
                   codex = {
-                    command = lib.getExe inputs.nix-ai-tools.packages.${pkgs.system}.codex-acp;
+                    command = lib.getExe inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.codex-acp;
                     env = {
                       OPENAI_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'OPENAI_API_KEY'";
                     };
                   };
                   gemini-cli = {
-                    command = lib.getExe inputs.nix-ai-tools.packages.${pkgs.system}.gemini-cli;
+                    command = lib.getExe inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.gemini-cli;
                     args = [ "--experimental-acp" ];
                     env = {
                       NODE_NO_WARNINGS = "1";
@@ -113,7 +113,7 @@
                     };
                   };
                   opencode = {
-                    command = lib.getExe inputs.nix-ai-tools.packages.${pkgs.system}.opencode;
+                    command = lib.getExe inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.opencode;
                     args = [ "acp" ];
                     env = {
                       GEMINI_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'GEMINI_API_KEY'";
@@ -124,7 +124,9 @@
               else
                 {
                   claude-code = {
-                    command = lib.getExe inputs.nix-ai-tools.packages.${pkgs.system}.claude-code-acp;
+                    command =
+                      lib.getExe
+                        inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.claude-code-acp;
                     env = {
                       NODE_NO_WARNINGS = "1";
                       ANTHROPIC_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'ANTHROPIC_API_KEY'";
@@ -132,13 +134,13 @@
                     };
                   };
                   codex = {
-                    command = lib.getExe inputs.nix-ai-tools.packages.${pkgs.system}.codex-acp;
+                    command = lib.getExe inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.codex-acp;
                     env = {
                       OPENAI_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'OPENAI_API_KEY'";
                     };
                   };
                   opencode = {
-                    command = lib.getExe inputs.nix-ai-tools.packages.${pkgs.system}.opencode;
+                    command = lib.getExe inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.opencode;
                     args = [ "acp" ];
                     env = {
                       ANTHROPIC_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'ANTHROPIC_API_KEY'";
