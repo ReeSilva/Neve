@@ -263,11 +263,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1763421233,
-        "narHash": "sha256-Stk9ZYRkGrnnpyJ4eqt9eQtdFWRRIvMxpNRf4sIegnw=",
+        "lastModified": 1763678758,
+        "narHash": "sha256-+hBiJ+kG5IoffUOdlANKFflTT5nO3FrrR2CA3178Y5s=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "89c2b2330e733d6cdb5eae7b899326930c2c0648",
+        "rev": "117cc7f94e8072499b0a7aa4c52084fa4e11cc9b",
         "type": "github"
       },
       "original": {
@@ -295,11 +295,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1763421233,
-        "narHash": "sha256-Stk9ZYRkGrnnpyJ4eqt9eQtdFWRRIvMxpNRf4sIegnw=",
+        "lastModified": 1763678758,
+        "narHash": "sha256-+hBiJ+kG5IoffUOdlANKFflTT5nO3FrrR2CA3178Y5s=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "89c2b2330e733d6cdb5eae7b899326930c2c0648",
+        "rev": "117cc7f94e8072499b0a7aa4c52084fa4e11cc9b",
         "type": "github"
       },
       "original": {
@@ -360,11 +360,11 @@
         "wallpaper": "wallpaper"
       },
       "locked": {
-        "lastModified": 1763834166,
-        "narHash": "sha256-1oO8Yji4Bn/g5kDgEiIzbtvGvkn1Ozd4tRRyy2D5UjE=",
+        "lastModified": 1763838807,
+        "narHash": "sha256-kS0AgW0LmCK3WCXmj1TN+FWBcwFCeaHY3us8VeoRJa0=",
         "ref": "feat/v2",
-        "rev": "7b15a65c817b9cb6ce08a3fed5a0297e002680bd",
-        "revCount": 314,
+        "rev": "03705cfe0433e764fedb722ceb65fd5617a9dd9d",
+        "revCount": 316,
         "type": "git",
         "url": "https://codeberg.org/reesilva/pangaea"
       },
