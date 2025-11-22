@@ -6,6 +6,7 @@
   config = lib.mkIf config.nvim-autopairs.enable {
     plugins.nvim-autopairs = {
       enable = true;
+      settings.fast_wrap.map = "<C-e>";
     };
   };
 }

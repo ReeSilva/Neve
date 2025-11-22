@@ -360,11 +360,11 @@
         "wallpaper": "wallpaper"
       },
       "locked": {
-        "lastModified": 1763838807,
-        "narHash": "sha256-kS0AgW0LmCK3WCXmj1TN+FWBcwFCeaHY3us8VeoRJa0=",
+        "lastModified": 1763845098,
+        "narHash": "sha256-N9eoC6coSZP5r/HYr7uLn2kJGpX3WXiuQx8gfk5XDWo=",
         "ref": "feat/v2",
-        "rev": "03705cfe0433e764fedb722ceb65fd5617a9dd9d",
-        "revCount": 316,
+        "rev": "a922e9f536ae1bc483760b19304094c6b099850a",
+        "revCount": 318,
         "type": "git",
         "url": "https://codeberg.org/reesilva/pangaea"
       },

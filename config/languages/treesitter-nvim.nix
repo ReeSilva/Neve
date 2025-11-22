@@ -15,7 +15,7 @@
             enable = true;
           };
           autopairs = {
-            enable = false;
+            enable = true;
           };
           folding = {
             enable = true;

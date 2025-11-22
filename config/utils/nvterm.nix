@@ -1,5 +1,13 @@
-{ lib, config, pkgs, ... }: {
-  options = { nvterm.enable = lib.mkEnableOption "Enable nvterm module"; };
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
+  options = {
+    nvterm.enable = lib.mkEnableOption "Enable nvterm module";
+  };
   config = lib.mkIf config.nvterm.enable {
     extraPlugins = [ pkgs.vimPlugins.nvterm ];
     extraConfigLua = ''
@@ -35,21 +43,21 @@
       local mappings = {
       	{
       		toggle_modes,
-      		"<A-v>",
+      		"<C-t>v",
       		function()
       			terminal.toggle("vertical")
       		end,
       	},
       	{
       		toggle_modes,
-      		"<A-i>",
+      		"<C-t>f",
       		function()
       			terminal.toggle("float")
       		end,
       	},
       	{
       		toggle_modes,
-      		"<A-h>",
+      		"<C-t>h",
       		function()
       			terminal.toggle("horizontal")
       		end,
