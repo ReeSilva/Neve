@@ -3,18 +3,23 @@
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
+    nixvim.url = "github:nix-community/nixvim";
     mcphub-nvim = {
       url = "github:ravitemer/mcphub.nvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixvim/nixpkgs";
     };
     mcp-hub = {
       url = "github:ravitemer/mcp-hub";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixvim/nixpkgs";
     };
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixvim.url = "github:nix-community/nixvim";
-    nix-ai-tools.url = "github:numtide/nix-ai-tools?ref=main";
-    pangaea.url = "git+https://codeberg.org/reesilva/pangaea?ref=feat/v2";
+    nix-ai-tools = {
+      url = "github:numtide/nix-ai-tools?ref=main";
+      inputs.nixpkgs.follows = "nixvim/nixpkgs";
+    };
+    pangaea = {
+      url = "git+https://codeberg.org/reesilva/pangaea?ref=feat/v2";
+      inputs.nixpkgs.follows = "nixvim/nixpkgs";
+    };
   };
 
   outputs =
@@ -30,15 +35,14 @@
       system:
       let
         config = import ./config;
-        pkgs = import inputs.nixpkgs {
+        pkgs = import inputs.nixvim.inputs.nixpkgs {
           inherit system;
-          config.allowUnfree = true;
         };
 
         nixvimLib = nixvim.lib.${system};
         nixvim' = nixvim.legacyPackages.${system};
         nvim = nixvim'.makeNixvimWithModule {
-          inherit pkgs;
+          # inherit pkgs;
           module = config;
           extraSpecialArgs = {
             inherit self;
@@ -60,7 +64,6 @@
         packages = {
           # Lets you run `nix run .` to start nixvim
           default = nvim;
-          inherit (pkgs) codex-acp;
         };
 
         formatter = pkgs.nixfmt-rfc-style;
