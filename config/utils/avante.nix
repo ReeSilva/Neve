@@ -113,7 +113,7 @@
                     };
                   };
                   opencode = {
-                    command = lib.getExe inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.opencode;
+                    command = lib.getExe inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
                     args = [ "acp" ];
                     env = {
                       GEMINI_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'GEMINI_API_KEY'";
@@ -140,7 +140,7 @@
                     };
                   };
                   opencode = {
-                    command = lib.getExe inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.opencode;
+                    command = lib.getExe inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
                     args = [ "acp" ];
                     env = {
                       ANTHROPIC_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'ANTHROPIC_API_KEY'";

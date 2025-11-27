@@ -16,6 +16,10 @@
       url = "github:numtide/nix-ai-tools?ref=main";
       inputs.nixpkgs.follows = "nixvim/nixpkgs";
     };
+    opencode = {
+      url = "github:sst/opencode";
+      inputs.nixpkgs.follows = "nixvim/nixpkgs";
+    };
     pangaea = {
       url = "git+https://codeberg.org/reesilva/pangaea?ref=feat/v2";
       inputs.nixpkgs.follows = "nixvim/nixpkgs";

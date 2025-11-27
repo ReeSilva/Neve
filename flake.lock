@@ -221,11 +221,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1764249156,
-        "narHash": "sha256-Zi8ONvmOWZu8HOdA/4m4S3qQPm+B+E6EC2sykjtpZrw=",
+        "lastModified": 1764276615,
+        "narHash": "sha256-WMc2RitJlUJttZJCGaZVwGSluoKFn4df+2YWYkMLy2k=",
         "owner": "numtide",
         "repo": "nix-ai-tools",
-        "rev": "4fc6701175186c0828086147909e19a873c15d40",
+        "rev": "9226b58e109ca657153b964dadd300a5a6f41100",
         "type": "github"
       },
       "original": {
@@ -310,6 +310,27 @@
         "type": "github"
       }
     },
+    "opencode": {
+      "inputs": {
+        "nixpkgs": [
+          "nixvim",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1764276623,
+        "narHash": "sha256-nPpPFFEtC6HyEldqlMAEjWajh6pDYFRRaaIhCwxMzDo=",
+        "owner": "sst",
+        "repo": "opencode",
+        "rev": "776091cc232a37656eb9087d76c64b2e67c401c1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sst",
+        "repo": "opencode",
+        "type": "github"
+      }
+    },
     "pangaea": {
       "inputs": {
         "flake-parts": "flake-parts_4",
@@ -341,6 +362,7 @@
         "mcphub-nvim": "mcphub-nvim",
         "nix-ai-tools": "nix-ai-tools",
         "nixvim": "nixvim",
+        "opencode": "opencode",
         "pangaea": "pangaea"
       }
     },
