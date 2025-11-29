@@ -1,4 +1,5 @@
-{ lib, config, ... }: {
+{ lib, config, ... }:
+{
   imports = [
     ./avante.nix
     ./better-escape.nix
@@ -28,7 +29,9 @@
     ./smart-splits.nix
   ];
 
-  options = { utils.enable = lib.mkEnableOption "Enable utils module"; };
+  options = {
+    utils.enable = lib.mkEnableOption "Enable utils module";
+  };
   config = lib.mkIf config.utils.enable {
     better-escape.enable = lib.mkDefault true;
     cloak.enable = lib.mkDefault true;
@@ -57,5 +60,6 @@
     niquisvim.utils.smart-splits.enable = lib.mkDefault true;
     parrot.enable = lib.mkDefault false;
     avante.enable = lib.mkDefault true;
+    plugins.dbee.enable = true;
   };
 }
