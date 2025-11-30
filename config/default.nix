@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   # Import all your configuration modules here
   imports = [
@@ -38,4 +38,6 @@
   telescope.enable = lib.mkDefault true;
   ui.enable = lib.mkDefault true;
   utils.enable = lib.mkDefault true;
+
+  opts.shell = lib.getExe pkgs.fish;
 }
