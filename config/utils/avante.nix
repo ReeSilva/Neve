@@ -219,6 +219,56 @@
             # ];
           };
         };
+        codecompanion = {
+          enable = true;
+          settings = {
+            strategies = {
+              chat.adapter = "opencode";
+              inline.adapter = "opencode";
+              cmd.adapter = "opencode";
+            };
+            extensions = {
+              mcphub = {
+                callback = "mcphub.extensions.codecompanion";
+                opts = {
+                  make_tools = true;
+                  show_server_tools_in_chat = true;
+                  add_mcp_prefix_to_tool_names = false; # Add mcp__ prefix (e.g `@mcp__github`; `@mcp__neovim__list_issues`)
+                  show_result_in_chat = true; # Show tool results directly in chat buffer
+                  # MCP Resources
+                  make_vars = true; # Convert MCP resources to #variables for prompts
+                  # MCP Prompts
+                  make_slash_commands = true; # Add MCP prompts as /slash commands
+                };
+              };
+            };
+            adapters.acp = {
+              codex = lib.nixvim.utils.mkRaw /* lua */ ''
+                function()
+                  return require("codecompanion.adapters").extend("codex", {
+                    commands = {
+                      default = {
+                        "${lib.getExe inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.codex-acp}"
+                      },
+                    },
+                  })
+                end
+              '';
+              opencode = lib.nixvim.utils.mkRaw /* lua */ ''
+                function()
+                  return require("codecompanion.adapters").extend("opencode", {
+                    commands = {
+                      default = {
+                        "${lib.getExe inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default}",
+                        "acp"
+                      },
+                    },
+                  })
+                end
+              '';
+            };
+          };
+        };
       };
     };
 }
