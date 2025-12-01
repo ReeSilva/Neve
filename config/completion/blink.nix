@@ -53,10 +53,17 @@
                   __unkeyed-1 = "lsp";
                 };
                 columns = [
-                  { __unkeyed-1 = "kind_icon"; }
                   {
                     __unkeyed-1 = "label";
+                    __unkeyed-2 = "label_description";
                     gap = 1;
+                  }
+                  {
+                    __unkeyed-1 = "kind_icon";
+                    __unkeyed-2 = "kind";
+                  }
+                  {
+                    __unkeyed-1 = "source_name";
                   }
                 ];
                 components = {
@@ -90,10 +97,6 @@
                         return icon .. ctx.icon_gap
                       end
                     '';
-
-                    ## Optionally, use the highlight groups from nvim-web-devicons
-                    ## You can also add the same function for `kind.highlight` if you want to
-                    ## keep the highlight groups in sync with the icons.
                     highlight = lib.nixvim.mkRaw ''
                       function(ctx)
                         local hl = ctx.kind_hl
@@ -138,7 +141,7 @@
                 name = "Avante";
                 score_offset = 20;
               };
-              buffer.max_items = 8;
+              buffer.max_items = 5;
               copilot = {
                 async = true;
                 module = "blink-cmp-copilot";
@@ -157,6 +160,7 @@
                 async = true;
                 module = "blink-ripgrep";
                 name = "Ripgrep";
+                score_offset = -100;
                 opts = {
                   prefix_min_len = 8;
                   backend.ripgrep = {

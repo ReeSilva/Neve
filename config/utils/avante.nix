@@ -29,6 +29,35 @@
           }
         })
       '';
+      keymaps = [
+        {
+          mode = "n";
+          key = "<leader>acct";
+          action = ":CodeCompanionChat Toggle<cr>";
+          options = {
+            silent = true;
+            desc = "Toggle Maurício Kubrusly chat";
+          };
+        }
+        {
+          mode = "v";
+          key = "<leader>acce";
+          action = ":'<,'>CodeCompanion<cr>";
+          options = {
+            silent = true;
+            desc = "Maurício Kubrusly inline (NO ACP)";
+          };
+        }
+        {
+          mode = "v";
+          key = "<leader>acca";
+          action = ":'<,'>CodeCompanionChat<cr>";
+          options = {
+            silent = true;
+            desc = "Ask to Maurício Kubrusly";
+          };
+        }
+      ];
       plugins = {
         img-clip = {
           enable = true;
@@ -48,6 +77,7 @@
           settings = {
             file_types = [
               "markdown"
+              "codecompanion"
               "Avante"
             ];
           };
@@ -204,27 +234,24 @@
                 return mcphub_avante.mcp_tool()
               end
             '';
-            # for now, let's try use avante tools instead of mcphub
-            # disabled_tools = [
-            #   "list_files" # Built-in file operations
-            #   "search_files"
-            #   "read_file"
-            #   "create_file"
-            #   "rename_file"
-            #   "delete_file"
-            #   "create_dir"
-            #   "rename_dir"
-            #   "delete_dir"
-            #   "bash" # Built-in terminal access
-            # ];
           };
         };
         codecompanion = {
           enable = true;
           settings = {
             strategies = {
-              chat.adapter = "opencode";
-              inline.adapter = "opencode";
+              chat = {
+                adapter = "opencode";
+                roles = {
+                  llm = lib.nixvim.utils.mkRaw /* lua */ ''
+                    function(adapter)
+                      return "Maurício Kubrusly usa " .. adapter.formatted_name
+                    end
+                  '';
+                  user = "engenheiro do fim do mundo";
+                };
+              };
+              inline.adapter = if pkgs.stdenv.isDarwin then "gemini" else "openai";
               cmd.adapter = "opencode";
             };
             extensions = {
@@ -254,6 +281,39 @@
                   })
                 end
               '';
+              claude_code = lib.mkIf pkgs.stdenv.isLinux (
+                lib.nixvim.utils.mkRaw /* lua */ ''
+                  function()
+                    return require("codecompanion.adapters").extend("claude_code", {
+                      env = {
+                        NODE_NO_WARNINGS = "1",
+                        ACP_PERMISSION_MODE = "acceptEdits"
+                      },
+                      commands = {
+                        default = {
+                          "${
+                            lib.getExe inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.claude-code-acp
+                          }"
+                        },
+                      },
+                    })
+                  end,
+                ''
+              );
+              gemini_cli = lib.mkIf pkgs.stdenv.isDarwin (
+                lib.nixvim.utils.mkRaw /* lua */ ''
+                  function()
+                    return require("codecompanion.adapters").extend("gemini_cli", {
+                      commands = {
+                        default = {
+                          "${lib.getExe inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.gemini-cli}",
+                          "--experimental-acp"
+                        },
+                      },
+                    })
+                  end
+                ''
+              );
               opencode = lib.nixvim.utils.mkRaw /* lua */ ''
                 function()
                   return require("codecompanion.adapters").extend("opencode", {

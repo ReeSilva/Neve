@@ -80,6 +80,11 @@
                   text = "Glauber Braga";
                   highlight = "AvanteSidebarWinHorizontalSeparator";
                 }
+                {
+                  filetype = "codecompanion";
+                  text = "Maurício Kubrusly";
+                  seperator = true;
+                }
               ];
             };
           };

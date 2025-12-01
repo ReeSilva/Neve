@@ -9,11 +9,6 @@
       settings = {
         alwaysDivideMiddle = true;
         globalstatus = false;
-        ignoreFocus = [
-          "neo-tree"
-          "Avante"
-          "AvanteSelectedFiles"
-        ];
         ignore_focus = [
           "neo-tree"
           "Avante"

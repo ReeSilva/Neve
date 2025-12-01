@@ -114,6 +114,7 @@ in
               "AvanteSelectedCode"
               "AvanteSelectedFiles"
               "AvanteInput"
+              "codecompanion"
             ];
           };
           view = {

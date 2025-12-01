@@ -21,7 +21,7 @@
     ./utils
   ];
 
-  bufferlines.enable = lib.mkDefault true;
+  bufferlines.enable = lib.mkDefault false;
   colorschemes.enable = lib.mkDefault true;
   completion.enable = lib.mkDefault true;
   dap.enable = lib.mkDefault true;
