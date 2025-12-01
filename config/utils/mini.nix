@@ -21,9 +21,6 @@
             delay = 100;
           };
         };
-        diff = {
-          source = lib.nixvim.utils.mkRaw /* lua */ "require('mini.diff').gen_source.none()";
-        };
       };
     };
   };

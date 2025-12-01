@@ -285,10 +285,6 @@
                 lib.nixvim.utils.mkRaw /* lua */ ''
                   function()
                     return require("codecompanion.adapters").extend("claude_code", {
-                      env = {
-                        NODE_NO_WARNINGS = "1",
-                        ACP_PERMISSION_MODE = "acceptEdits"
-                      },
                       commands = {
                         default = {
                           "${
@@ -297,7 +293,7 @@
                         },
                       },
                     })
-                  end,
+                  end
                 ''
               );
               gemini_cli = lib.mkIf pkgs.stdenv.isDarwin (
