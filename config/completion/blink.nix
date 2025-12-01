@@ -128,6 +128,9 @@
               "git"
               "ripgrep"
             ];
+            per_filetype = {
+              codecompanion = [ "codecompanion" ];
+            };
             git = { };
             providers = {
               avante = {
