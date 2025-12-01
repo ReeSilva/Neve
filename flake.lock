@@ -221,11 +221,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1764425380,
-        "narHash": "sha256-5XABPtxjxkLcovj77zvJEgrueE/URXIzUhPf34UrQXQ=",
+        "lastModified": 1764511706,
+        "narHash": "sha256-WJRdOiMYTBX1qbTmrkUxTXbMcnFT7ro378xP4e80TNQ=",
         "owner": "numtide",
         "repo": "nix-ai-tools",
-        "rev": "41d3a0f74da64be69a103f14726e9c71e32352f6",
+        "rev": "cfe2fa0bcf8c646befbeb9dfd23aa44a062d4b7a",
         "type": "github"
       },
       "original": {
@@ -274,11 +274,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1764443358,
-        "narHash": "sha256-bd9I02P/Mp9yYGcSWgLLdI/Zt0JqF8igSTAfUzknVHk=",
+        "lastModified": 1764537799,
+        "narHash": "sha256-+FvqJSUI9kNLwnSbEBnvjoNs9uQplNytf5+jYPafsKw=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "6094d2a4396c0ff4e94b22315cc43f55db626c32",
+        "rev": "aab92fcc99cdfa81c01d754f5a9047414bb6cf32",
         "type": "github"
       },
       "original": {
@@ -318,11 +318,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764452460,
-        "narHash": "sha256-+usV6eAFpkl21OhX3YFxtFNPyWCpQydKfoYrV4pORVg=",
+        "lastModified": 1764551270,
+        "narHash": "sha256-sKEyJMe/TeTpnIpnm+GdMsGv2n3pvt4/MypnBf6OUfM=",
         "owner": "sst",
         "repo": "opencode",
-        "rev": "7e6b7314f45ad6400b172203dfacdba77c20369e",
+        "rev": "5b92d49be790bf4f61f6d9a08b2aae25208ab889",
         "type": "github"
       },
       "original": {
@@ -341,11 +341,11 @@
         "wallpaper": "wallpaper"
       },
       "locked": {
-        "lastModified": 1764369028,
-        "narHash": "sha256-r42MLN+JVyxVd1El36Xj873hYo1MXH3i4on1Svfd7bU=",
+        "lastModified": 1764551832,
+        "narHash": "sha256-TE1NNVRCXlpQ9zV9+LFiqYLeGIRJHoCmL3AegHjlVsM=",
         "ref": "feat/v2",
-        "rev": "9807e9c98b68ba608a9e145c128b0118a9c318ce",
-        "revCount": 326,
+        "rev": "b7d330f4e12ff5ce7269bd20031d5398c46e9287",
+        "revCount": 333,
         "type": "git",
         "url": "https://codeberg.org/reesilva/pangaea"
       },
