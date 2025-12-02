@@ -29,37 +29,16 @@
           }
         })
       '';
-      autoGroups = {
-        CodeCompanionFidgetHooks = { };
-      };
-      autoCmd = [
-        {
-          event = "User";
-          pattern = "CodeCompanionRequestStarted";
-          group = "CodeCompanionFidgetHooks";
-          callback = lib.nixvim.utils.mkRaw /* lua */ ''
-            function(request)
-              local handle = M:create_progress_handle(request)
-              M:store_progress_handle(request.data.id, handle)
-            end
-          '';
-        }
-        {
-          event = "User";
-          pattern = "CodeCompanionRequestFinished";
-          group = "CodeCompanionFidgetHooks";
-          callback = lib.nixvim.utils.mkRaw /* lua */ ''
-            function(request)
-              local handle = M:pop_progress_handle(request.data.id)
-              if handle then
-                M:report_exit_status(handle, request)
-                handle:finish()
-              end
-            end
-          '';
-        }
-      ];
       keymaps = [
+        {
+          mode = "n";
+          key = "<leader>acc";
+          action = ":CodeCompanionActions<cr>";
+          options = {
+            silent = true;
+            desc = "Toggle Maurício Kubrusly chat";
+          };
+        }
         {
           mode = "n";
           key = "<leader>acct";
