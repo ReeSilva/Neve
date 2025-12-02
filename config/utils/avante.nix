@@ -17,7 +17,7 @@
     in
     lib.mkIf cfg.enable {
       extraPlugins = [ mcphub-nvim.packages.${pkgs.stdenv.hostPlatform.system}.default ];
-      extraConfigLua = ''
+      extraConfigLua = /* lua */ ''
         require("mcphub").setup({
           port = 3000,
           config = vim.fn.expand("~/.config/mcphub/servers.json"),
@@ -29,6 +29,36 @@
           }
         })
       '';
+      autoGroups = {
+        CodeCompanionFidgetHooks = { };
+      };
+      autoCmd = [
+        {
+          event = "User";
+          pattern = "CodeCompanionRequestStarted";
+          group = "CodeCompanionFidgetHooks";
+          callback = lib.nixvim.utils.mkRaw /* lua */ ''
+            function(request)
+              local handle = M:create_progress_handle(request)
+              M:store_progress_handle(request.data.id, handle)
+            end
+          '';
+        }
+        {
+          event = "User";
+          pattern = "CodeCompanionRequestFinished";
+          group = "CodeCompanionFidgetHooks";
+          callback = lib.nixvim.utils.mkRaw /* lua */ ''
+            function(request)
+              local handle = M:pop_progress_handle(request.data.id)
+              if handle then
+                M:report_exit_status(handle, request)
+                handle:finish()
+              end
+            end
+          '';
+        }
+      ];
       keymaps = [
         {
           mode = "n";
@@ -324,6 +354,51 @@
               '';
             };
           };
+          luaConfig.pre = /* lua */ ''
+            local progress = require("fidget.progress")
+
+            local M = {}
+            M.handles = {}
+
+            function M:store_progress_handle(id, handle)
+              M.handles[id] = handle
+            end
+
+            function M:pop_progress_handle(id)
+              local handle = M.handles[id]
+              M.handles[id] = nil
+              return handle
+            end
+
+            function M:create_progress_handle(request)
+              return progress.handle.create({
+                title = " Requesting assistance (" .. request.data.strategy .. ")",
+                message = "In progress...",
+                lsp_client = {
+                  name = M:llm_role_title(request.data.adapter),
+                },
+              })
+            end
+
+            function M:llm_role_title(adapter)
+              local parts = {}
+              table.insert(parts, adapter.formatted_name)
+              if adapter.model and adapter.model ~= "" then
+                table.insert(parts, "(" .. adapter.model .. ")")
+              end
+              return table.concat(parts, " ")
+            end
+
+            function M:report_exit_status(handle, request)
+              if request.data.status == "success" then
+                handle.message = "Completed"
+              elseif request.data.status == "error" then
+                handle.message = " Error"
+              else
+                handle.message = "󰜺 Cancelled"
+              end
+            end
+          '';
         };
       };
     };
