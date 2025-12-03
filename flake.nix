@@ -33,6 +33,7 @@
       flake-utils,
       mcphub-nvim,
       mcp-hub,
+      nix-ai-tools,
       ...
     }@inputs:
     flake-utils.lib.eachDefaultSystem (
@@ -53,6 +54,7 @@
             inherit mcphub-nvim;
             inherit mcp-hub;
             inherit inputs;
+            inherit nix-ai-tools;
           };
         };
       in

@@ -6,7 +6,7 @@
 }:
 {
   options = {
-    highlights.enable = lib.mkEnableOption "Enable keys module";
+    highlights.enable = lib.mkEnableOption "Enable highlights module";
   };
   config = lib.mkIf config.highlights.enable {
     highlight = {

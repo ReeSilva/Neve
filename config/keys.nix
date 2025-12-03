@@ -325,24 +325,24 @@
         };
       }
 
-      {
-        mode = "n";
-        key = "<C-d>";
-        action = "<C-d>zz";
-        options = {
-          silent = true;
-          desc = "Allow <C-d> and <C-u> to keep the cursor in the middle";
-        };
-      }
-
-      {
-        mode = "n";
-        key = "<C-u>";
-        action = "<C-u>zz";
-        options = {
-          desc = "Allow C-d and C-u to keep the cursor in the middle";
-        };
-      }
+      # {
+      #   mode = "n";
+      #   key = "<C-d>";
+      #   action = "<C-d>zz";
+      #   options = {
+      #     silent = true;
+      #     desc = "Allow <C-d> and <C-u> to keep the cursor in the middle";
+      #   };
+      # }
+      #
+      # {
+      #   mode = "n";
+      #   key = "<C-u>";
+      #   action = "<C-u>zz";
+      #   options = {
+      #     desc = "Allow C-d and C-u to keep the cursor in the middle";
+      #   };
+      # }
 
       # Remap for dealing with word wrap and adding jumps to the jumplist.
       {
