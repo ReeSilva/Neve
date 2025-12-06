@@ -12,8 +12,8 @@
       url = "github:ravitemer/mcp-hub";
       inputs.nixpkgs.follows = "nixvim/nixpkgs";
     };
-    nix-ai-tools = {
-      url = "github:numtide/nix-ai-tools?ref=main";
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix?ref=main";
       inputs.nixpkgs.follows = "nixvim/nixpkgs";
     };
     opencode = {
@@ -33,7 +33,7 @@
       flake-utils,
       mcphub-nvim,
       mcp-hub,
-      nix-ai-tools,
+      llm-agents,
       ...
     }@inputs:
     flake-utils.lib.eachDefaultSystem (
@@ -54,7 +54,7 @@
             inherit mcphub-nvim;
             inherit mcp-hub;
             inherit inputs;
-            inherit nix-ai-tools;
+            inherit llm-agents;
           };
         };
       in
