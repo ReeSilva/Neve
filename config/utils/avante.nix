@@ -161,13 +161,13 @@
               if pkgs.stdenv.isDarwin then
                 {
                   codex = {
-                    command = lib.getExe inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.codex-acp;
+                    command = lib.getExe inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.codex-acp;
                     env = {
                       OPENAI_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'OPENAI_API_KEY'";
                     };
                   };
                   gemini-cli = {
-                    command = lib.getExe inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.gemini-cli;
+                    command = lib.getExe inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.gemini-cli;
                     args = [ "--experimental-acp" ];
                     env = {
                       NODE_NO_WARNINGS = "1";
@@ -186,9 +186,7 @@
               else
                 {
                   claude-code = {
-                    command =
-                      lib.getExe
-                        inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.claude-code-acp;
+                    command = lib.getExe inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code-acp;
                     env = {
                       NODE_NO_WARNINGS = "1";
                       ANTHROPIC_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'ANTHROPIC_API_KEY'";
@@ -196,7 +194,7 @@
                     };
                   };
                   codex = {
-                    command = lib.getExe inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.codex-acp;
+                    command = lib.getExe inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.codex-acp;
                     env = {
                       OPENAI_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'OPENAI_API_KEY'";
                     };
@@ -284,7 +282,7 @@
                   return require("codecompanion.adapters").extend("codex", {
                     commands = {
                       default = {
-                        "${lib.getExe inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.codex-acp}"
+                        "${lib.getExe inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.codex-acp}"
                       },
                     },
                   })
@@ -297,7 +295,7 @@
                       commands = {
                         default = {
                           "${
-                            lib.getExe inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.claude-code-acp
+                            lib.getExe inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code-acp
                           }"
                         },
                       },
@@ -311,7 +309,7 @@
                     return require("codecompanion.adapters").extend("gemini_cli", {
                       commands = {
                         default = {
-                          "${lib.getExe inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.gemini-cli}",
+                          "${lib.getExe inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.gemini-cli}",
                           "--experimental-acp"
                         },
                       },

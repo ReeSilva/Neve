@@ -3,7 +3,7 @@
     "blueprint": {
       "inputs": {
         "nixpkgs": [
-          "nix-ai-tools",
+          "llm-agents",
           "nixpkgs"
         ],
         "systems": "systems_2"
@@ -121,6 +121,30 @@
         "type": "github"
       }
     },
+    "llm-agents": {
+      "inputs": {
+        "blueprint": "blueprint",
+        "nixpkgs": [
+          "nixvim",
+          "nixpkgs"
+        ],
+        "treefmt-nix": "treefmt-nix"
+      },
+      "locked": {
+        "lastModified": 1765034113,
+        "narHash": "sha256-i+4lUGCZyqXx70xUoM4iqbCAcSk69zz8czZNweCOGg0=",
+        "owner": "numtide",
+        "repo": "llm-agents.nix",
+        "rev": "e39a9719bdc5b495aadf894a9b7321cf27e9ecf7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "ref": "main",
+        "repo": "llm-agents.nix",
+        "type": "github"
+      }
+    },
     "mcp-hub": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -162,30 +186,6 @@
       "original": {
         "owner": "ravitemer",
         "repo": "mcphub.nvim",
-        "type": "github"
-      }
-    },
-    "nix-ai-tools": {
-      "inputs": {
-        "blueprint": "blueprint",
-        "nixpkgs": [
-          "nixvim",
-          "nixpkgs"
-        ],
-        "treefmt-nix": "treefmt-nix"
-      },
-      "locked": {
-        "lastModified": 1765075548,
-        "narHash": "sha256-lkNykREVQDlvZg5zLwFG/jTcKJTapX5dg64D84cN7m8=",
-        "owner": "numtide",
-        "repo": "nix-ai-tools",
-        "rev": "22f4a113cde2d4212480114e004cfe1d7a92e6b8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "ref": "main",
-        "repo": "nix-ai-tools",
         "type": "github"
       }
     },
@@ -248,11 +248,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1765063516,
-        "narHash": "sha256-uoG/uaTlEs4ZNhRDhe6oposipiWDyENP0m82vegMdYA=",
+        "lastModified": 1765025114,
+        "narHash": "sha256-Qb+JxaHbbDSaH1a8wV2zSVmlfwDcH6qv90DD0S3LVyE=",
         "owner": "sst",
         "repo": "opencode",
-        "rev": "e0f77940f90d16b405eb2f5a9334ffb3d2fe5f62",
+        "rev": "8e816a9283b9a9b5caf8413df7461abc4017ee1b",
         "type": "github"
       },
       "original": {
@@ -288,9 +288,9 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
+        "llm-agents": "llm-agents",
         "mcp-hub": "mcp-hub",
         "mcphub-nvim": "mcphub-nvim",
-        "nix-ai-tools": "nix-ai-tools",
         "nixvim": "nixvim",
         "opencode": "opencode",
         "pangaea": "pangaea"
@@ -344,7 +344,7 @@
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
-          "nix-ai-tools",
+          "llm-agents",
           "nixpkgs"
         ]
       },
