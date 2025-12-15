@@ -17,8 +17,8 @@
               src = prev.fetchFromGitHub {
                 owner = "olimorris";
                 repo = "codecompanion.nvim";
-                tag = "v18.1.0";
-                sha256 = "sha256-TFNX9vbBjEzs4UT2Cz4VPGBJh0qST9kph2UawcsdYjE=";
+                tag = "v18.1.1";
+                sha256 = "sha256-Sa+NN5Au/MPCFIqW5RPc5n+pqYOaBB3osDJynyiwhXI=";
               };
             };
           };

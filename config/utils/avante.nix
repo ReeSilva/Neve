@@ -313,6 +313,9 @@
                           "--experimental-acp"
                         },
                       },
+                      defaults = {
+                        auth_method = "gemini-api-key",
+                      },
                     })
                   end
                 ''
