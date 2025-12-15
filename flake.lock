@@ -90,11 +90,11 @@
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
-        "lastModified": 1763759067,
-        "narHash": "sha256-LlLt2Jo/gMNYAwOgdRQBrsRoOz7BPRkzvNaI/fzXi2Q=",
+        "lastModified": 1765495779,
+        "narHash": "sha256-MhA7wmo/7uogLxiewwRRmIax70g6q1U/YemqTGoFHlM=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "2cccadc7357c0ba201788ae99c4dfa90728ef5e0",
+        "rev": "5635c32d666a59ec9a55cab87e898889869f7b71",
         "type": "github"
       },
       "original": {
@@ -248,11 +248,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1765821671,
-        "narHash": "sha256-S4i9192FNfgZ9y5e7gDRI6M/uTdIHECmlpbvZCEnLH0=",
+        "lastModified": 1765838418,
+        "narHash": "sha256-Lge7w4+Rn4k3bwwLiA9ln9euhLFBO1gOUITvjHQyk/I=",
         "owner": "sst",
         "repo": "opencode",
-        "rev": "4236744fb5787010d8f930e0599db78d2b58a57f",
+        "rev": "4f2baf1a72ed5c17963b34fe2a63229379be59e1",
         "type": "github"
       },
       "original": {
@@ -271,11 +271,11 @@
         "wallpaper": "wallpaper"
       },
       "locked": {
-        "lastModified": 1765157698,
-        "narHash": "sha256-NGGKvMkQtDKW28gQ0YqEwL8ALpC6rwiOS7zS09PH008=",
+        "lastModified": 1765823615,
+        "narHash": "sha256-sYUWFTKOaGZSXa7bsEzTa1SGHAsUvkJYvr6PurhCpkY=",
         "ref": "feat/v2",
-        "rev": "9b1ce6925e8530122fb9b0f279821c212c124bc6",
-        "revCount": 336,
+        "rev": "b28e2e76165e84c2e7e8161dfe0b0097dda37f75",
+        "revCount": 338,
         "type": "git",
         "url": "https://codeberg.org/reesilva/pangaea"
       },
