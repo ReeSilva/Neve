@@ -16,10 +16,10 @@
               src = prev.fetchFromGitHub {
                 owner = "yetone";
                 repo = "avante.nvim";
-                rev = "80f7079556c6acf3d3effa13c22f0e4fd00bcffd";
-                sha256 = "sha256-P8liuX2z0LNvtaIYeG5vOd5fEZyCfTwKd6UwFiBKPsM=";
+                rev = "15548d50fcfb2ebda173bff0d751a1b0bc53e4c5";
+                sha256 = "sha256-jTXV/IV/vIu+pWL/C1OkWvrVRg39yGalfC28VIfDvqI=";
               };
-              version = "0.0.27-unstable-2025-12-18";
+              version = "0.0.27-unstable-2025-12-19";
               avante-nvim-lib = prev.rustPlatform.buildRustPackage {
                 pname = "avante-nvim-lib";
                 inherit (final.vimPlugins.avante-nvim) version src;
