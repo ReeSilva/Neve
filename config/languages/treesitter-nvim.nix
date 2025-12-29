@@ -7,42 +7,42 @@
     plugins = {
       treesitter = {
         enable = true;
+        highlight = {
+          enable = true;
+        };
+        indent = {
+          enable = true;
+        };
+        folding = {
+          enable = true;
+        };
         settings = {
-          highlight = {
-            enable = true;
-          };
-          indent = {
-            enable = true;
-          };
           autopairs = {
             enable = true;
           };
-          folding = {
-            enable = true;
-          };
-          ensure_installed = [
-            "bash"
-            "json"
-            "hcl"
-            "lua"
-            "luadoc"
-            "luap"
-            "nix"
-            "markdown"
-            "markdown_inline"
-            "query"
-            "regex"
-            "terraform"
-            "typescript"
-            "vim"
-            "vimdoc"
-            "toml"
-            "yaml"
-            "gotmpl"
-            "helm"
-            "go"
-          ];
-          auto_install = true;
+          # ensure_installed = [
+          #   "bash"
+          #   "json"
+          #   "hcl"
+          #   "lua"
+          #   "luadoc"
+          #   "luap"
+          #   "nix"
+          #   "markdown"
+          #   "markdown_inline"
+          #   "query"
+          #   "regex"
+          #   "terraform"
+          #   "typescript"
+          #   "vim"
+          #   "vimdoc"
+          #   "toml"
+          #   "yaml"
+          #   "gotmpl"
+          #   "helm"
+          #   "go"
+          # ];
+          # auto_install = true;
           incremental_selection = {
             enable = true;
             keymaps = {
