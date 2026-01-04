@@ -40,4 +40,5 @@
   utils.enable = lib.mkDefault true;
 
   opts.shell = lib.getExe pkgs.fish;
+  plugins.lz-n.enable = true;
 }

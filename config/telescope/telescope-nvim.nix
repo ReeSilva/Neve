@@ -6,6 +6,7 @@
   config = lib.mkIf config.telescope-nvim.enable {
     plugins.telescope = {
       enable = true;
+      lazyLoad.settings.cmd = "Telescope";
       extensions = {
         fzf-native = {
           enable = true;

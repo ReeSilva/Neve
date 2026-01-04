@@ -31,6 +31,17 @@
       '';
       keymaps = [
         {
+          mode = [
+            "n"
+            "v"
+          ];
+          key = "<leader>aa";
+          action = ":AvanteChat<cr>";
+          options = {
+            desc = "avante: ask";
+          };
+        }
+        {
           mode = "n";
           key = "<leader>acc";
           action = ":CodeCompanionActions<cr>";
@@ -93,6 +104,18 @@
         };
         avante = {
           enable = true;
+          lazyLoad.settings = {
+            cmd = [
+              "Avante"
+              "AvanteChat"
+              "AvanteActions"
+            ];
+            # keys = [
+            #   "<leader>aa"
+            #   "<leader>at"
+            #   "<leader>an"
+            # ];
+          };
           settings = {
             provider = "opencode";
             behaviour = {
@@ -245,6 +268,11 @@
         };
         codecompanion = {
           enable = true;
+          lazyLoad.settings.cmd = [
+            "CodeCompanion"
+            "CodeCompanionChat"
+            "CodeCompanionActions"
+          ];
           settings = {
             strategies = {
               chat = {
