@@ -47,4 +47,6 @@
   extraConfigLuaPost = ''
     require('lzn-auto-require').enable()
   '';
+
+  luaLoader.enable = true;
 }

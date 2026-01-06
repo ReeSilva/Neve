@@ -30,17 +30,17 @@
         })
       '';
       keymaps = [
-        {
-          mode = [
-            "n"
-            "v"
-          ];
-          key = "<leader>aa";
-          action = ":AvanteChat<cr>";
-          options = {
-            desc = "avante: ask";
-          };
-        }
+        # {
+        #   mode = [
+        #     "n"
+        #     "v"
+        #   ];
+        #   key = "<leader>aa";
+        #   action = lib.nixvim.utils.mkRaw "function() require('avante.api').ask() end";
+        #   options = {
+        #     desc = "avante: ask";
+        #   };
+        # }
         {
           mode = "n";
           key = "<leader>acc";
@@ -110,11 +110,6 @@
               "AvanteChat"
               "AvanteActions"
             ];
-            # keys = [
-            #   "<leader>aa"
-            #   "<leader>at"
-            #   "<leader>an"
-            # ];
           };
           settings = {
             provider = "opencode";
