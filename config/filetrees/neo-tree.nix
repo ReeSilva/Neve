@@ -7,7 +7,6 @@
 
     plugins.neo-tree = {
       enable = true;
-      lazyLoad.settings.cmd = "Neotree";
       settings = {
         enableDiagnostics = true;
         enableGitStatus = true;
@@ -33,6 +32,7 @@
           autoExpandWidth = false;
           mappings = {
             "<space>" = "none";
+            "<cr>" = "open_with_window_picker";
             "s" = "vsplit_with_window_picker";
             "S" = "split_with_window_picker";
           };
