@@ -1,10 +1,12 @@
 { lib, config, ... }:
 {
   imports = [
+    ./aerial.nix
     ./avante.nix
     ./better-escape.nix
     ./cloak.nix
     ./colorizer.nix
+    ./dial.nix
     # ./harpoon.nix
     ./markdown-preview.nix
     ./mini.nix
@@ -33,8 +35,10 @@
     utils.enable = lib.mkEnableOption "Enable utils module";
   };
   config = lib.mkIf config.utils.enable {
+    aerial.enable = lib.mkDefault true;
     better-escape.enable = lib.mkDefault true;
     cloak.enable = lib.mkDefault true;
+    dial.enable = lib.mkDefault true;
     # harpoon.enable = lib.mkDefault false;
     markdown-preview.enable = lib.mkDefault true;
     mini.enable = lib.mkDefault true;
