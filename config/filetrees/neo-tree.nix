@@ -7,6 +7,10 @@
 
     plugins.neo-tree = {
       enable = true;
+      lazyLoad.settings = {
+        cmd = "Neotree";
+        event = "VimEnter";
+      };
       settings = {
         enableDiagnostics = true;
         enableGitStatus = true;
