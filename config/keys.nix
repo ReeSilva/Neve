@@ -215,6 +215,16 @@
 
       {
         mode = "n";
+        key = "<leader>qS";
+        action = ":lua require('persistence').select()<cr>";
+        options = {
+          silent = true;
+          desc = "List sessions";
+        };
+      }
+
+      {
+        mode = "n";
         key = "<leader>ql";
         action = "<cmd>lua require('persistence').load({ last = true })<cr>";
         options = {

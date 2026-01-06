@@ -174,6 +174,33 @@
             (padding 1)
             {
               type = "button";
+              val = "  List Sessions";
+              on_press = {
+                __raw = "function() require('persistence').select() end";
+              };
+              opts = {
+                keymap = [
+                  "n"
+                  "l"
+                  ":lua require('persistence').select()<cr>"
+                  {
+                    noremap = true;
+                    silent = true;
+                    nowait = true;
+                  }
+                ];
+                shortcut = "l";
+
+                position = "center";
+                cursor = 3;
+                width = 38;
+                align_shortcut = "right";
+                hl_shortcut = "Keyword";
+              };
+            }
+            (padding 1)
+            {
+              type = "button";
               val = "  Restore Session";
               on_press = {
                 __raw = "function() require('persistence').load() end";
