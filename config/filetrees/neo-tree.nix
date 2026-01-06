@@ -9,7 +9,6 @@
       enable = true;
       lazyLoad.settings = {
         cmd = "Neotree";
-        event = "VimEnter";
       };
       settings = {
         enableDiagnostics = true;
