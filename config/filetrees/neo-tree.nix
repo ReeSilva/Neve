@@ -4,12 +4,19 @@
     neo-tree.enable = lib.mkEnableOption "Enable neo-tree module";
   };
   config = lib.mkIf config.neo-tree.enable {
-
+    autoCmd = [
+      {
+        event = "User";
+        pattern = "PersistenceSavePre";
+        callback = lib.nixvim.utils.mkRaw ''
+          function()
+            vim.cmd(":Neotree close")
+          end
+        '';
+      }
+    ];
     plugins.neo-tree = {
       enable = true;
-      lazyLoad.settings = {
-        cmd = "Neotree";
-      };
       settings = {
         enableDiagnostics = true;
         enableGitStatus = true;
