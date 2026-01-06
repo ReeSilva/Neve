@@ -39,6 +39,10 @@
     extraConfigLua = /* lua */ ''
       require('window-picker').setup({
         hint = 'floating-big-letter',
+        picker_config = {
+          handle_mouse_click = true,
+        },
+        show_prompt = false,
       })
     '';
   };
