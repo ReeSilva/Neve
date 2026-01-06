@@ -6,6 +6,14 @@
   config = lib.mkIf config.persistence.enable {
     plugins.persistence = {
       enable = true;
+      lazyLoad.settings = {
+        event = "BufReadPre";
+        keys = [
+          "<leader>qs"
+          "<leader>ql"
+          "<leader>qd"
+        ];
+      };
     };
   };
 }

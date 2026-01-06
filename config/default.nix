@@ -41,4 +41,10 @@
 
   opts.shell = lib.getExe pkgs.fish;
   plugins.lz-n.enable = true;
+  extraPlugins = with pkgs.vimPlugins; [
+    lzn-auto-require
+  ];
+  extraConfigLuaPost = ''
+    require('lzn-auto-require').enable()
+  '';
 }
