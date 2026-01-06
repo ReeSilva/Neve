@@ -7,42 +7,19 @@
     plugins = {
       treesitter = {
         enable = true;
-        highlight = {
-          enable = true;
-        };
-        indent = {
-          enable = true;
-        };
-        folding = {
-          enable = true;
-        };
         settings = {
           autopairs = {
             enable = true;
           };
-          # ensure_installed = [
-          #   "bash"
-          #   "json"
-          #   "hcl"
-          #   "lua"
-          #   "luadoc"
-          #   "luap"
-          #   "nix"
-          #   "markdown"
-          #   "markdown_inline"
-          #   "query"
-          #   "regex"
-          #   "terraform"
-          #   "typescript"
-          #   "vim"
-          #   "vimdoc"
-          #   "toml"
-          #   "yaml"
-          #   "gotmpl"
-          #   "helm"
-          #   "go"
-          # ];
-          # auto_install = true;
+          highlight = {
+            enable = true;
+          };
+          indent = {
+            enable = true;
+          };
+          folding = {
+            enable = true;
+          };
           incremental_selection = {
             enable = true;
             keymaps = {
