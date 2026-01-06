@@ -32,7 +32,7 @@
           height = 15;
           autoExpandWidth = false;
           mappings = {
-            "<cr>" = "open_with_window_picker";
+            "<space>" = "none";
             "s" = "vsplit_with_window_picker";
             "S" = "split_with_window_picker";
           };
