@@ -32,7 +32,9 @@
           height = 15;
           autoExpandWidth = false;
           mappings = {
-            "<space>" = "none";
+            "<cr>" = "open_with_window_picker";
+            "s" = "vsplit_with_window_picker";
+            "S" = "split_with_window_picker";
           };
         };
       };

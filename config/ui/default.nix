@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./alpha.nix
@@ -29,5 +34,12 @@
     snacks.enable = lib.mkDefault true;
     ufo.enable = lib.mkDefault true;
     web-devicons.enable = lib.mkDefault true;
+
+    extraPlugins = [ pkgs.vimPlugins.nvim-window-picker ];
+    extraConfigLua = /* lua */ ''
+      require('window-picker').setup({
+        hint = 'floating-big-letter',
+      })
+    '';
   };
 }
