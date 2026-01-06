@@ -6,6 +6,7 @@
   config = lib.mkIf config.gitsigns.enable {
     plugins.gitsigns = {
       enable = true;
+      lazyLoad.settings.cmd = [ "Gitsigns" ];
       settings = {
         trouble = true;
         current_line_blame = false;

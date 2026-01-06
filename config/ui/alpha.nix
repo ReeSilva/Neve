@@ -118,6 +118,34 @@
             (padding 1)
             {
               type = "button";
+              val = "󰈮  Projects";
+              on_press = {
+                __raw = "function() require'telescope'.extensions.projects.projects{} end";
+              };
+              opts = {
+                # hl = "comment";
+                keymap = [
+                  "n"
+                  "p"
+                  ":Telescope projects<CR>"
+                  {
+                    noremap = true;
+                    silent = true;
+                    nowait = true;
+                  }
+                ];
+                shortcut = "p";
+
+                position = "center";
+                cursor = 3;
+                width = 38;
+                align_shortcut = "right";
+                hl_shortcut = "Keyword";
+              };
+            }
+            (padding 1)
+            {
+              type = "button";
               val = "󰈭  Find Word";
               on_press = {
                 __raw = "function() require('telescope.builtin').live_grep() end";

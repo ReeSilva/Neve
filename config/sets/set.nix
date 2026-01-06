@@ -4,6 +4,10 @@
     set.enable = lib.mkEnableOption "Enable set module";
   };
   config = lib.mkIf config.set.enable {
+    globals = {
+      loaded_netrwPlugin = 1;
+      loaded_netrw = 1;
+    };
     opts = {
       # Enable relative line numbers
       number = true;
