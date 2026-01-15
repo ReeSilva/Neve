@@ -7,7 +7,7 @@
     ./cloak.nix
     ./colorizer.nix
     ./dial.nix
-    # ./harpoon.nix
+    ./harpoon.nix
     ./markdown-preview.nix
     ./mini.nix
     ./neocord.nix
@@ -39,7 +39,7 @@
     better-escape.enable = lib.mkDefault true;
     cloak.enable = lib.mkDefault true;
     dial.enable = lib.mkDefault true;
-    # harpoon.enable = lib.mkDefault false;
+    harpoon.enable = lib.mkDefault true;
     markdown-preview.enable = lib.mkDefault true;
     mini.enable = lib.mkDefault true;
     neocord.enable = lib.mkDefault true;
