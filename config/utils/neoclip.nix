@@ -36,6 +36,7 @@
           options = {
             silent = true;
             noremap = true;
+            desc = "neoclip";
           };
         }
       ];

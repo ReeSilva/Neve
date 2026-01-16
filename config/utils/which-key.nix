@@ -127,6 +127,7 @@
             __unkeyed-1 = "<leader>n";
             mode = "n";
             icon = "";
+            desc = "neoclip";
           }
 
           {
@@ -147,6 +148,13 @@
             __unkeyed-1 = "<leader>a";
             mode = "n";
             desc = "ai assistants";
+            icon = "󱚟";
+          }
+
+          {
+            __unkeyed-1 = "<leader>ac";
+            mode = "n";
+            desc = "codecompanion";
             icon = "󱚟";
           }
         ];
