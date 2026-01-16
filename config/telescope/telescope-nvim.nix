@@ -162,6 +162,10 @@
           action = "todo-comments";
           options.desc = "Todo (Telescope)";
         };
+        "<leader>nc" = {
+          action = "neoclip";
+          options.desc = "Neoclip for register '\"'";
+        };
       };
     };
   };
