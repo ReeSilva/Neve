@@ -60,26 +60,10 @@
         end
       '';
       settings = {
-        alwaysDivideMiddle = true;
-        globalstatus = false;
-        ignore_focus = [
-          "neo-tree"
-          "Avante"
-          "AvanteSelectedFiles"
-        ];
         extensions = [
           "fzf"
           "neo-tree"
         ];
-        theme = "auto";
-        componentSeparators = {
-          left = "|";
-          right = "|";
-        };
-        sectionSeparators = {
-          left = "█"; # 
-          right = "█"; # 
-        };
         sections = {
           lualine_a = [ "mode" ];
           lualine_b = [
@@ -105,6 +89,24 @@
             (lib.nixvim.utils.mkRaw /* lua */ "cc_component()")
             ''" " .. os.date("%R")''
           ];
+        };
+        options = {
+          always_divide_middle = true;
+          globalstatus = false;
+          ignore_focus = [
+            "neo-tree"
+            "Avante"
+            "AvanteSelectedFiles"
+          ];
+          theme = "auto";
+          component_separators = {
+            left = "|";
+            right = "|";
+          };
+          section_separators = {
+            left = ""; # █
+            right = ""; # █
+          };
         };
       };
     };
