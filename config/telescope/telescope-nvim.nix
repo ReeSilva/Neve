@@ -164,7 +164,15 @@
         };
         "<leader>nc" = {
           action = "neoclip";
-          options.desc = "Neoclip for register '\"'";
+          options = {
+            desc = "Neoclip for register '\"'";
+          };
+        };
+        "<leader>nm" = {
+          action = "macroscope";
+          options = {
+            desc = "Macroscope for register 'q'";
+          };
         };
       };
     };

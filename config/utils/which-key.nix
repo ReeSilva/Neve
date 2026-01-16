@@ -1,4 +1,5 @@
-{ lib, config, ... }: {
+{ lib, config, ... }:
+{
   options = {
     which-key.enable = lib.mkEnableOption "Enable which-key module";
   };
@@ -48,12 +49,18 @@
           # General Mappings
           {
             __unkeyed-1 = "<leader>c";
-            mode = [ "n" "v" ];
+            mode = [
+              "n"
+              "v"
+            ];
             group = "+code";
           }
           {
             __unkeyed-1 = "<leader>d";
-            mode = [ "n" "v" ];
+            mode = [
+              "n"
+              "v"
+            ];
             group = "+debug";
           }
           {
@@ -64,13 +71,19 @@
 
           {
             __unkeyed-1 = "<leader>g";
-            mode = [ "n" "v" ];
+            mode = [
+              "n"
+              "v"
+            ];
             group = "+git";
           }
 
           {
             __unkeyed-1 = "<leader>l";
-            mode = [ "n" "v" ];
+            mode = [
+              "n"
+              "v"
+            ];
             group = "+sidebar";
             icon = "";
           }
@@ -108,6 +121,33 @@
             __unkeyed-1 = "<leader>w";
             mode = "n";
             group = "+windows";
+          }
+
+          {
+            __unkeyed-1 = "<leader>n";
+            mode = "n";
+            icon = "";
+          }
+
+          {
+            __unkeyed-1 = "<leader>nc";
+            mode = "n";
+            desc = "Neoclip for register '\"'";
+            icon = "";
+          }
+
+          {
+            __unkeyed-1 = "<leader>nm";
+            mode = "n";
+            desc = "Macroscope for register 'q'";
+            icon = "";
+          }
+
+          {
+            __unkeyed-1 = "<leader>a";
+            mode = "n";
+            desc = "ai assistants";
+            icon = "󱚟";
           }
         ];
         win = {

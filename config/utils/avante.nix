@@ -30,24 +30,13 @@
         })
       '';
       keymaps = [
-        # {
-        #   mode = [
-        #     "n"
-        #     "v"
-        #   ];
-        #   key = "<leader>aa";
-        #   action = lib.nixvim.utils.mkRaw "function() require('avante.api').ask() end";
-        #   options = {
-        #     desc = "avante: ask";
-        #   };
-        # }
         {
           mode = "n";
           key = "<leader>acc";
           action = ":CodeCompanionActions<cr>";
           options = {
             silent = true;
-            desc = "Toggle Maurício Kubrusly chat";
+            desc = "codecompanion: mauricio kubrusly actions";
           };
         }
         {
@@ -56,7 +45,7 @@
           action = ":CodeCompanionChat Toggle<cr>";
           options = {
             silent = true;
-            desc = "Toggle Maurício Kubrusly chat";
+            desc = "codecompanion: mauricio kubrusly chat";
           };
         }
         {
@@ -65,7 +54,7 @@
           action = ":'<,'>CodeCompanion<cr>";
           options = {
             silent = true;
-            desc = "Maurício Kubrusly inline (NO ACP)";
+            desc = "codecompanion: mauricio kubrusly inline (no acp)";
           };
         }
         {
@@ -74,7 +63,7 @@
           action = ":'<,'>CodeCompanionChat<cr>";
           options = {
             silent = true;
-            desc = "Ask to Maurício Kubrusly";
+            desc = "codecompanion: ask mauricio kubrusly";
           };
         }
       ];

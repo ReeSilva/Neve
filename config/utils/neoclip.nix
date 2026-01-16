@@ -20,6 +20,7 @@
           '';
           keys = [
             "<leader>nc"
+            "<leader>nm"
           ];
         };
         settings = {
@@ -35,15 +36,8 @@
           options = {
             silent = true;
             noremap = true;
-            desc = "Neoclip";
           };
         }
-        # {
-        #   mode = [ "n" ];
-        #   key = "<leader>nc";
-        #   action = ":Telescope neoclip<CR>";
-        #   options.desc = "Neoclip for register '\"'";
-        # }
       ];
     };
 }
