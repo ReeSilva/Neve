@@ -1,4 +1,10 @@
-{ lib, config, pkgs, ... }: {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
   options = {
     catppuccin.enable = lib.mkEnableOption "Enable catppuccin module";
   };
@@ -6,6 +12,7 @@
     colorschemes = {
       catppuccin = {
         enable = true;
+        lazyLoad.enable = true;
         settings = {
           background = {
             light = "macchiato";
@@ -33,7 +40,9 @@
             mini.enabled = true;
             native_lsp = {
               enabled = true;
-              inlay_hints = { background = true; };
+              inlay_hints = {
+                background = true;
+              };
               underlines = {
                 errors = [ "underline" ];
                 hints = [ "underline" ];
