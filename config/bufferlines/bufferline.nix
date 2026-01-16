@@ -35,7 +35,7 @@
           enable = true;
           settings = {
             options = {
-              separator_style = "thin"; # “slant”, “padded_slant”, “slope”, “padded_slope”, “thick”, “thin“
+              separator_style = "slope"; # “slant”, “padded_slant”, “slope”, “padded_slope”, “thick”, “thin“
               custom_areas.right = lib.nixvim.utils.mkRaw ''
                 function()
                   local result = {}
