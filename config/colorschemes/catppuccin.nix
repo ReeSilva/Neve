@@ -16,7 +16,7 @@
         settings = {
           background = {
             light = "latte";
-            dark = "mocha";
+            dark = if pkgs.stdenv.isDarwin then "macchiato" else "frappe";
           };
           flavour = if pkgs.stdenv.isDarwin then "macchiato" else "frappe";
           disable_bold = false;
