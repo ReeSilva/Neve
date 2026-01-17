@@ -7,6 +7,7 @@
     globals = {
       loaded_netrwPlugin = 1;
       loaded_netrw = 1;
+      disable_autoformat = true;
     };
     opts = {
       # Enable relative line numbers
