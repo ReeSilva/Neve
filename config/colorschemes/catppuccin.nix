@@ -15,10 +15,10 @@
         lazyLoad.enable = true;
         settings = {
           background = {
-            light = "macchiato";
+            light = "latte";
             dark = "mocha";
           };
-          flavour = if pkgs.stdenv.isDarwin then "latte" else "frappe";
+          flavour = if pkgs.stdenv.isDarwin then "macchiato" else "frappe";
           disable_bold = false;
           disable_italic = false;
           disable_underline = false;
