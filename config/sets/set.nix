@@ -147,9 +147,6 @@
         g.neovide_cursor_vfx_particle_density = 14.0
         g.neovide_cursor_vfx_particle_speed = 12.0
         g.neovide_transparency = 0.9
-
-        -- Neovide Fonts
-        o.guifont = "JetBrainsMono Nerd Font:h14:Medium:i"
       end
     '';
   };
