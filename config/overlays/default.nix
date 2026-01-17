@@ -17,7 +17,7 @@
     lib.mkIf cfg.enable {
       overlays = {
         avante.enable = lib.mkDefault false;
-        codecompanion.enable = lib.mkDefault false;
+        codecompanion.enable = lib.mkDefault true;
         codex-acp.enable = lib.mkDefault false;
         opencode.enable = lib.mkDefault false;
       };
