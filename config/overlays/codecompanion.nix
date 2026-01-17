@@ -18,8 +18,7 @@
                 owner = "olimorris";
                 repo = "codecompanion.nvim";
                 tag = "v18.4.1";
-                sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
-                # sha256 = "sha256-f3Fin46KtArc5XxA2whagloFxPev/bThCTK+52fzQoM=";
+                sha256 = "sha256-f3Fin46KtArc5XxA2whagloFxPev/bThCTK+52fzQoM=";
               };
             };
           };
