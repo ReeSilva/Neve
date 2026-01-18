@@ -86,7 +86,7 @@
           ];
           lualine_y = [ "progress" ];
           lualine_z = [
-            (lib.nixvim.utils.mkRaw /* lua */ "cc_component()")
+            # (lib.nixvim.utils.mkRaw /* lua */ "cc_component()")
             ''" " .. os.date("%R")''
           ];
         };

@@ -11,8 +11,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "j-hui";
       repo = "fidget.nvim";
-      rev = "3f5475949679953af6d78654db29b944fa826e6a";
-      hash = "sha256-ieY3zaQAydzadpPiW1/IYakVHhp+wyEOpCQntgDOObs=";
+      rev = "7fa433a83118a70fe24c1ce88d5f0bd3453c0970";
+      hash = "sha256-Zap4UVicIvCaPqCMgdlnEAGbMzq1xM4uGpVqZL1iju0=";
     };
   };
 in
@@ -31,7 +31,7 @@ in
         };
         progress = {
           poll_rate = 0; # How and when to poll for progress messages
-          suppress_on_insert = true; # Suppress new messages while in insert mode
+          suppress_on_insert = false; # Suppress new messages while in insert mode
           ignore_done_already = true; # Ignore new tasks that are already complete
           ignore_empty_message = false; # Ignore new tasks that don't contain a message
           clear_on_detach =
