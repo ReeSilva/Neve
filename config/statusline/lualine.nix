@@ -97,6 +97,7 @@
             "neo-tree"
             "Avante"
             "AvanteSelectedFiles"
+            "codecompanion"
           ];
           theme = "auto";
           component_separators = {
