@@ -170,6 +170,7 @@
           extensions = {
             history = {
               enabled = true;
+              opts.title_generation_opts.adapter = if pkgs.stdenv.isDarwin then "gemini" else "openai";
             };
             mcphub = {
               callback = "mcphub.extensions.codecompanion";
