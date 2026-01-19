@@ -2,7 +2,6 @@
 {
   imports = [
     ./aerial.nix
-    ./avante.nix
     ./better-escape.nix
     ./cloak.nix
     ./colorizer.nix

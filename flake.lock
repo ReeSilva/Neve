@@ -131,11 +131,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1768533022,
-        "narHash": "sha256-z2A4JDlOQ0KxHO4XLSoTArhi3BcYqoKuoMD2mPvZ1sQ=",
+        "lastModified": 1768745902,
+        "narHash": "sha256-gmSD6lw6PXv+m+mxXci3jC0DUsQoyWCEIoQHKpcU3Xw=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "765ba8f934426582f38b6adfc1da6d57942f83f4",
+        "rev": "dc76b44fe668048b4e6960d13cc2d6545616c961",
         "type": "github"
       },
       "original": {
@@ -176,11 +176,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768498135,
-        "narHash": "sha256-FPnN22K98+XtmQT/TxX+uImFjBrLGre2rUHkNyOl2Js=",
+        "lastModified": 1768730387,
+        "narHash": "sha256-g9tPvjThz6EUk7zcY7lL+YH4lrT4x3FJ6jrNMHA8PAE=",
         "owner": "ravitemer",
         "repo": "mcphub.nvim",
-        "rev": "415d9d0ea1db12eafc77c871f1ee07936f3b6e03",
+        "rev": "7cd5db330f41b7bae02b2d6202218a061c3ebc1f",
         "type": "github"
       },
       "original": {
@@ -277,11 +277,11 @@
         "wallpaper": "wallpaper"
       },
       "locked": {
-        "lastModified": 1768521666,
-        "narHash": "sha256-99gsOsx+BECUEJqWigzyBm8nguUu3eE6g9PBP13D2cY=",
+        "lastModified": 1768684219,
+        "narHash": "sha256-ZkRQV8ueys1SiJHZmLA3g5fj+ngyJECg/SgwgQZnD+k=",
         "ref": "feat/v2",
-        "rev": "eeae1ca00b46415a4437a2ece3fcad1776f70a02",
-        "revCount": 349,
+        "rev": "61b4ce2d0c6f316f1e6d9a2f97430c112c041298",
+        "revCount": 351,
         "type": "git",
         "url": "https://codeberg.org/reesilva/pangaea"
       },

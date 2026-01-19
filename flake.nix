@@ -23,9 +23,11 @@
     };
     pangaea = {
       url = "git+https://codeberg.org/reesilva/pangaea?ref=feat/v2";
-      inputs.nixpkgs.follows = "nixvim/nixpkgs";
-      inputs.opencode.follows = "opencode";
-      inputs.mcp-hub.follows = "mcp-hub";
+      inputs = {
+        nixpkgs.follows = "nixvim/nixpkgs";
+        opencode.follows = "opencode";
+        mcp-hub.follows = "mcp-hub";
+      };
     };
   };
 
