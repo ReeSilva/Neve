@@ -54,7 +54,7 @@
       {
         mode = "n";
         key = "<leader>lt";
-        action = ":SidebarNvimToggle<CR>";
+        action = "<cmd>SidebarNvimToggle<CR>";
         options = {
           desc = "Toggle Sidebar";
           silent = true;
@@ -63,7 +63,7 @@
       {
         mode = "n";
         key = "<leader>lr";
-        action = ":SidebarNvimUpdate<CR>";
+        action = "<cmd>SidebarNvimUpdate<CR>";
         options = {
           desc = "Refresh sidebar";
           silent = true;
@@ -72,7 +72,7 @@
       {
         mode = "n";
         key = "<leader>lf";
-        action = ":SidebarNvimFocus<CR>";
+        action = "<cmd>SidebarNvimFocus<CR>";
         options = {
           desc = "Focus sidebar";
           silent = true;

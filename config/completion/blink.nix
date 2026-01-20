@@ -9,7 +9,7 @@
     blink.enable = lib.mkEnableOption "Enable blink.nvim";
   };
   config = lib.mkIf config.blink.enable {
-    extraPlugins = with pkgs; [ vimPlugins.blink-cmp-avante ];
+    extraPlugins = with pkgs; [ vimPlugins.blink-cmp-conventional-commits ];
     plugins = {
       colorful-menu.enable = true;
       blink-cmp = {
@@ -123,7 +123,9 @@
             min_keyword_length = 3;
             default = [
               "avante"
+              "conventional_commits"
               "copilot"
+              "emoji"
               "lsp"
               "buffer"
               "path"
@@ -142,11 +144,27 @@
                 score_offset = 20;
               };
               buffer.max_items = 5;
+              conventional_commits = {
+                name = "Conventional Commits";
+                module = "blink-cmp-conventional-commits";
+                enabled = lib.nixvim.utils.mkRaw ''
+                  function()
+                    return vim.bo.filetype == "gitcommit"
+                  end
+                '';
+                opts = { };
+              };
               copilot = {
                 async = true;
                 module = "blink-cmp-copilot";
                 name = "copilot";
                 score_offset = 10;
+              };
+              emoji = {
+                name = "Emoji";
+                module = "blink-emoji";
+                score_offset = 15;
+                opts.insert = true;
               };
               git = {
                 module = "blink-cmp-git";
@@ -184,8 +202,10 @@
           };
         };
       };
+      blink-cmp-avante.enable = true;
       blink-cmp-copilot.enable = true;
       blink-cmp-git.enable = true;
+      blink-emoji.enable = true;
       blink-ripgrep.enable = true;
     };
   };
