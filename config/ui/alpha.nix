@@ -173,7 +173,7 @@
             (padding 1)
             {
               type = "button";
-              val = "  List Sessions";
+              val = "  List Sessions";
               on_press = {
                 __raw = "function() require('persistence').select() end";
               };
