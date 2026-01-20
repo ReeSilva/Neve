@@ -39,7 +39,6 @@
                 __raw = "function() require('telescope.builtin').find_files() end";
               };
               opts = {
-                # hl = "comment";
                 keymap = [
                   "n"
                   "f"

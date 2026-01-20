@@ -9,6 +9,7 @@
       lazyLoad.settings = {
         event = "BufReadPre";
         keys = [
+          "<leader>qS"
           "<leader>qs"
           "<leader>ql"
           "<leader>qd"
