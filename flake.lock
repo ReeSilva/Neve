@@ -131,11 +131,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1768922080,
-        "narHash": "sha256-gFoGvnW2YDWsxKD56kdiXbhh9vBPAU3yusssbXF0UMo=",
+        "lastModified": 1769005827,
+        "narHash": "sha256-n49JVCIldCwPSL/d1tGGhoCuINl9DU6yN9NU9omIGEU=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "78f3fdc13ef903475aa5bfc0f85eeefaa36af837",
+        "rev": "f40faed8459cf92225adac7ac8455208d16e5566",
         "type": "github"
       },
       "original": {
@@ -277,11 +277,11 @@
         "wallpaper": "wallpaper"
       },
       "locked": {
-        "lastModified": 1768684219,
-        "narHash": "sha256-ZkRQV8ueys1SiJHZmLA3g5fj+ngyJECg/SgwgQZnD+k=",
+        "lastModified": 1768949512,
+        "narHash": "sha256-UKicQCZgksnsUIDv0/xkEDOVsZ+/burVc+j0lobD7tc=",
         "ref": "feat/v2",
-        "rev": "61b4ce2d0c6f316f1e6d9a2f97430c112c041298",
-        "revCount": 351,
+        "rev": "0e76b08e95731672ea96486da2de9e17899ab8e8",
+        "revCount": 352,
         "type": "git",
         "url": "https://codeberg.org/reesilva/pangaea"
       },
