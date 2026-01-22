@@ -29,6 +29,7 @@
         mcp-hub.follows = "mcp-hub";
       };
     };
+    rustacean.url = "github:mrcjkb/rustaceanvim";
   };
 
   outputs =

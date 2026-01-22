@@ -121,7 +121,7 @@
           enable = false;
         };
         rust_analyzer = {
-          enable = true;
+          enable = false;
           config = {
             checkOnSave = true;
             check = {

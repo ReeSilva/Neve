@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, inputs, ... }:
 {
   # Import all your configuration modules here
   imports = [
@@ -41,7 +41,9 @@
   niquisvim.ai.enable = lib.mkDefault true;
 
   opts.shell = lib.getExe pkgs.fish;
-  plugins.lz-n.enable = true;
+  plugins = {
+    lz-n.enable = true;
+  };
   extraPlugins = with pkgs.vimPlugins; [
     lzn-auto-require
   ];
