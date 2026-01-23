@@ -6,6 +6,7 @@
     ./cloak.nix
     ./colorizer.nix
     ./dial.nix
+    ./direnv.nix
     ./harpoon.nix
     ./markdown-preview.nix
     ./mini.nix
@@ -62,6 +63,7 @@
     which-key.enable = lib.mkDefault true;
     wilder.enable = lib.mkDefault false;
     # Added by me, sooner this will be niquisvim
+    niquisvim.utils.direnv.enable = lib.mkDefault true;
     niquisvim.utils.smart-splits.enable = lib.mkDefault true;
     parrot.enable = lib.mkDefault false;
     avante.enable = lib.mkDefault true;
