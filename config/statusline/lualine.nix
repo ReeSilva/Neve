@@ -44,7 +44,7 @@
             "Avante"
             "AvanteSelectedFiles"
           ];
-          theme = "tokyonight";
+          theme = "auto";
           component_separators = {
             left = "|";
             right = "|";
