@@ -14,6 +14,9 @@
       number = true;
       relativenumber = true;
 
+      # Set background to dark
+      bg = "dark";
+
       # Set tabs to 2 spaces
       tabstop = 2;
       softtabstop = 2;
