@@ -18,7 +18,7 @@
       inputs.nixpkgs.follows = "nixvim/nixpkgs";
     };
     opencode = {
-      url = "github:anomalyco/opencode?ref=v1.1.32";
+      url = "github:anomalyco/opencode";
     };
     pangaea = {
       url = "git+https://codeberg.org/reesilva/pangaea?ref=feat/v2";
