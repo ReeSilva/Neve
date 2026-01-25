@@ -7,6 +7,19 @@
   config = lib.mkIf config.keys.enable {
     globals.mapleader = " ";
     keymaps = [
+      # Disable enter key
+      {
+        mode = [
+          "n"
+        ];
+        key = "<cr>";
+        action = "<Nop>";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "Disable Enter key";
+        };
+      }
       # Disable arrow keys
       {
         mode = [
@@ -467,8 +480,11 @@
       # Set keymap for MCPHub
       {
         mode = "n";
-        key = "<C-m>";
-        action = "<cmd>MCPHub<CR>";
+        key = "<leader>m";
+        action = "<cmd>MCPHub<cr>";
+        options = {
+          desc = "Open MCPHub.nvim";
+        };
       }
     ];
   };
