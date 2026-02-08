@@ -129,21 +129,21 @@
           };
         }
       ];
-      nixpkgs.overlays = [
-        (final: prev: {
-          vimPlugins = prev.vimPlugins // {
-            codecompanion-nvim = prev.vimPlugins.codecompanion-nvim.overrideAttrs {
-              version = "v18.5.0";
-              src = prev.fetchFromGitHub {
-                owner = "olimorris";
-                repo = "codecompanion.nvim";
-                tag = "v18.5.0";
-                sha256 = "sha256-UAvvj+iAWluJ2SD/KmyPovRjd/32351et/0Mftwehvw=";
-              };
-            };
-          };
-        })
-      ];
+      # nixpkgs.overlays = [
+      #   (final: prev: {
+      #     vimPlugins = prev.vimPlugins // {
+      #       codecompanion-nvim = prev.vimPlugins.codecompanion-nvim.overrideAttrs {
+      #         version = "v18.5.0";
+      #         src = prev.fetchFromGitHub {
+      #           owner = "olimorris";
+      #           repo = "codecompanion.nvim";
+      #           tag = "v18.5.0";
+      #           sha256 = "sha256-UAvvj+iAWluJ2SD/KmyPovRjd/32351et/0Mftwehvw=";
+      #         };
+      #       };
+      #     };
+      #   })
+      # ];
       plugins.codecompanion = {
         enable = true;
         lazyLoad.settings.cmd = [
