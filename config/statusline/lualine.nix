@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 {
   options = {
     lualine.enable = lib.mkEnableOption "Enable lualine module";
@@ -44,7 +44,7 @@
             "Avante"
             "AvanteSelectedFiles"
           ];
-          theme = "auto";
+          theme = if pkgs.stdenv.isDarwin then "tokyonight-moon" else "tokyonight-night";
           component_separators = {
             left = "|";
             right = "|";
