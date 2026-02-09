@@ -27,7 +27,7 @@
   dap.enable = lib.mkDefault true;
   filetrees.enable = lib.mkDefault true;
   git.enable = lib.mkDefault true;
-  highlights.enable = lib.mkDefault true;
+  highlights.enable = lib.mkDefault false;
   keys.enable = true;
   languages.enable = true;
   lsp-setup.enable = lib.mkDefault true;

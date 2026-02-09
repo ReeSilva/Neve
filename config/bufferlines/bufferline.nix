@@ -35,7 +35,7 @@
           enable = true;
           settings = {
             options = {
-              separator_style = "slope"; # “slant”, “padded_slant”, “slope”, “padded_slope”, “thick”, “thin“
+              separator_style = "slant"; # “slant”, “padded_slant”, “slope”, “padded_slope”, “thick”, “thin“
               custom_areas.right = lib.nixvim.utils.mkRaw ''
                 function()
                   local result = {}
@@ -66,19 +66,19 @@
               offsets = [
                 {
                   filetype = "neo-tree";
-                  text = lib.nixvim.utils.mkRaw ''
-                    function()
-                      return " 󰉋  " .. vim.fn.getcwd()
-                    end
-                  '';
-                  highlight = "Directory";
+                  # text = lib.nixvim.utils.mkRaw ''
+                  #   function()
+                  #     return " 󰉋  " .. vim.fn.getcwd()
+                  #   end
+                  # '';
+                  # highlight = "Directory";
                   text_align = "left";
                   separator = true;
                 }
                 {
                   filetype = "Avante";
                   text = "Glauber Braga";
-                  highlight = "AvanteSidebarWinHorizontalSeparator";
+                  # highlight = "AvanteSidebarWinHorizontalSeparator";
                 }
                 {
                   filetype = "codecompanion";
