@@ -21,7 +21,7 @@
           cvs = false;
           "." = false;
         };
-        copilot_model = "claude-sonnet-4.5";
+        copilot_model = "gpt-41-copilot";
       };
     };
   };
