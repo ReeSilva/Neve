@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 {
   options.niquisvim.colorschemes.tokyonight.enable = lib.mkEnableOption "Enable Tokyonight colorscheme";
   config =
@@ -9,7 +9,7 @@
       colorschemes.tokyonight = {
         enable = true;
         settings = {
-            style = "night";
+            style = if pkgs.stdenv.isDarwin then "moon" else "night";
           };
       };
     };
