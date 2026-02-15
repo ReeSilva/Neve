@@ -75,16 +75,16 @@
                   text_align = "left";
                   separator = true;
                 }
-                {
-                  filetype = "Avante";
-                  text = "Glauber Braga";
-                  # highlight = "AvanteSidebarWinHorizontalSeparator";
-                }
-                {
-                  filetype = "codecompanion";
-                  text = "Maurício Kubrusly";
-                  seperator = true;
-                }
+                # {
+                #   filetype = "Avante";
+                #   text = "Glauber Braga";
+                #   # highlight = "AvanteSidebarWinHorizontalSeparator";
+                # }
+                # {
+                #   filetype = "codecompanion";
+                #   text = "Maurício Kubrusly";
+                #   seperator = true;
+                # }
               ];
             };
           };

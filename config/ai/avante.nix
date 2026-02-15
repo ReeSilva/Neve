@@ -183,7 +183,7 @@
             windows = {
               width = 37;
               sidebar_header = {
-                align = "right";
+                align = "center";
                 rounded = false;
               };
               input = {
