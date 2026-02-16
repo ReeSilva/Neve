@@ -262,11 +262,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1771126768,
-        "narHash": "sha256-xWVnZDX/ZNtEnRGiGKuX5sG+OTK9fmDy95TFI3lHjfw=",
+        "lastModified": 1771253715,
+        "narHash": "sha256-xEMerB3SlsiDFguHIvxOltxs9gj0jyCrNDC0nudwt7A=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "67d1d230e79b4d63499a2cb00b2c3f40faa6d18c",
+        "rev": "23833180b905a5eab8ffe805c6d9658548668848",
         "type": "github"
       },
       "original": {
@@ -473,11 +473,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1771023756,
-        "narHash": "sha256-sTj1hrPT7D4oGHaQQzwDeqyZBwnxYc+T7yceyQc4sy4=",
+        "lastModified": 1771135771,
+        "narHash": "sha256-wyvBIhDuyCRyjB3yPg77qoyxrlgQtBR1rVW3c9knV3E=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "4c63aa76be59b49ae89892ae803005afd4a400cd",
+        "rev": "ed0424f0b08d303a7348f52f7850ad1b2704f9ba",
         "type": "github"
       },
       "original": {
@@ -491,16 +491,16 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1771120533,
-        "narHash": "sha256-FA9RRo4wH+FHXWIm3hm0oPouQ+VKral+Mqbk4g3dPfo=",
+        "lastModified": 1771271829,
+        "narHash": "sha256-43vPMyO7DsAgKrh0Wmt7jLDYCWUsaj30nBITreyYgX8=",
         "owner": "anomalyco",
         "repo": "opencode",
-        "rev": "d1482e148399bfaf808674549199f5f4aa69a22d",
+        "rev": "d8c25bfeb44771cc3a3ba17bf8de6ad2add9de2c",
         "type": "github"
       },
       "original": {
         "owner": "anomalyco",
-        "ref": "v1.2.4",
+        "ref": "v1.2.6",
         "repo": "opencode",
         "type": "github"
       }
@@ -521,11 +521,11 @@
         "wallpaper": "wallpaper"
       },
       "locked": {
-        "lastModified": 1770941730,
-        "narHash": "sha256-jvzQ8fXeTeySKxzqFt7pgwtUsEYs5389zTxIZ1j1VrA=",
+        "lastModified": 1771276459,
+        "narHash": "sha256-P7rSF8dFiJRnJL99KDaZMte76opw77OCvZj36LWLLUk=",
         "ref": "feat/v2",
-        "rev": "d04ff58c34f94c9ca21ab64eab6a73c4a6352ff1",
-        "revCount": 368,
+        "rev": "a80f6c76405159001cfea1d9a69a40c6461c1bdb",
+        "revCount": 371,
         "type": "git",
         "url": "https://codeberg.org/reesilva/pangaea"
       },
@@ -557,11 +557,11 @@
         "vimcats": "vimcats"
       },
       "locked": {
-        "lastModified": 1770510918,
-        "narHash": "sha256-br2svA/QO26FyDtwjGrvf3it2LgZREzetBjfrOZcyuU=",
+        "lastModified": 1771240182,
+        "narHash": "sha256-OOJ7GewbTuYgOeMZc1CilRSTJ4PjhwXCjPZ5fPzVmVc=",
         "owner": "mrcjkb",
         "repo": "rustaceanvim",
-        "rev": "bb57d9a9c3f547504e38df1fc17dbcc7065a23f3",
+        "rev": "ec517a0d223060b79e040e4a187e031b76b307ea",
         "type": "github"
       },
       "original": {
