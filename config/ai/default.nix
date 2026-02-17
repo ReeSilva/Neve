@@ -3,6 +3,7 @@
   imports = [
     ./avante.nix
     ./codecompanion.nix
+    ./copilot.nix
   ];
 
   options = {
@@ -14,6 +15,7 @@
     in
     lib.mkIf cfg.enable {
       avante.enable = lib.mkDefault true;
+      copilot.enable = lib.mkDefault true;
       niquisvim.ai.codecompanion.enable = lib.mkDefault true;
     };
 }

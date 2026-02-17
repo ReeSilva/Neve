@@ -1,5 +1,5 @@
 { lib, config, ... }: {
-  imports = [ ./blink.nix ./cmp.nix ./codeium.nix ./copilot.nix ./lspkind.nix ];
+  imports = [ ./blink.nix ./cmp.nix ./codeium.nix ./lspkind.nix ];
 
   options = {
     completion.enable = lib.mkEnableOption "Enable completion module";
@@ -8,7 +8,6 @@
     cmp.enable = lib.mkDefault false;
     blink.enable = lib.mkDefault true;
     codeium.enable = lib.mkDefault false;
-    copilot.enable = lib.mkDefault true;
     lspkind.enable = lib.mkDefault true;
   };
 }

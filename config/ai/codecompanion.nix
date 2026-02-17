@@ -187,18 +187,7 @@
             };
           };
           adapters.acp = {
-            codex = lib.nixvim.utils.mkRaw /* lua */ ''
-              function()
-                return require("codecompanion.adapters").extend("codex", {
-                  commands = {
-                    default = {
-                      "${lib.getExe inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.codex-acp}"
-                    },
-                  },
-                })
-              end
-            '';
-            claude_code = lib.mkIf pkgs.stdenv.isLinux (
+            claude_code = lib.mkIf pkgs.stdenv.isDarwin (
               lib.nixvim.utils.mkRaw /* lua */ ''
                 function()
                   return require("codecompanion.adapters").extend("claude_code", {

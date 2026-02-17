@@ -80,18 +80,13 @@
               };
             };
             providers = {
-              claude = lib.mkIf pkgs.stdenv.isLinux {
+              claude = lib.mkIf pkgs.stdenv.isDarwin {
+                auth_type = "max";
                 endpoint = "https://api.anthropic.com";
-                model = "claude-sonnet-4-5-20250929";
-                timeout = 30000; # Timeout in milliseconds
-                context_window = 200000;
-                extra_request_body = {
-                  temperature = 0.75;
-                  max_tokens = 64000;
-                };
+                model = "claude-opus-4-6";
               };
               copilot = {
-                model = "claude-sonnet-4.5";
+                model = "claude-opus-4.6";
               };
               morph = {
                 model = "auto";
@@ -126,57 +121,25 @@
                 '';
               }
             ];
-            acp_providers =
-              if pkgs.stdenv.isDarwin then
-                {
-                  codex = {
-                    command = lib.getExe inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.codex-acp;
-                    env = {
-                      OPENAI_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'OPENAI_API_KEY'";
-                    };
-                  };
-                  gemini-cli = {
-                    command = lib.getExe inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.gemini-cli;
-                    args = [ "--experimental-acp" ];
-                    env = {
-                      NODE_NO_WARNINGS = "1";
-                      GEMINI_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'GEMINI_API_KEY'";
-                    };
-                  };
-                  opencode = {
-                    command = lib.getExe inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
-                    args = [ "acp" ];
-                    env = {
-                      GEMINI_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'GEMINI_API_KEY'";
-                      OPENAI_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'OPENAI_API_KEY'";
-                    };
-                  };
-                }
-              else
-                {
-                  claude-code = {
-                    command = lib.getExe inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code-acp;
-                    env = {
-                      NODE_NO_WARNINGS = "1";
-                      ANTHROPIC_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'ANTHROPIC_API_KEY'";
-                      ACP_PERMISSION_MODE = "acceptEdits";
-                    };
-                  };
-                  codex = {
-                    command = lib.getExe inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.codex-acp;
-                    env = {
-                      OPENAI_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'OPENAI_API_KEY'";
-                    };
-                  };
-                  opencode = {
-                    command = lib.getExe inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
-                    args = [ "acp" ];
-                    env = {
-                      ANTHROPIC_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'ANTHROPIC_API_KEY'";
-                      OPENAI_API_KEY = lib.nixvim.utils.mkRaw "os.getenv 'OPENAI_API_KEY'";
-                    };
-                  };
+            acp_providers = {
+              claude-code = lib.mkIf pkgs.stdenv.isDarwin {
+                command = lib.getExe inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code-acp;
+                env = {
+                  NODE_NO_WARNINGS = "1";
                 };
+              };
+              gemini-cli = lib.mkIf pkgs.stdenv.isDarwin {
+                command = lib.getExe inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.gemini-cli;
+                args = [ "--experimental-acp" ];
+                env = {
+                  NODE_NO_WARNINGS = "1";
+                };
+              };
+              opencode = {
+                command = lib.getExe inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
+                args = [ "acp" ];
+              };
+            };
             web_search_engine = {
               provider = "brave";
             };
