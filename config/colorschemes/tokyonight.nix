@@ -9,7 +9,7 @@
       colorschemes.tokyonight = {
         enable = true;
         settings = {
-            style = if pkgs.stdenv.isDarwin then "moon" else "night";
+            style = "night";
           };
       };
     };

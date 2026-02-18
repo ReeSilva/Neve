@@ -44,7 +44,7 @@
             "Avante"
             "AvanteSelectedFiles"
           ];
-          theme = if pkgs.stdenv.isDarwin then "tokyonight-moon" else "tokyonight-night";
+          theme = "tokyonight-night";
           component_separators = {
             left = "|";
             right = "|";
