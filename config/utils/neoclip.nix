@@ -8,21 +8,31 @@
     lib.mkIf cfg.enable {
       plugins.sqlite-lua = {
         enable = true;
-        lazyLoad.settings.lazy = true;
+        # lazyLoad.settings.lazy = true;
       };
       plugins.neoclip = {
         enable = true;
-        lazyLoad.settings = {
-          before = lib.nixvim.utils.mkRaw ''
-            function()
-              require('lz.n').trigger_load('sqlite-lua')
-            end
-          '';
-          keys = [
-            "<leader>nc"
-            "<leader>nm"
-          ];
-        };
+        # lazyLoad.settings = {
+        #   before = lib.nixvim.utils.mkRaw ''
+        #     function()
+        #       require('lz.n').trigger_load('sqlite-lua')
+        #     end
+        #   '';
+        #   keys = [
+        #     "<leader>nc"
+        #     "<leader>nm"
+        #     "yy"
+        #     "pp"
+        #     {
+        #       mode = "v";
+        #       __unkeyed-1 = "y";
+        #     }
+        #     {
+        #       mode = "v";
+        #       __unkeyed-1 = "p";
+        #     }
+        #   ];
+        # };
         settings = {
           enable_persistent_history = true;
           keys.telescope.i.paste = "<C-l>";
