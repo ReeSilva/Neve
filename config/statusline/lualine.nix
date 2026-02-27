@@ -1,4 +1,8 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  ...
+}:
 {
   options = {
     lualine.enable = lib.mkEnableOption "Enable lualine module";
@@ -28,6 +32,48 @@
               cond = {
                 __raw = "require('noice').api.status.mode.has";
               };
+            }
+            {
+              __unkeyed-1 = lib.nixvim.utils.mkRaw /* lua */ ''
+                function()
+                    -- Check if MCPHub is loaded
+                    if not vim.g.loaded_mcphub then
+                        return "󰐻 -"
+                    end
+
+                    local count = vim.g.mcphub_servers_count or 0
+                    local status = vim.g.mcphub_status or "stopped"
+                    local executing = vim.g.mcphub_executing
+
+                    -- Show "-" when stopped
+                    if status == "stopped" then
+                        return "󰐻 -"
+                    end
+
+                    -- Show spinner when executing, starting, or restarting
+                    if executing or status == "starting" or status == "restarting" then
+                        local frames = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
+                        local frame = math.floor(vim.loop.now() / 100) % #frames + 1
+                        return "󰐻 " .. frames[frame]
+                    end
+
+                    return "󰐻 " .. count
+                end,
+                color = function()
+                    if not vim.g.loaded_mcphub then
+                        return { fg = "#565f89" } -- Gray for not loaded
+                    end
+
+                    local status = vim.g.mcphub_status or "stopped"
+                    if status == "ready" or status == "restarted" then
+                        return { fg = "#73daca" } -- Green for connected
+                    elseif status == "starting" or status == "restarting" then
+                        return { fg = "#e0af68" } -- Orange for connecting
+                    else
+                        return { fg = "#f7768e" } -- Red for error/stopped
+                    end
+                end,
+              '';
             }
             "filetype"
           ];
