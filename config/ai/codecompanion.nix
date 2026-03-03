@@ -164,13 +164,13 @@
                 user = "engenheiro do fim do mundo";
               };
             };
-            inline.adapter = if pkgs.stdenv.isDarwin then "gemini" else "openai";
+            inline.adapter = if pkgs.stdenv.isDarwin then "gemini" else "anthropic";
             cmd.adapter = "opencode";
           };
           extensions = {
             history = {
               enabled = true;
-              opts.title_generation_opts.adapter = if pkgs.stdenv.isDarwin then "gemini" else "openai";
+              opts.title_generation_opts.adapter = if pkgs.stdenv.isDarwin then "gemini" else "anthropic";
             };
             mcphub = {
               callback = "mcphub.extensions.codecompanion";
@@ -187,21 +187,19 @@
             };
           };
           adapters.acp = {
-            claude_code = lib.mkIf pkgs.stdenv.isDarwin (
-              lib.nixvim.utils.mkRaw /* lua */ ''
-                function()
-                  return require("codecompanion.adapters").extend("claude_code", {
-                    commands = {
-                      default = {
-                        "${
-                          lib.getExe' inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code-acp "claude-agent-acp"
-                        }"
-                      },
+            claude_code = lib.nixvim.utils.mkRaw /* lua */ ''
+              function()
+                return require("codecompanion.adapters").extend("claude_code", {
+                  commands = {
+                    default = {
+                      "${
+                        lib.getExe' inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code-acp "claude-agent-acp"
+                      }"
                     },
-                  })
-                end
-              ''
-            );
+                  },
+                })
+              end
+            '';
             gemini_cli = lib.mkIf pkgs.stdenv.isDarwin (
               lib.nixvim.utils.mkRaw /* lua */ ''
                 function()
