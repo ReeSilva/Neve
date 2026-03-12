@@ -222,7 +222,7 @@
                 return require("codecompanion.adapters").extend("opencode", {
                   commands = {
                     default = {
-                      "${lib.getExe inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default}",
+                      "${lib.getExe pkgs.opencode}",
                       "acp"
                     },
                   },

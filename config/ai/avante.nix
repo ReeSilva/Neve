@@ -136,7 +136,7 @@
                 };
               };
               opencode = {
-                command = lib.getExe inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
+                command = lib.getExe pkgs.opencode;
                 args = [ "acp" ];
               };
             };

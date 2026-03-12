@@ -5,7 +5,6 @@
     ./fidget.nix
     ./lsp-nvim.nix
     ./lspsaga.nix
-    ./terragrunt-ls.nix
     ./trouble.nix
   ];
 
@@ -17,7 +16,6 @@
     fidget.enable = lib.mkDefault true;
     lsp-nvim.enable = lib.mkDefault true;
     lspsaga.enable = lib.mkDefault true;
-    terragrunt-ls.enable = lib.mkDefault false;
     trouble.enable = lib.mkDefault true;
   };
 }

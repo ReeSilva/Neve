@@ -2,33 +2,29 @@
   description = "Neve is a Neovim configuration built with Nixvim, which allows you to use Nix language to manage Neovim plugins/options";
 
   inputs = {
-
+    nixpkgs.url = "github:NixOS/nixpkgs?shallow=1";
     flake-utils.url = "github:numtide/flake-utils";
     nixvim.url = "github:nix-community/nixvim";
     mcphub-nvim = {
       url = "github:ravitemer/mcphub.nvim";
-      inputs.nixpkgs.follows = "nixvim/nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     mcp-hub = {
       url = "github:ravitemer/mcp-hub";
-      inputs.nixpkgs.follows = "nixvim/nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     llm-agents = {
       url = "github:numtide/llm-agents.nix?ref=main";
-      inputs.nixpkgs.follows = "nixvim/nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     opencode = {
       url = "github:anomalyco/opencode?ref=v1.2.24";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-    pangaea = {
-      url = "git+https://codeberg.org/reesilva/pangaea?ref=feat/v2";
-      inputs = {
-        nixpkgs.follows = "nixvim/nixpkgs";
-        opencode.follows = "opencode";
-        mcp-hub.follows = "mcp-hub";
-      };
+    rustacean = {
+      url = "github:mrcjkb/rustaceanvim";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-    rustacean.url = "github:mrcjkb/rustaceanvim";
   };
 
   outputs =
