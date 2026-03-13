@@ -35,6 +35,7 @@
       mcphub-nvim,
       mcp-hub,
       llm-agents,
+      nixpkgs,
       ...
     }@inputs:
     flake-utils.lib.eachDefaultSystem (
@@ -56,6 +57,9 @@
             inherit mcp-hub;
             inherit inputs;
             inherit llm-agents;
+            pkgs-master = import nixpkgs {
+              inherit (pkgs.stdenv.hostPlatform) system;
+            };
           };
         };
       in

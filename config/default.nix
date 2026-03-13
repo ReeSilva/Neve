@@ -1,4 +1,4 @@
-{ lib, pkgs, inputs, ... }:
+{ lib, pkgs, pkgs-master, inputs, ... }:
 {
   # Import all your configuration modules here
   imports = [
@@ -39,6 +39,14 @@
   utils.enable = lib.mkDefault true;
 
   niquisvim.ai.enable = lib.mkDefault true;
+  nixpkgs.overlays = [
+    inputs.opencode.overlays.default
+    (final: prev: {
+      opencode = prev.opencode.override {
+        inherit (pkgs-master) bun;
+      };
+    })
+  ];
 
   opts.shell = lib.getExe pkgs.fish;
   plugins = {
