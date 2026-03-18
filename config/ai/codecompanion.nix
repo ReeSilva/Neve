@@ -133,12 +133,12 @@
         (final: prev: {
           vimPlugins = prev.vimPlugins // {
             codecompanion-nvim = prev.vimPlugins.codecompanion-nvim.overrideAttrs {
-              version = "v19.3.0";
+              version = "v19.5.0";
               src = prev.fetchFromGitHub {
                 owner = "olimorris";
                 repo = "codecompanion.nvim";
-                tag = "v19.3.0";
-                sha256 = "sha256-+5PA3b1Qr1gPPQKoCDrMgtaF5F4cSpwJDeZVLOvVgJQ=";
+                tag = "v19.5.0";
+                sha256 = "sha256-k3ogwuqo/3HB8cU7t1epizrPKfVD8ifde1i/MSmLGAU=";
               };
             };
           };
@@ -197,6 +197,19 @@
                       }"
                     },
                   },
+                })
+              end
+            '';
+            copilot_acp = lib.nixvim.utils.mkRaw /* lua */ ''
+              function()
+                return require("codecompanion.adapters").extend("copilot_acp", {
+                  commands = {
+                    default = {
+                      "${lib.getExe pkgs.github-copilot-cli}",
+                      "--acp",
+                      "--stdio",
+                    },
+                  }
                 })
               end
             '';
