@@ -133,12 +133,12 @@
         (final: prev: {
           vimPlugins = prev.vimPlugins // {
             codecompanion-nvim = prev.vimPlugins.codecompanion-nvim.overrideAttrs {
-              version = "v19.5.0";
-              src = prev.fetchFromGitHub {
+              version = "v19.6.0-unstable-2026-03-19";
+              src = final.fetchFromGitHub {
                 owner = "olimorris";
                 repo = "codecompanion.nvim";
-                tag = "v19.5.0";
-                sha256 = "sha256-k3ogwuqo/3HB8cU7t1epizrPKfVD8ifde1i/MSmLGAU=";
+                tag = "v19.6.0";
+                sha256 = "sha256-QEBlzkkgNTLWAey8/HImga8gYiFXOU+ITjPwODUlnfo=";
               };
             };
           };
@@ -150,9 +150,12 @@
           "CodeCompanion"
           "CodeCompanionChat"
           "CodeCompanionActions"
+          "CodeCompanionCmd"
+          "CodeCompanionHistory"
+          "CodeCompanionSummaries"
         ];
         settings = {
-          strategies = {
+          interactions = {
             chat = {
               adapter = "opencode";
               roles = {
@@ -164,8 +167,23 @@
                 user = "engenheiro do fim do mundo";
               };
             };
-            inline.adapter = if pkgs.stdenv.isDarwin then "gemini" else "anthropic";
-            cmd.adapter = "opencode";
+            cli = {
+              agent = "opencode";
+              agents = {
+                claude_code = {
+                  cmd = lib.getExe inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code;
+                  description = "Claude Code CLI";
+                  provider = "terminal";
+                };
+                opencode = {
+                  cmd = lib.getExe pkgs.opencode;
+                  description = "OpenCode TUI";
+                  provider = "terminal";
+                };
+              };
+            };
+            inline.adapter = "anthropic";
+            cmd.adapter = "anthropic";
           };
           extensions = {
             history = {
@@ -193,7 +211,8 @@
                   commands = {
                     default = {
                       "${
-                        lib.getExe' inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code-acp "claude-agent-acp"
+                        lib.getExe' inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code-acp
+                          "claude-agent-acp"
                       }"
                     },
                   },
