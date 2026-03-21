@@ -188,7 +188,16 @@
           extensions = {
             history = {
               enabled = true;
-              opts.title_generation_opts.adapter = if pkgs.stdenv.isDarwin then "gemini" else "anthropic";
+              opts = {
+                title_generation_opts = {
+                  adapter = if pkgs.stdenv.isDarwin then "gemini" else "anthropic";
+                  model = if pkgs.stdenv.isDarwin then "gemini-flash-lite-latest" else "claude-haiku-4-5";
+                };
+                summary.generation_opts = {
+                  adapter = if pkgs.stdenv.isDarwin then "gemini" else "anthropic";
+                  model = if pkgs.stdenv.isDarwin then "gemini-flash-lite-latest" else "claude-haiku-4-5";
+                };
+              };
             };
             mcphub = {
               callback = "mcphub.extensions.codecompanion";
