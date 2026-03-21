@@ -42,14 +42,11 @@
       system:
       let
         config = import ./config;
-        pkgs = import inputs.nixvim.inputs.nixpkgs {
-          inherit system;
-        };
+        pkgs-master = nixpkgs.legacyPackages.${system};
 
         nixvimLib = nixvim.lib.${system};
         nixvim' = nixvim.legacyPackages.${system};
         nvim = nixvim'.makeNixvimWithModule {
-          # inherit pkgs;
           module = config;
           extraSpecialArgs = {
             inherit self;
@@ -57,9 +54,7 @@
             inherit mcp-hub;
             inherit inputs;
             inherit llm-agents;
-            pkgs-master = import nixpkgs {
-              inherit (pkgs.stdenv.hostPlatform) system;
-            };
+            inherit pkgs-master;
           };
         };
       in
@@ -77,7 +72,7 @@
           default = nvim;
         };
 
-        formatter = pkgs.nixfmt-rfc-style;
+        formatter = pkgs-master.nixfmt-rfc-style;
       }
     );
 }
