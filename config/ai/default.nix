@@ -4,6 +4,7 @@
     ./avante.nix
     ./codecompanion.nix
     ./copilot.nix
+    ./mcphub.nix
   ];
 
   options = {
@@ -17,5 +18,6 @@
       avante.enable = lib.mkDefault true;
       copilot.enable = lib.mkDefault true;
       niquisvim.ai.codecompanion.enable = lib.mkDefault true;
+      niquisvim.ai.mcphub.enable = lib.mkDefault true;
     };
 }

@@ -16,19 +16,6 @@
       cfg = config.avante;
     in
     lib.mkIf cfg.enable {
-      extraPlugins = [ mcphub-nvim.packages.${pkgs.stdenv.hostPlatform.system}.default ];
-      extraConfigLua = /* lua */ ''
-        require("mcphub").setup({
-          port = 3000,
-          config = vim.fn.expand("~/.config/mcphub/servers.json"),
-          cmd = "${mcp-hub.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/mcp-hub",
-          extensions = {
-            avante = {
-              make_slash_commands = true,
-            }
-          }
-        })
-      '';
       plugins = {
         img-clip = {
           enable = true;
