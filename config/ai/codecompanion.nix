@@ -157,7 +157,7 @@
         settings = {
           interactions = {
             chat = {
-              adapter = "opencode";
+              adapter = if pkgs.stdenv.isDarwin then "claude_code" else "opencode";
               roles = {
                 llm = lib.nixvim.utils.mkRaw /* lua */ ''
                   function(adapter)
@@ -168,7 +168,7 @@
               };
             };
             cli = {
-              agent = "opencode";
+              agent = if pkgs.stdenv.isDarwin then "claude_code" else "opencode";
               agents = {
                 claude_code = {
                   cmd = lib.getExe inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code;
@@ -182,8 +182,8 @@
                 };
               };
             };
-            inline.adapter = "anthropic";
-            cmd.adapter = "anthropic";
+            inline.adapter = if pkgs.stdenv.isDarwin then "gemini" else "anthropic";
+            cmd.adapter = if pkgs.stdenv.isDarwin then "gemini" else "anthropic";
           };
           extensions = {
             history = {
@@ -252,7 +252,7 @@
                       },
                     },
                     defaults = {
-                      auth_method = "gemini-api-key",
+                      auth_method = "oauth-personal",
                     },
                   })
                 end
