@@ -48,7 +48,7 @@
           auto_preview = true;
           close_after_jump = true;
           layout = "normal"; # normal or float
-          win_position = "right"; # left or right
+          win_position = "left"; # left or right
           keys = {
             jump = "e";
             quit = "q";

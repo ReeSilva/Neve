@@ -17,6 +17,7 @@
         rename = { enabled = true; };
         scope = { enabled = true; };
         statuscolumn = { enabled = true; };
+        # terminal = { enabled = true; };
         toggle = { enabled = true; };
         words = { enabled = true; };
       };
@@ -30,20 +31,32 @@
       # }
       {
         mode = "n";
+        key = "<C-t>";
+        action = "<cmd>lua Snacks.terminal.toggle()<cr>";
+        options.desc = "Open Terminal (Snacks)";
+      }
+      {
+        mode = "n";
+        key = "<leader>gt";
+        action = "<cmd>lua Snacks.terminal.toggle()<cr>";
+        options.desc = "Open Terminal (Snacks)";
+      }
+      {
+        mode = "n";
         key = "<leader>gb";
-        action = ":lua Snacks.git.blame_line()<cr>";
+        action = "<cmd>lua Snacks.git.blame_line()<cr>";
         options = { desc = "Blame line (Snacks)"; };
       }
       {
         mode = "n";
         key = "<leader>glr";
-        action = ":lua Snacks.lazygit.log()<cr>";
+        action = "<cmd>lua Snacks.lazygit.log()<cr>";
         options = { desc = "Git log (repository)"; };
       }
       {
         mode = "n";
         key = "<leader>glf";
-        action = ":lua Snacks.lazygit.log_file()<cr>";
+        action = "<cmd>lua Snacks.lazygit.log_file()<cr>";
         options = { desc = "Git log (current file)"; };
       }
     ];

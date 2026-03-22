@@ -10,6 +10,7 @@
     ./barbecue.nix
     ./dressing-nvim.nix
     ./dropbar.nix
+    ./edgy.nix
     ./indent-blankline.nix
     ./noice.nix
     ./nui.nix
@@ -34,6 +35,7 @@
     snacks.enable = lib.mkDefault true;
     ufo.enable = lib.mkDefault true;
     web-devicons.enable = lib.mkDefault true;
+    niquisvim.ui.edgy.enable = lib.mkDefault true;
 
     extraPlugins = [ pkgs.vimPlugins.nvim-window-picker ];
     extraConfigLua = /* lua */ ''

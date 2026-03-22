@@ -41,27 +41,27 @@
 
       local toggle_modes = { "n", "t" }
       local mappings = {
-      	{
-      		toggle_modes,
-      		"<C-t>v",
-      		function()
-      			terminal.toggle("vertical")
-      		end,
-      	},
-      	{
-      		toggle_modes,
-      		"<C-t>f",
-      		function()
-      			terminal.toggle("float")
-      		end,
-      	},
-      	{
-      		toggle_modes,
-      		"<C-t>h",
-      		function()
-      			terminal.toggle("horizontal")
-      		end,
-      	},
+      	-- {
+      	-- 	toggle_modes,
+      	-- 	"<C-t>v",
+      	-- 	function()
+      	-- 		terminal.toggle("vertical")
+      	-- 	end,
+      	-- },
+      	-- {
+      	-- 	toggle_modes,
+      	-- 	"<C-t>f",
+      	-- 	function()
+      	-- 		terminal.toggle("float")
+      	-- 	end,
+      	-- },
+      	-- {
+      	-- 	toggle_modes,
+      	-- 	"<C-t>h",
+      	-- 	function()
+      	-- 		terminal.toggle("horizontal")
+      	-- 	end,
+      	-- },
       }
       local opts = { noremap = true, silent = true }
       for _, mapping in ipairs(mappings) do

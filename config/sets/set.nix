@@ -127,6 +127,7 @@
       formatexpr = "v:lua.require'conform'.formatexpr()";
 
       laststatus = 3; # (https://neovim.io/doc/user/options.html#'laststatus')
+      splitkeep = "screen";
 
       inccommand = "split"; # (https://neovim.io/doc/user/options.html#'inccommand')
 
