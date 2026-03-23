@@ -52,7 +52,7 @@
                 end
               '';
               pinned = true;
-              open = "Neotree position=top buffers";
+              open = "Neotree position=left buffers";
             }
             {
               title = "Neo-Tree";
@@ -63,6 +63,7 @@
                 end
               '';
               pinned = true;
+              open = "Neotree position=left";
             }
             {
               title = "Outline";
