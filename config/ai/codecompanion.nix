@@ -182,20 +182,20 @@
                 };
               };
             };
-            inline.adapter = if pkgs.stdenv.isDarwin then "openai" else "anthropic";
-            cmd.adapter = if pkgs.stdenv.isDarwin then "openai" else "anthropic";
+            inline.adapter = if pkgs.stdenv.isDarwin then "gemini" else "anthropic";
+            cmd.adapter = if pkgs.stdenv.isDarwin then "gemini" else "anthropic";
           };
           extensions = {
             history = {
               enabled = true;
               opts = {
                 title_generation_opts = {
-                  adapter = if pkgs.stdenv.isDarwin then "openai" else "anthropic";
-                  model = if pkgs.stdenv.isDarwin then "gpt-5.4-mini" else "claude-haiku-4-5";
+                  adapter = if pkgs.stdenv.isDarwin then "gemini" else "anthropic";
+                  model = if pkgs.stdenv.isDarwin then "gemini-flash-lite-latest" else "claude-haiku-4-5";
                 };
                 summary.generation_opts = {
-                  adapter = if pkgs.stdenv.isDarwin then "openai" else "anthropic";
-                  model = if pkgs.stdenv.isDarwin then "gpt-5.4-mini" else "claude-haiku-4-5";
+                  adapter = if pkgs.stdenv.isDarwin then "gemini" else "anthropic";
+                  model = if pkgs.stdenv.isDarwin then "gemini-flash-lite-latest" else "claude-haiku-4-5";
                 };
               };
             };
