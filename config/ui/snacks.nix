@@ -33,13 +33,24 @@
         mode = "n";
         key = "<C-t>";
         action = "<cmd>lua Snacks.terminal.toggle()<cr>";
-        options.desc = "Open Terminal (Snacks)";
       }
       {
         mode = "n";
-        key = "<leader>gt";
+        key = "<leader>i";
         action = "<cmd>lua Snacks.terminal.toggle()<cr>";
-        options.desc = "Open Terminal (Snacks)";
+        options.desc = "Toggle Terminal (Snacks)";
+      }
+      {
+        mode = "n";
+        key = "<leader>in";
+        action = "<cmd>lua Snacks.terminal.open()<cr>";
+        options.desc = "Open a new Terminal (Snacks)";
+      }
+      {
+        mode = "n";
+        key = "<leader>it";
+        action = "<cmd>lua Snacks.terminal.toggle()<cr>";
+        options.desc = "Toggle Terminal (Snacks)";
       }
       {
         mode = "n";

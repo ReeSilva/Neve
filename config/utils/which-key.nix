@@ -89,6 +89,15 @@
           }
 
           {
+            __unkeyed-1 = "<leader>i";
+            mode = [
+              "n"
+            ];
+            group = "+terminal";
+            icon = "";
+          }
+
+          {
             __unkeyed-1 = "<leader>q";
             mode = "n";
             group = "+quit/session";
