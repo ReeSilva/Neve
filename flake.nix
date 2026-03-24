@@ -2,7 +2,7 @@
   description = "Neve is a Neovim configuration built with Nixvim, which allows you to use Nix language to manage Neovim plugins/options";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs?shallow=1";
+    nixpkgs.url = "github:NixOS/nixpkgs/master?shallow=1";
     flake-utils.url = "github:numtide/flake-utils";
     nixvim.url = "github:nix-community/nixvim";
     mcphub-nvim = {
@@ -18,7 +18,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     opencode = {
-      url = "github:anomalyco/opencode?ref=v1.2.27";
+      url = "github:anomalyco/opencode?ref=v1.3.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     rustacean = {

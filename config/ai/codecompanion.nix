@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  pkgs-master,
   inputs,
   ...
 }:
@@ -146,6 +147,7 @@
       ];
       plugins.codecompanion = {
         enable = true;
+        package = pkgs-master.vimPlugins.codecompanion-nvim;
         lazyLoad.settings.cmd = [
           "CodeCompanion"
           "CodeCompanionChat"
