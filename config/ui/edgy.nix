@@ -41,6 +41,15 @@
               ft = "qf";
               title = "QuickFix";
             }
+            {
+              ft = "dapui_console";
+              title = "DAP Console";
+              size.width = 70;
+            }
+            {
+              ft = "dap-repl";
+              size.width = 30;
+            }
           ];
           left = [
             {
@@ -53,6 +62,7 @@
               '';
               pinned = true;
               open = "Neotree position=left buffers";
+              size.height = 20;
             }
             {
               title = "Neo-Tree";
@@ -64,18 +74,36 @@
               '';
               pinned = true;
               open = "Neotree position=left";
+              size.height = 50;
             }
             {
               title = "Outline";
               ft = "sagaoutline";
               open = "Lspsaga outline";
-              pinned = true;
+              size.height = 30;
+            }
+            {
+              ft = "dapui_scopes";
+              title = "DAP Scopes";
+            }
+            {
+              ft = "dapui_breakpoints";
+              title = "DAP Breakpoints";
             }
           ];
           right = [
             {
               title = "Maurício Kubrusly";
               ft = "codecompanion";
+              pinned = true;
+            }
+            {
+              ft = "dapui_stacks";
+              title = "DAP Stacks";
+            }
+            {
+              ft = "dapui_watches";
+              title = "DAP Watches";
             }
             {
               ft = "snacks_terminal";
