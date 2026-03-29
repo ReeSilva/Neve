@@ -497,11 +497,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1774486864,
-        "narHash": "sha256-qcAbxoF4Igwmkxt5c7Z+N1gkZFl1cs72VhnjqP3eVRc=",
+        "lastModified": 1774748036,
+        "narHash": "sha256-n4GI4bR+joJHvRfhQb4SrBYCh9WMcDEXYcYnJacQZ7U=",
         "owner": "reesilva",
         "repo": "nixvim",
-        "rev": "07e2d0803246659e9dc5a5b6c96429cdf859b925",
+        "rev": "2d91b0cc477f5f2b5c044957a773971bff4a0d03",
         "type": "github"
       },
       "original": {
