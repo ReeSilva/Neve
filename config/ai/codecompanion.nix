@@ -129,22 +129,6 @@
           };
         }
       ];
-      # nixpkgs.overlays = [
-      #   (final: prev: {
-      #     vimPlugins = prev.vimPlugins // {
-      #       codecompanion-nvim = prev.vimPlugins.codecompanion-nvim.overrideAttrs {
-      #         name = "vimplugin-codecompanion.nvim-19.9.0-unstable-2026-04-05";
-      #         version = "v19.9.0-unstable-2026-04-05";
-      #         src = prev.fetchFromGitHub {
-      #           owner = "olimorris";
-      #           repo = "codecompanion.nvim";
-      #           rev = "b8a0ed12978bdbf3d43b12305e5297703836dfb4";
-      #           sha256 = "sha256-DP1JHOFKTlsVcggj6M/DlrcipH5Yn7XzHVlj3OiuHz8=";
-      #         };
-      #       };
-      #     };
-      #   })
-      # ];
       plugins.codecompanion = {
         enable = true;
         package = pkgs.vimPlugins.codecompanion-nvim.overrideAttrs {
@@ -158,15 +142,14 @@
             hash = "sha256-czV3xRahscMDRLpRRKiqKkbL2wsKkaTUA59U3erZUWU=";
           };
         };
-        # package = pkgs-master.vimPlugins.codecompanion-nvim;
-        # lazyLoad.settings.cmd = [
-        #   "CodeCompanion"
-        #   "CodeCompanionChat"
-        #   "CodeCompanionActions"
-        #   "CodeCompanionCmd"
-        #   "CodeCompanionHistory"
-        #   "CodeCompanionSummaries"
-        # ];
+        lazyLoad.settings.cmd = [
+          "CodeCompanion"
+          "CodeCompanionChat"
+          "CodeCompanionActions"
+          "CodeCompanionCmd"
+          "CodeCompanionHistory"
+          "CodeCompanionSummaries"
+        ];
         settings = {
           interactions = {
             chat = {
