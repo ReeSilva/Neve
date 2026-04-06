@@ -54,21 +54,6 @@
           inherit (pkgs-master) bun;
         };
       })
-      (final: prev: {
-        vimPlugins = prev.vimPlugins // {
-          codecompanion-nvim = prev.vimPlugins.codecompanion-nvim.overrideAttrs {
-            pname = "codecompanion.nvim";
-            name = "vimplugin-codecompanion.nvim-19.9.0-unstable-2026-04-05";
-            version = "v19.9.0-unstable-2026-04-05";
-            src = prev.fetchFromGitHub {
-              owner = "olimorris";
-              repo = "codecompanion.nvim";
-              tag = "v19.9.0";
-              hash = "sha256-czV3xRahscMDRLpRRKiqKkbL2wsKkaTUA59U3erZUWU=";
-            };
-          };
-        };
-      })
     ];
   };
 
