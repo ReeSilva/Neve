@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  pkgs-master,
   inputs,
   ...
 }:
@@ -133,13 +134,13 @@
         (final: prev: {
           vimPlugins = prev.vimPlugins // {
             codecompanion-nvim = prev.vimPlugins.codecompanion-nvim.overrideAttrs {
-              name = "vimplugin-codecompanion.nvim-19.8.0-unstable-2026-04-03";
-              version = "v19.8.0-unstable-2026-04-03";
+              name = "vimplugin-codecompanion.nvim-19.9.0-unstable-2026-04-07";
+              version = "v19.9.0-unstable-2026-04-07";
               src = final.fetchFromGitHub {
                 owner = "olimorris";
                 repo = "codecompanion.nvim";
-                rev = "eadd05011e6941bcd8a614e7702748b358d07722";
-                sha256 = "sha256-ELpy6gDzeygP3i9FwNu6J64dKqmwhzidm7dgy7745Mg=";
+                tag = "v19.9.0";
+                hash = "sha256-czV3xRahscMDRLpRRKiqKkbL2wsKkaTUA59U3erZUWU=";
               };
             };
           };
@@ -147,7 +148,6 @@
       ];
       plugins.codecompanion = {
         enable = true;
-        # package = pkgs-master.vimPlugins.codecompanion-nvim;
         lazyLoad.settings.cmd = [
           "CodeCompanion"
           "CodeCompanionChat"
