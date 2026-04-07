@@ -159,7 +159,7 @@
         settings = {
           interactions = {
             chat = {
-              adapter = if pkgs.stdenv.isDarwin then "claude_code" else "opencode";
+              adapter = "opencode";
               roles = {
                 llm = lib.nixvim.utils.mkRaw /* lua */ ''
                   function(adapter)
@@ -170,7 +170,7 @@
               };
             };
             cli = {
-              agent = if pkgs.stdenv.isDarwin then "claude_code" else "opencode";
+              agent = "opencode";
               agents = {
                 claude_code = {
                   cmd = lib.getExe inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code;
