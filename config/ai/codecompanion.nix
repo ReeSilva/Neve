@@ -181,8 +181,21 @@
                 };
               };
             };
-            inline.adapter = if pkgs.stdenv.isDarwin then "gemini" else "anthropic";
-            cmd.adapter = if pkgs.stdenv.isDarwin then "gemini" else "anthropic";
+            inline.adapter =
+              if pkgs.stdenv.isDarwin then {
+                name = "copilot";
+                model = "claude-sonnet-4.6";
+              } else "anthropic";
+            cmd.adapter =
+              if pkgs.stdenv.isDarwin then {
+                name = "copilot";
+                model = "claude-sonnet-4.6";
+              } else "anthropic";
+            background.adapter =
+              if pkgs.stdenv.isDarwin then {
+                name = "copilot";
+                model = "claude-sonnet-4.6";
+              } else "anthropic";
           };
           extensions = {
             mcphub = {
