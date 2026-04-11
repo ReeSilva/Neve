@@ -2,8 +2,6 @@
   lib,
   config,
   pkgs,
-  mcphub-nvim,
-  mcp-hub,
   inputs,
   ...
 }:
@@ -17,29 +15,6 @@
     in
     lib.mkIf cfg.enable {
       plugins = {
-        img-clip = {
-          enable = true;
-          settings = {
-            default = {
-              embed_image_as_base64 = false;
-              prompt_for_file_name = false;
-              drag_and_drop = {
-                insert_mode = true;
-              };
-            };
-            filetypes.markdown.download_images = true;
-          };
-        };
-        render-markdown = {
-          enable = true;
-          settings = {
-            file_types = [
-              "markdown"
-              "codecompanion"
-              "Avante"
-            ];
-          };
-        };
         avante = {
           enable = true;
           lazyLoad.settings = {

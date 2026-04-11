@@ -67,6 +67,21 @@
     niquisvim.utils.smart-splits.enable = lib.mkDefault true;
     parrot.enable = lib.mkDefault false;
     avante.enable = lib.mkDefault true;
-    plugins.dbee.enable = true;
+    plugins = {
+      dbee.enable = true;
+      img-clip = {
+        enable = true;
+        settings = {
+          default = {
+            embed_image_as_base64 = false;
+            prompt_for_file_name = false;
+            drag_and_drop = {
+              insert_mode = true;
+            };
+          };
+          filetypes.markdown.download_images = true;
+        };
+      };
+    };
   };
 }

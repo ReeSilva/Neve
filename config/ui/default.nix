@@ -36,6 +36,18 @@
     ufo.enable = lib.mkDefault true;
     web-devicons.enable = lib.mkDefault true;
     niquisvim.ui.edgy.enable = lib.mkDefault true;
+    plugins = {
+      render-markdown = {
+        enable = true;
+        settings = {
+          file_types = [
+            "markdown"
+            "codecompanion"
+            "Avante"
+          ];
+        };
+      };
+    };
 
     extraPlugins = [ pkgs.vimPlugins.nvim-window-picker ];
     extraConfigLua = /* lua */ ''
