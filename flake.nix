@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/master?shallow=1";
     flake-utils.url = "github:numtide/flake-utils";
-    nixvim.url = "github:reesilva/nixvim/feat/edgy-opts";
+    nixvim.url = "github:reesilva/nixvim/feat/edgy-settingsoptions";
     mcphub-nvim = {
       url = "github:ravitemer/mcphub.nvim";
       inputs.nixpkgs.follows = "nixpkgs";

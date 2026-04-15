@@ -498,16 +498,16 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1776202377,
-        "narHash": "sha256-ETHHtbchUaXhCTVdkAjAjiD6Xf5D7YbUiIlSimFKtRg=",
+        "lastModified": 1776296266,
+        "narHash": "sha256-bNvGvTYo/LimcwPIQK3mdBzTOq7b58T0jYAOcCtxrhs=",
         "owner": "reesilva",
         "repo": "nixvim",
-        "rev": "301c49d6a16008ef5e5910cd8add9c934aa8e307",
+        "rev": "77aeba8468bd9274d126194bc8333ffd9bf844b6",
         "type": "github"
       },
       "original": {
         "owner": "reesilva",
-        "ref": "feat/edgy-opts",
+        "ref": "feat/edgy-settingsoptions",
         "repo": "nixvim",
         "type": "github"
       }
