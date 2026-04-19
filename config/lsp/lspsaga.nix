@@ -31,7 +31,7 @@
         };
         lightbulb = {
           enable = true;
-          sign = true;
+          sign = false;
           virtual_text = true;
         };
         implement = { enable = false; };
