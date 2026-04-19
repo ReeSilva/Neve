@@ -19,7 +19,6 @@
     };
     opencode = {
       url = "github:anomalyco/opencode?ref=v1.4.11";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     rustacean = {
       url = "github:mrcjkb/rustaceanvim";
