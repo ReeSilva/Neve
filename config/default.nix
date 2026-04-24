@@ -1,8 +1,6 @@
 {
   lib,
   pkgs,
-  pkgs-master,
-  inputs,
   ...
 }:
 {
@@ -47,14 +45,6 @@
   niquisvim.ai.enable = lib.mkDefault true;
   nixpkgs = {
     config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "github-copilot-cli" ];
-    overlays = [
-      inputs.opencode.overlays.default
-      (final: prev: {
-        opencode = prev.opencode.override {
-          inherit (pkgs-master) bun;
-        };
-      })
-    ];
   };
 
   opts.shell = lib.getExe pkgs.fish;

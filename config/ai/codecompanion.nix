@@ -3,6 +3,7 @@
   config,
   pkgs,
   inputs,
+  opencode,
   ...
 }:
 {
@@ -129,16 +130,15 @@
       nixpkgs.overlays = [
         (final: prev: {
           vimPlugins = prev.vimPlugins // {
-
             codecompanion-nvim = prev.vimPlugins.codecompanion-nvim.overrideAttrs rec {
               pname = "codecompanion.nvim";
-              version = "19.11.0-unstable-2026-04-12";
+              version = "19.12.0-unstable-2026-04-25";
               name = "vimplugin-${pname}-${version}";
               src = final.fetchFromGitHub {
                 owner = "olimorris";
                 repo = "codecompanion.nvim";
-                tag = "v19.11.0";
-                hash = "sha256-z8zcGgq5CBq5OlUZ+GfcvCgVrrFdGUMpJYR0duMigXA=";
+                rev = "bc82fbca915f28467a2e2e74e11845ce20d8017c";
+                hash = "sha256-DN0amyAg7OirpQXsH7Cetk15j5pb7t9r02mMnsJCMAI=";
               };
             };
           };
@@ -175,7 +175,7 @@
                   provider = "terminal";
                 };
                 opencode = {
-                  cmd = lib.getExe pkgs.opencode;
+                  cmd = lib.getExe opencode;
                   description = "OpenCode TUI";
                   provider = "terminal";
                 };
@@ -273,7 +273,7 @@
                   return require("codecompanion.adapters").extend("opencode", {
                     commands = {
                       default = {
-                        "${lib.getExe pkgs.opencode}",
+                        "${lib.getExe opencode}",
                         "acp"
                       },
                     },

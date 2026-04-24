@@ -3,6 +3,7 @@
   config,
   pkgs,
   inputs,
+  opencode,
   ...
 }:
 {
@@ -85,7 +86,9 @@
             ];
             acp_providers = {
               claude-code = lib.mkIf pkgs.stdenv.isDarwin {
-                command = lib.getExe' inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code-acp "claude-agent-acp";
+                command =
+                  lib.getExe' inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code-acp
+                    "claude-agent-acp";
                 env = {
                   NODE_NO_WARNINGS = "1";
                 };
@@ -98,7 +101,7 @@
                 };
               };
               opencode = {
-                command = lib.getExe pkgs.opencode;
+                command = lib.getExe opencode;
                 args = [ "acp" ];
               };
             };

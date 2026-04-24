@@ -18,7 +18,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     opencode = {
-      url = "github:anomalyco/opencode?ref=v1.4.11";
+      url = "github:anomalyco/opencode?ref=v1.14.24";
     };
     rustacean = {
       url = "github:mrcjkb/rustaceanvim";
@@ -42,6 +42,14 @@
       let
         config = import ./config;
         pkgs-master = nixpkgs.legacyPackages.${system};
+        opencode = inputs.opencode.packages.${system}.opencode.overrideAttrs (prev: {
+          preBuild = (prev.preBuild or "") + ''
+            substituteInPlace packages/opencode/src/cli/cmd/generate.ts \
+              --replace-fail 'const prettier = await import("prettier")' 'const prettier: any = { format: async (s: string) => s }' \
+              --replace-fail 'const babel = await import("prettier/plugins/babel")' 'const babel = {}' \
+              --replace-fail 'const estree = await import("prettier/plugins/estree")' 'const estree = {}'
+          '';
+        });
 
         nixvimLib = nixvim.lib.${system};
         nixvim' = nixvim.legacyPackages.${system};
@@ -54,6 +62,7 @@
             inherit inputs;
             inherit llm-agents;
             inherit pkgs-master;
+            inherit opencode;
           };
         };
       in
