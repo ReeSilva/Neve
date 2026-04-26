@@ -230,8 +230,7 @@
                     commands = {
                       default = {
                         "${
-                          lib.getExe' inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code-acp
-                            "claude-agent-acp"
+                          lib.getExe inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-agent-acp
                         }"
                       },
                     },
