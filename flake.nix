@@ -18,7 +18,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     opencode = {
-      url = "github:anomalyco/opencode?ref=v1.14.31";
+      url = "github:anomalyco/opencode?ref=v1.14.33";
     };
     rustacean = {
       url = "github:mrcjkb/rustaceanvim";
