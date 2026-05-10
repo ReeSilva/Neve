@@ -132,13 +132,13 @@
           vimPlugins = prev.vimPlugins // {
             codecompanion-nvim = prev.vimPlugins.codecompanion-nvim.overrideAttrs rec {
               pname = "codecompanion.nvim";
-              version = "19.13.0-unstable-2026-05-04";
+              version = "19.13.0-unstable-2026-05-10";
               name = "vimplugin-${pname}-${version}";
-              src = final.fetchFromGitHub {
+              src = prev.fetchFromGitHub {
                 owner = "olimorris";
                 repo = "codecompanion.nvim";
-                rev = "60d031862715a77b3655eac724e8926965e47b86";
-                hash = "sha256-9jSFvxX9m1+pFNY7YNRPz4Emm1HzNW/MjvR9BNDZpAo=";
+                rev = "f85078a8e0a44159c8653ef507511a38fb9b2a6d";
+                hash = "sha256-YseMqrJtwlQw3mx1rcHcH3AS8b9WURdakU2GcnxMoiM=";
               };
             };
           };
