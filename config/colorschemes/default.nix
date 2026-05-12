@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 {
@@ -17,9 +18,9 @@
   };
   config = lib.mkIf config.colorschemes.enable {
     niquisvim.colorschemes.ayu.enable = lib.mkDefault false;
-    base16.enable = lib.mkDefault false;
+    base16.enable = lib.mkDefault pkgs.stdenv.isDarwin;
     catppuccin.enable = lib.mkDefault false;
     rose-pine.enable = lib.mkDefault false;
-    niquisvim.colorschemes.tokyonight.enable = lib.mkDefault true;
+    niquisvim.colorschemes.tokyonight.enable = lib.mkDefault pkgs.stdenv.isLinux;
   };
 }

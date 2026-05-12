@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 {
@@ -90,7 +91,7 @@
             "Avante"
             "AvanteSelectedFiles"
           ];
-          theme = "tokyonight-night";
+          theme = if pkgs.stdenv.isDarwin then "auto" else "tokyonight-night";
           component_separators = {
             left = "|";
             right = "|";
