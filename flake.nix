@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/master?shallow=1";
+    nixpkgs-updated-bun.url = "github:delafthi/nixpkgs/delafthi/xrxorlrrwrro";
     flake-utils.url = "github:numtide/flake-utils";
     nixvim.url = "github:nix-community/nixvim/main";
     mcphub-nvim = {
@@ -18,7 +19,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     opencode = {
-      url = "github:anomalyco/opencode?ref=v1.15.3";
+      url = "github:anomalyco/opencode?ref=v1.15.13";
+      inputs.nixpkgs.follows = "nixpkgs-updated-bun";
     };
     rustacean = {
       url = "github:mrcjkb/rustaceanvim";
