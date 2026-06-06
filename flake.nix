@@ -18,10 +18,6 @@
       url = "github:numtide/llm-agents.nix?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    opencode = {
-      url = "github:anomalyco/opencode?ref=v1.15.13";
-      inputs.nixpkgs.follows = "nixpkgs-updated-bun";
-    };
     rustacean = {
       url = "github:mrcjkb/rustaceanvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,14 +40,15 @@
       let
         config = import ./config;
         pkgs-master = nixpkgs.legacyPackages.${system};
-        opencode = inputs.opencode.packages.${system}.opencode.overrideAttrs (prev: {
-          preBuild = (prev.preBuild or "") + ''
-            substituteInPlace packages/opencode/src/cli/cmd/generate.ts \
-              --replace-fail 'const prettier = await import("prettier")' 'const prettier: any = { format: async (s: string) => s }' \
-              --replace-fail 'const babel = await import("prettier/plugins/babel")' 'const babel = {}' \
-              --replace-fail 'const estree = await import("prettier/plugins/estree")' 'const estree = {}'
-          '';
-        });
+        opencode = inputs.llm-agents.packages.${system}.opencode;
+        # opencode = inputs.opencode.packages.${system}.opencode.overrideAttrs (prev: {
+        #   preBuild = (prev.preBuild or "") + ''
+        #     substituteInPlace packages/opencode/src/cli/cmd/generate.ts \
+        #       --replace-fail 'const prettier = await import("prettier")' 'const prettier: any = { format: async (s: string) => s }' \
+        #       --replace-fail 'const babel = await import("prettier/plugins/babel")' 'const babel = {}' \
+        #       --replace-fail 'const estree = await import("prettier/plugins/estree")' 'const estree = {}'
+        #   '';
+        # });
 
         nixvimLib = nixvim.lib.${system};
         nixvim' = nixvim.legacyPackages.${system};
