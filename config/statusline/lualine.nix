@@ -76,6 +76,22 @@
                 end,
               '';
             }
+            {
+              __unkeyed-1 = lib.nixvim.utils.mkRaw /* lua */ ''
+                function()
+                  local bufnr = vim.api.nvim_get_current_buf()
+                  local tokens = _G.codecompanion_estimated_tokens and _G.codecompanion_estimated_tokens[bufnr]
+                  if tokens and tokens > 0 then
+                    return "󰘚 ~" .. tostring(math.floor(tokens / 1000)) .. "k"
+                  end
+                  return ""
+                end
+              '';
+              cond = {
+                __raw = "function() return vim.bo.filetype == 'codecompanion' end";
+              };
+              color = lib.nixvim.utils.mkRaw "function() return { fg = '#bb9af7' } end";
+            }
             "filetype"
           ];
           lualine_y = [ "progress" ];

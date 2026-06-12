@@ -16,6 +16,8 @@
     in
     lib.mkIf cfg.enable {
       extraConfigLuaPre = /* lua */ ''
+        _G.codecompanion_estimated_tokens = {}
+
         local progress = require("fidget.progress")
         local M = {}
         M.handles = {}
@@ -61,6 +63,7 @@
       '';
       autoGroups = {
         CodeCompanionFidgetHooks = { };
+        CodeCompanionTokenTracking = { };
       };
       autoCmd = [
         {
@@ -85,6 +88,25 @@
                 M:report_exit_status(handle, request)
                 handle:finish()
               end
+            end
+          '';
+        }
+        {
+          group = "CodeCompanionTokenTracking";
+          event = "User";
+          pattern = "CodeCompanionChatCreated";
+          callback = lib.nixvim.utils.mkRaw /* lua */ ''
+            function(args)
+              local ok, chat = pcall(require("codecompanion").buf_get_chat, args.data.bufnr)
+              if not ok or not chat then return end
+              -- Only track tokens for ACP adapters (HTTP adapters have built-in tracking)
+              if chat.adapter and chat.adapter.type == "http" then
+                _G.codecompanion_estimated_tokens[args.data.bufnr] = nil
+                return
+              end
+              chat:add_callback("on_checkpoint", function(c, data)
+                _G.codecompanion_estimated_tokens[args.data.bufnr] = data.estimated_tokens or 0
+              end)
             end
           '';
         }
@@ -154,6 +176,7 @@
           "CodeCompanionCLI"
         ];
         settings = {
+          display.chat.show_token_count = true;
           interactions = {
             chat = {
               adapter = "opencode";
