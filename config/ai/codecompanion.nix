@@ -16,8 +16,6 @@
     in
     lib.mkIf cfg.enable {
       extraConfigLuaPre = /* lua */ ''
-        _G.codecompanion_estimated_tokens = {}
-
         local progress = require("fidget.progress")
         local M = {}
         M.handles = {}
@@ -63,7 +61,6 @@
       '';
       autoGroups = {
         CodeCompanionFidgetHooks = { };
-        CodeCompanionTokenTracking = { };
       };
       autoCmd = [
         {
@@ -88,25 +85,6 @@
                 M:report_exit_status(handle, request)
                 handle:finish()
               end
-            end
-          '';
-        }
-        {
-          group = "CodeCompanionTokenTracking";
-          event = "User";
-          pattern = "CodeCompanionChatCreated";
-          callback = lib.nixvim.utils.mkRaw /* lua */ ''
-            function(args)
-              local ok, chat = pcall(require("codecompanion").buf_get_chat, args.data.bufnr)
-              if not ok or not chat then return end
-              -- Only track tokens for ACP adapters (HTTP adapters have built-in tracking)
-              if chat.adapter and chat.adapter.type == "http" then
-                _G.codecompanion_estimated_tokens[args.data.bufnr] = nil
-                return
-              end
-              chat:add_callback("on_checkpoint", function(c, data)
-                _G.codecompanion_estimated_tokens[args.data.bufnr] = data.estimated_tokens or 0
-              end)
             end
           '';
         }
@@ -154,13 +132,13 @@
           vimPlugins = prev.vimPlugins // {
             codecompanion-nvim = prev.vimPlugins.codecompanion-nvim.overrideAttrs rec {
               pname = "codecompanion.nvim";
-              version = "19.15.0-unstable-2026-06-13";
+              version = "19.16.0-unstable-2026-06-15";
               name = "vimplugin-${pname}-${version}";
               src = prev.fetchFromGitHub {
                 owner = "olimorris";
                 repo = "codecompanion.nvim";
-                rev = "123d8b3428b321ade9a8c1b749a65e4021a14dd0";
-                hash = "sha256-+w5dI5Y0fawlGuIH1LbYTJDLEs3QAtGGksa7XqOWd9Q=";
+                rev = "65b8938ec42d0226bb456b8df20aa6729e2849b3";
+                hash = "sha256-EUzpQYHEtIP5pVdhsUNWF0Gv7PegMVd25j9WC3Knsq4=";
               };
             };
           };

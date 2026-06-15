@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/master?shallow=1";
-    nixpkgs-updated-bun.url = "github:delafthi/nixpkgs/delafthi/xrxorlrrwrro";
     flake-utils.url = "github:numtide/flake-utils";
     nixvim.url = "github:nix-community/nixvim/main";
     mcphub-nvim = {
@@ -41,14 +40,6 @@
         config = import ./config;
         pkgs-master = nixpkgs.legacyPackages.${system};
         opencode = inputs.llm-agents.packages.${system}.opencode;
-        # opencode = inputs.opencode.packages.${system}.opencode.overrideAttrs (prev: {
-        #   preBuild = (prev.preBuild or "") + ''
-        #     substituteInPlace packages/opencode/src/cli/cmd/generate.ts \
-        #       --replace-fail 'const prettier = await import("prettier")' 'const prettier: any = { format: async (s: string) => s }' \
-        #       --replace-fail 'const babel = await import("prettier/plugins/babel")' 'const babel = {}' \
-        #       --replace-fail 'const estree = await import("prettier/plugins/estree")' 'const estree = {}'
-        #   '';
-        # });
 
         nixvimLib = nixvim.lib.${system};
         nixvim' = nixvim.legacyPackages.${system};
