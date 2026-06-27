@@ -132,7 +132,7 @@
           vimPlugins = prev.vimPlugins // {
             codecompanion-nvim = prev.vimPlugins.codecompanion-nvim.overrideAttrs rec {
               pname = "codecompanion.nvim";
-              version = "19.16.0-unstable-2026-06-15";
+              version = "19.17.0-unstable-2026-06-27";
               name = "vimplugin-${pname}-${version}";
               src = prev.fetchFromGitHub {
                 owner = "olimorris";
