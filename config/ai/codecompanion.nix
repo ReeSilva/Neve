@@ -137,8 +137,8 @@
               src = prev.fetchFromGitHub {
                 owner = "olimorris";
                 repo = "codecompanion.nvim";
-                rev = "65b8938ec42d0226bb456b8df20aa6729e2849b3";
-                hash = "sha256-EUzpQYHEtIP5pVdhsUNWF0Gv7PegMVd25j9WC3Knsq4=";
+                rev = "635f001598d811c6ea256bc863b3d503c3a88d43";
+                hash = "sha256-ClATfJmQNGHeh1Ft9AQbybJ8vYBW81jn26Sxcwb0HxA=";
               };
             };
           };

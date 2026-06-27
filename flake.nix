@@ -40,15 +40,13 @@
     flake-utils.lib.eachDefaultSystem (
       system:
       let
-        config = import ./config;
         pkgs-master = nixpkgs.legacyPackages.${system};
         # opencode = inputs.llm-agents.packages.${system}.opencode;
         opencode = inputs.opencode.packages.${system}.default;
 
-        nixvimLib = nixvim.lib.${system};
-        nixvim' = nixvim.legacyPackages.${system};
-        nvim = nixvim'.makeNixvimWithModule {
-          module = config;
+        nvim = nixvim.lib.evalNixvim {
+          inherit system;
+          modules = [ ./config ];
           extraSpecialArgs = {
             inherit self;
             inherit mcphub-nvim;
@@ -63,15 +61,12 @@
       {
         checks = {
           # Run `nix flake check .` to verify that your config is not broken
-          default = nixvimLib.check.mkTestDerivationFromNvim {
-            inherit nvim;
-            name = "Neve";
-          };
+          default = nvim.config.build.test;
         };
 
         packages = {
           # Lets you run `nix run .` to start nixvim
-          default = nvim;
+          default = nvim.config.build.package;
         };
 
         formatter = pkgs-master.nixfmt-rfc-style;
