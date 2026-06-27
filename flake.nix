@@ -17,6 +17,9 @@
       url = "github:numtide/llm-agents.nix?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    opencode = {
+      url = "github:anomalyco/opencode";
+    };
     rustacean = {
       url = "github:mrcjkb/rustaceanvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,7 +42,8 @@
       let
         config = import ./config;
         pkgs-master = nixpkgs.legacyPackages.${system};
-        opencode = inputs.llm-agents.packages.${system}.opencode;
+        # opencode = inputs.llm-agents.packages.${system}.opencode;
+        opencode = inputs.opencode.packages.${system}.default;
 
         nixvimLib = nixvim.lib.${system};
         nixvim' = nixvim.legacyPackages.${system};
