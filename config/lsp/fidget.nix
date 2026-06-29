@@ -3,20 +3,18 @@
   config,
   pkgs,
   ...
-}:
-let
+}: let
   # Build the fidget plugin from GitHub
   fidget = pkgs.vimUtils.buildVimPlugin {
     name = "fidget.nvim";
     src = pkgs.fetchFromGitHub {
       owner = "j-hui";
       repo = "fidget.nvim";
-      rev = "7fa433a83118a70fe24c1ce88d5f0bd3453c0970";
-      hash = "sha256-Zap4UVicIvCaPqCMgdlnEAGbMzq1xM4uGpVqZL1iju0=";
+      rev = "6f793b2bcd2d35e201c09520f698bb763220908a";
+      hash = "sha256-8ppKGGga4NYOmSs8bZImYAf/yNcscJjyAilvA7ZfGFM=";
     };
   };
-in
-{
+in {
   options = {
     fidget.enable = lib.mkEnableOption "Enable fidget module";
   };
@@ -47,7 +45,7 @@ in
             lib.nixvim.utils.mkRaw ''
               function(msg) return msg.lsp_client.name end
             '';
-          ignore = [ ]; # List of LSP servers to ignore
+          ignore = []; # List of LSP servers to ignore
           lsp = {
             progress_ringbuf_size = 0; # Configure the nvim's LSP progress ring buffer size
           };
